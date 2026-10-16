@@ -21,12 +21,12 @@ const CALC_TOOLS = [
 export default function CalculatorsCategory() {
   return (
     <div className="tool-page">
-      <SEO 
+      <SEO
         title="Free Online Everyday Calculators | FileVexa"
         description="Quick and private calculators for everyday problems including age calculation and percentage tools."
-        canonical="https://filevexa.com/calculators"
+        canonical="https://filevexa.pages.dev/calculators"
       />
-      
+
       <div className="container">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>

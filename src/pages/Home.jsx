@@ -87,7 +87,7 @@ export default function Home() {
       title: 'FileVexa – Free Online File Converter',
       description:
         'Free online file conversion tools. Convert HEIC, WebP, AVIF images and PDF files directly in your browser. No signup required.',
-      canonical: 'https://filevexa.com/',
+      canonical: 'https://filevexa.pages.dev/',
     })
   }, [])
 

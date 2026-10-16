@@ -58,7 +58,7 @@ export default function WebpToJpg() {
       title: 'WebP to JPG Converter – Free Online | FileVexa',
       description:
         'Convert WebP images to JPG online for free. Fast, browser-based conversion with no signup required. Transparent WebP images get a white background.',
-      canonical: 'https://filevexa.com/webp-to-jpg',
+      canonical: 'https://filevexa.pages.dev/webp-to-jpg',
     })
     return () => revokeRef.current?.()
   }, [])

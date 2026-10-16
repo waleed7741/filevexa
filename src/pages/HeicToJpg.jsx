@@ -62,7 +62,7 @@ export default function HeicToJpg() {
       title: 'HEIC to JPG Converter – Free Online | FileVexa',
       description:
         'Convert HEIC images to JPG online for free. Fast browser-based HEIC to JPG conversion with no signup required.',
-      canonical: 'https://filevexa.com/heic-to-jpg',
+      canonical: 'https://filevexa.pages.dev/heic-to-jpg',
     })
     return () => {
       revokeRef.current?.()

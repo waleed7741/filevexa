@@ -7,7 +7,7 @@ export default function Terms() {
     setPageMeta({
       title: 'Terms of Use | FileVexa',
       description: 'FileVexa Terms of Use. Read our terms before using our free file conversion tools.',
-      canonical: 'https://filevexa.com/terms',
+      canonical: 'https://filevexa.pages.dev/terms',
     })
   }, [])
 

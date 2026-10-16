@@ -9,7 +9,7 @@ export default function WordCounter() {
     setPageMeta({
       title: 'Free Online Word & Character Counter | FileVexa',
       description: 'Accurate online tool to count words, characters, sentences, and paragraphs in your text instantly. 100% private.',
-      canonical: 'https://filevexa.com/word-counter',
+      canonical: 'https://filevexa.pages.dev/word-counter',
     });
   }, []);
 
@@ -17,7 +17,7 @@ export default function WordCounter() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Free Online Word Counter",
-    "url": "https://filevexa.com/word-counter",
+    "url": "https://filevexa.pages.dev/word-counter",
     "description": "Accurate online tool to count words, characters, sentences, and paragraphs.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
@@ -36,7 +36,7 @@ export default function WordCounter() {
   return (
     <div className="tool-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      
+
       <div className="container" style={{ maxWidth: '800px' }}>
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>

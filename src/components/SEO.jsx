@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 export default function SEO({ title, description, keywords, canonical, schema }) {
-  const siteUrl = 'https://filevexa.com';
+ const siteUrl = 'https://filevexa.pages.dev';
   const url = canonical || siteUrl;
 
   return (

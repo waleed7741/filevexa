@@ -48,7 +48,7 @@ export default function PdfToMarkdown() {
     setPageMeta({
       title: 'PDF to Markdown Converter – Free Online | FileVexa',
       description: 'Convert PDF text content to Markdown format. Copy or download the result. Browser-based, no signup.',
-      canonical: 'https://filevexa.com/pdf-to-markdown',
+      canonical: 'https://filevexa.pages.dev/pdf-to-markdown',
     })
     return () => {
       revokeRef.current?.()
@@ -193,11 +193,11 @@ export default function PdfToMarkdown() {
               </div>
             </div>
 
-            <textarea 
-              className="form-textarea" 
-              style={{ minHeight: '300px', width: '100%', fontFamily: 'monospace' }} 
-              value={extractedText} 
-              readOnly 
+            <textarea
+              className="form-textarea"
+              style={{ minHeight: '300px', width: '100%', fontFamily: 'monospace' }}
+              value={extractedText}
+              readOnly
               aria-label="Extracted PDF Markdown"
             />
           </div>
@@ -216,8 +216,8 @@ export default function PdfToMarkdown() {
           <div className="info-section">
             <h2>Limitations</h2>
             <p>
-              This tool only extracts text embedded directly in the PDF file and attempts basic layout preservation. 
-              <strong>Scanned PDFs or image-only PDFs are not supported.</strong> 
+              This tool only extracts text embedded directly in the PDF file and attempts basic layout preservation.
+              <strong>Scanned PDFs or image-only PDFs are not supported.</strong>
             </p>
             <p>
               Formatting such as bold text, lists, tables, and complex multi-column layouts will not be perfectly preserved.

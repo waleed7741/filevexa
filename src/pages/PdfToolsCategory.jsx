@@ -42,12 +42,12 @@ const PDF_TOOLS = [
 export default function PdfToolsCategory() {
   return (
     <div className="tool-page">
-      <SEO 
+      <SEO
         title="Best Free PDF Tools | Modify, Extract & Convert | FileVexa"
         description="A complete suite of free, client-side PDF tools. Extract pages, remove pages, and convert PDFs securely in your browser."
-        canonical="https://filevexa.com/pdf-tools"
+        canonical="https://filevexa.pages.dev/pdf-tools"
       />
-      
+
       <div className="container">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>

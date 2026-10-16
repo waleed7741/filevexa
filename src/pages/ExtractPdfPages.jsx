@@ -43,10 +43,10 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
       try {
         const page = await pdfDoc.getPage(pageNum)
         // Use a smaller scale for the thumbnail to save memory and render fast
-        const viewport = page.getViewport({ scale: 0.5 }) 
+        const viewport = page.getViewport({ scale: 0.5 })
         const canvas = canvasRef.current
         if (!canvas) return
-        
+
         const context = canvas.getContext('2d')
         canvas.height = viewport.height
         canvas.width = viewport.width
@@ -60,7 +60,7 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
       }
     }
     renderPage()
-    
+
     return () => {
       if (renderTask) {
         renderTask.cancel()
@@ -69,7 +69,7 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
   }, [pdfDoc, pageNum])
 
   return (
-    <div 
+    <div
       onClick={() => onToggle(pageNum)}
       style={{
         position: 'relative',
@@ -90,7 +90,7 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
       aria-label={`Select page ${pageNum} for extraction`}
     >
       <canvas ref={canvasRef} style={{ width: '100%', height: 'auto', display: 'block', background: 'white' }} />
-      
+
       <div style={{
         position: 'absolute',
         bottom: '8px',
@@ -104,7 +104,7 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
       }}>
         {pageNum}
       </div>
-      
+
       {isSelected && (
         <div style={{
           position: 'absolute',
@@ -147,7 +147,7 @@ export default function ExtractPdfPages() {
     setPageMeta({
       title: 'Extract PDF Pages – Free Online | FileVexa',
       description: 'Extract specific pages from a PDF and save them as a new document. Free, browser-based, no signup.',
-      canonical: 'https://filevexa.com/extract-pdf-pages',
+      canonical: 'https://filevexa.pages.dev/extract-pdf-pages',
     })
     return () => {
       revokeRef.current?.()
@@ -210,13 +210,13 @@ export default function ExtractPdfPages() {
       // Sort pages to keep them in the original document order
       const pagesToKeepArray = Array.from(selectedToKeep).sort((a, b) => a - b)
       const newPdfBytes = await extractPagesFromPdf(file, pagesToKeepArray)
-      
+
       const blob = new Blob([newPdfBytes], { type: 'application/pdf' })
       const { url, revoke } = createObjectUrl(blob)
       revokeRef.current = revoke
       setResultUrl(url)
       setResultName(replaceExtension(file.name, '_extracted.pdf'))
-      
+
       setStatus('done')
     } catch (err) {
       console.error(err)
@@ -279,7 +279,7 @@ export default function ExtractPdfPages() {
             <p style={{ marginBottom: '24px', color: 'var(--color-text-secondary)', fontSize: '14px' }}>
               Click on the pages you want to extract. They will be highlighted with a green overlay.
             </p>
-            
+
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',

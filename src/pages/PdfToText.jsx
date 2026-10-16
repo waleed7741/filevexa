@@ -44,7 +44,7 @@ export default function PdfToText() {
     setPageMeta({
       title: 'PDF to Text Converter – Free Online | FileVexa',
       description: 'Extract plain text from PDF files. Copy or download as a .txt file. Browser-based, no signup.',
-      canonical: 'https://filevexa.com/pdf-to-text',
+      canonical: 'https://filevexa.pages.dev/pdf-to-text',
     })
     return () => {
       revokeRef.current?.()
@@ -188,11 +188,11 @@ export default function PdfToText() {
               </div>
             </div>
 
-            <textarea 
-              className="form-textarea" 
-              style={{ minHeight: '300px', width: '100%', fontFamily: 'monospace' }} 
-              value={extractedText} 
-              readOnly 
+            <textarea
+              className="form-textarea"
+              style={{ minHeight: '300px', width: '100%', fontFamily: 'monospace' }}
+              value={extractedText}
+              readOnly
               aria-label="Extracted PDF text"
             />
           </div>
@@ -211,7 +211,7 @@ export default function PdfToText() {
           <div className="info-section">
             <h2>Limitations</h2>
             <p>
-              This tool only extracts text embedded directly in the PDF file. 
+              This tool only extracts text embedded directly in the PDF file.
               <strong>Scanned PDFs or image-only PDFs are not supported</strong> in this version, as they require OCR (Optical Character Recognition) technology to read the text inside the images.
             </p>
           </div>

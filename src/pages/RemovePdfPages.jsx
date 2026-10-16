@@ -43,10 +43,10 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
       try {
         const page = await pdfDoc.getPage(pageNum)
         // Use a smaller scale for the thumbnail to save memory and render fast
-        const viewport = page.getViewport({ scale: 0.5 }) 
+        const viewport = page.getViewport({ scale: 0.5 })
         const canvas = canvasRef.current
         if (!canvas) return
-        
+
         const context = canvas.getContext('2d')
         canvas.height = viewport.height
         canvas.width = viewport.width
@@ -60,7 +60,7 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
       }
     }
     renderPage()
-    
+
     return () => {
       if (renderTask) {
         renderTask.cancel()
@@ -69,7 +69,7 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
   }, [pdfDoc, pageNum])
 
   return (
-    <div 
+    <div
       onClick={() => onToggle(pageNum)}
       style={{
         position: 'relative',
@@ -90,7 +90,7 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
       aria-label={`Select page ${pageNum} for removal`}
     >
       <canvas ref={canvasRef} style={{ width: '100%', height: 'auto', display: 'block', background: 'white' }} />
-      
+
       <div style={{
         position: 'absolute',
         bottom: '8px',
@@ -104,7 +104,7 @@ function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
       }}>
         {pageNum}
       </div>
-      
+
       {isSelected && (
         <div style={{
           position: 'absolute',
@@ -147,7 +147,7 @@ export default function RemovePdfPages() {
     setPageMeta({
       title: 'Remove PDF Pages – Free Online | FileVexa',
       description: 'Remove specific pages from a PDF file in your browser. No signup, no upload.',
-      canonical: 'https://filevexa.com/remove-pdf-pages',
+      canonical: 'https://filevexa.pages.dev/remove-pdf-pages',
     })
     return () => {
       revokeRef.current?.()
@@ -213,13 +213,13 @@ export default function RemovePdfPages() {
     try {
       const pagesToRemoveArray = Array.from(selectedToRemove)
       const newPdfBytes = await removePagesFromPdf(file, pagesToRemoveArray)
-      
+
       const blob = new Blob([newPdfBytes], { type: 'application/pdf' })
       const { url, revoke } = createObjectUrl(blob)
       revokeRef.current = revoke
       setResultUrl(url)
       setResultName(replaceExtension(file.name, '_removed.pdf'))
-      
+
       setStatus('done')
     } catch (err) {
       console.error(err)
@@ -282,7 +282,7 @@ export default function RemovePdfPages() {
             <p style={{ marginBottom: '24px', color: 'var(--color-text-secondary)', fontSize: '14px' }}>
               Click on the pages you want to delete. They will be highlighted with a red overlay.
             </p>
-            
+
             <div style={{
               display: 'grid',
               // Clean responsive grid layout similar to grid-cols-2 md:grid-cols-4 lg:grid-cols-5

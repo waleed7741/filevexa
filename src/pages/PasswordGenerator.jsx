@@ -34,13 +34,13 @@ export default function PasswordGenerator() {
 
   useEffect(() => {
     generatePassword();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     setPageMeta({
       title: 'Free Random Password Generator | Secure & Private | FileVexa',
       description: 'Generate strong, secure, random passwords online. 100% private - passwords are created in your browser and never sent to our servers.',
-      canonical: 'https://filevexa.com/password-generator',
+      canonical: 'https://filevexa.pages.dev/password-generator',
     });
   }, []);
 
@@ -48,7 +48,7 @@ export default function PasswordGenerator() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Secure Password Generator",
-    "url": "https://filevexa.com/password-generator",
+    "url": "https://filevexa.pages.dev/password-generator",
     "description": "Generate strong, secure, random passwords online.",
     "applicationCategory": "SecurityApplication",
     "operatingSystem": "All",
@@ -69,7 +69,7 @@ export default function PasswordGenerator() {
   return (
     <div className="tool-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      
+
       <div className="container" style={{ maxWidth: '600px' }}>
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>
@@ -83,12 +83,12 @@ export default function PasswordGenerator() {
         </header>
 
         <div style={{ background: 'var(--color-bg)', padding: '32px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)', marginBottom: '40px' }}>
-          
+
           <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
-            <input 
-              type="text" 
-              value={password} 
-              readOnly 
+            <input
+              type="text"
+              value={password}
+              readOnly
               style={{ flex: 1, padding: '16px', fontSize: '20px', fontFamily: 'monospace', borderRadius: 'var(--radius-md)', border: '2px solid var(--color-border)', background: 'var(--color-bg-subtle)' }}
             />
             <button onClick={copyToClipboard} className="btn btn-primary">Copy</button>
@@ -98,12 +98,12 @@ export default function PasswordGenerator() {
             <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontWeight: 600 }}>
               Password Length: <span>{length}</span>
             </label>
-            <input 
-              type="range" 
-              min="4" 
-              max="64" 
-              value={length} 
-              onChange={(e) => setLength(Number(e.target.value))} 
+            <input
+              type="range"
+              min="4"
+              max="64"
+              value={length}
+              onChange={(e) => setLength(Number(e.target.value))}
               style={{ width: '100%' }}
             />
           </div>

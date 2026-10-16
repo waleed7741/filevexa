@@ -56,7 +56,7 @@ export default function AvifToJpg() {
       title: 'AVIF to JPG Converter – Free Online | FileVexa',
       description:
         'Convert AVIF images to JPG online for free. Uses your browser\'s built-in AVIF support. No signup, no upload.',
-      canonical: 'https://filevexa.com/avif-to-jpg',
+      canonical: 'https://filevexa.pages.dev/avif-to-jpg',
     })
     return () => revokeRef.current?.()
   }, [])

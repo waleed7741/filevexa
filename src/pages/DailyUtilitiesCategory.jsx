@@ -28,12 +28,12 @@ const UTILITY_TOOLS = [
 export default function DailyUtilitiesCategory() {
   return (
     <div className="tool-page">
-      <SEO 
+      <SEO
         title="Free Daily Utility Web Tools | FileVexa"
         description="Quick, private, and free everyday web tools including QR code generators, word counters, and password generators."
-        canonical="https://filevexa.com/daily-utilities"
+        canonical="https://filevexa.pages.dev/daily-utilities"
       />
-      
+
       <div className="container">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>

@@ -7,7 +7,7 @@ export default function Privacy() {
     setPageMeta({
       title: 'Privacy Policy | FileVexa',
       description: 'FileVexa privacy policy. Learn how we handle your files and data.',
-      canonical: 'https://filevexa.com/privacy',
+      canonical: 'https://filevexa.pages.dev/privacy',
     })
   }, [])
 

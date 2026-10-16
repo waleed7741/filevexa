@@ -42,12 +42,12 @@ const IMAGE_TOOLS = [
 export default function ImageToolsCategory() {
   return (
     <div className="tool-page">
-      <SEO 
+      <SEO
         title="Free Online Image Converter Tools | HEIC, WebP, AVIF | FileVexa"
         description="Convert image files directly in your browser without uploading them. Fast, free, and private image format converters."
-        canonical="https://filevexa.com/image-tools"
+        canonical="https://filevexa.pages.dev/image-tools"
       />
-      
+
       <div className="container">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>

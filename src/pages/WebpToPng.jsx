@@ -57,7 +57,7 @@ export default function WebpToPng() {
       title: 'WebP to PNG Converter – Free Online | FileVexa',
       description:
         'Convert WebP images to PNG online for free. Preserves transparency. Browser-based conversion, no signup required.',
-      canonical: 'https://filevexa.com/webp-to-png',
+      canonical: 'https://filevexa.pages.dev/webp-to-png',
     })
     return () => revokeRef.current?.()
   }, [])

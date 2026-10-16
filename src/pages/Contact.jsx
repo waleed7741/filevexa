@@ -9,7 +9,7 @@ export default function Contact() {
     setPageMeta({
       title: 'Contact | FileVexa',
       description: 'Get in touch with the FileVexa team. Send us a message with your questions or feedback.',
-      canonical: 'https://filevexa.com/contact',
+      canonical: 'https://filevexa.pages.dev/contact',
     })
   }, [])
 

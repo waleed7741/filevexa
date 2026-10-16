@@ -11,7 +11,7 @@ export default function AgeCalculator() {
     setPageMeta({
       title: 'Exact Age Calculator | Calculate Years, Months, Days',
       description: 'Calculate your exact age in years, months, and days. Free online chronological age calculator.',
-      canonical: 'https://filevexa.com/age-calculator',
+      canonical: 'https://filevexa.pages.dev/age-calculator',
     });
     calculateAge();
   }, []);
@@ -20,7 +20,7 @@ export default function AgeCalculator() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Exact Age Calculator",
-    "url": "https://filevexa.com/age-calculator",
+    "url": "https://filevexa.pages.dev/age-calculator",
     "description": "Calculate exact age in years, months, and days.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
@@ -29,10 +29,10 @@ export default function AgeCalculator() {
 
   const calculateAge = () => {
     if (!dob || !endDate) return;
-    
+
     const start = new Date(dob);
     const end = new Date(endDate);
-    
+
     if (start > end) {
       setResult({ error: 'Date of birth cannot be after the end date.' });
       return;
@@ -70,13 +70,13 @@ export default function AgeCalculator() {
         </header>
 
         <div style={{ background: 'var(--color-bg)', padding: '32px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)', marginBottom: '40px' }}>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '24px' }}>
             <label style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <span style={{ fontWeight: 600 }}>Date of Birth</span>
               <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} style={{ padding: '12px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', fontSize: '16px' }} />
             </label>
-            
+
             <label style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <span style={{ fontWeight: 600 }}>Calculate age at the date of</span>
               <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} style={{ padding: '12px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', fontSize: '16px' }} />

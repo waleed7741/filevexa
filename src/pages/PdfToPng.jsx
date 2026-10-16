@@ -47,7 +47,7 @@ export default function PdfToPng() {
     setPageMeta({
       title: 'PDF to PNG Converter – Free Online | FileVexa',
       description: 'Convert PDF pages to PNG images online. Download each page as a PNG or as a ZIP. No signup required.',
-      canonical: 'https://filevexa.com/pdf-to-png',
+      canonical: 'https://filevexa.pages.dev/pdf-to-png',
     })
     return () => {
       handleCleanup()
@@ -86,16 +86,16 @@ export default function PdfToPng() {
       const pdfDoc = await loadPdfJs(file)
       const totalPages = pdfDoc.numPages
       setPageCount(totalPages)
-      
+
       setStatus('rendering')
       const pagesData = []
-      
+
       // Render sequentially to prevent out-of-memory on large PDFs
       for (let i = 1; i <= totalPages; i++) {
         const blob = await renderPdfPageToPngBlob(pdfDoc, i, 2.0) // 2.0 scale for good quality
         const { url, revoke } = createObjectUrl(blob)
         const filename = `${replaceExtension(file.name, '')}_page_${i}.png`
-        
+
         pagesData.push({ url, filename, revoke, blob })
         setProgress(Math.round((i / totalPages) * 100))
       }
@@ -194,7 +194,7 @@ export default function PdfToPng() {
                 <button className="btn btn-ghost" onClick={handleReset}>Convert another file</button>
               </div>
             </div>
-            
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
               {resultPages.map((page, index) => (
                 <div key={index} style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

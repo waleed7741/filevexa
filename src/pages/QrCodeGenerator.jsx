@@ -12,7 +12,7 @@ export default function QrCodeGenerator() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Free Online QR Code Generator",
-    "url": "https://filevexa.com/qr-code-generator",
+    "url": "https://filevexa.pages.dev/qr-code-generator",
     "description": "Create free, permanent QR codes online instantly. No signup required.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
@@ -30,7 +30,7 @@ export default function QrCodeGenerator() {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     const img = new Image();
-    
+
     img.onload = () => {
       canvas.width = img.width;
       canvas.height = img.height;
@@ -41,19 +41,19 @@ export default function QrCodeGenerator() {
       downloadLink.href = pngFile;
       downloadLink.click();
     };
-    
+
     img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
   };
 
   return (
     <div className="tool-page">
-      <SEO 
+      <SEO
         title="Free Online QR Code Generator - No Signup | FileVexa"
         description="Create free, permanent QR codes online instantly. No signup required. Generate QR codes for URLs, text, Wi-Fi, and more directly in your browser."
-        canonical="https://filevexa.com/qr-code-generator"
+        canonical="https://filevexa.pages.dev/qr-code-generator"
         schema={schema}
       />
-      
+
       <div className="container" style={{ maxWidth: '800px' }}>
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>
@@ -70,14 +70,14 @@ export default function QrCodeGenerator() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <label style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <span style={{ fontWeight: 600 }}>Enter your text or URL</span>
-              <textarea 
-                value={text} 
+              <textarea
+                value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="https://example.com"
                 style={{ width: '100%', padding: '12px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', minHeight: '120px' }}
               />
             </label>
-            
+
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '24px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
               {text ? (
                 <>

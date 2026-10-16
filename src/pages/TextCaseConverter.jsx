@@ -9,7 +9,7 @@ export default function TextCaseConverter() {
     setPageMeta({
       title: 'Free Text Case Converter | UPPERCASE, lowercase, Title Case',
       description: 'Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case. A free, online client-side text formatting tool.',
-      canonical: 'https://filevexa.com/text-case-converter',
+      canonical: 'https://filevexa.pages.dev/text-case-converter',
     });
   }, []);
 
@@ -17,7 +17,7 @@ export default function TextCaseConverter() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Text Case Converter",
-    "url": "https://filevexa.com/text-case-converter",
+    "url": "https://filevexa.pages.dev/text-case-converter",
     "description": "Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
@@ -64,7 +64,7 @@ export default function TextCaseConverter() {
             <button className="btn btn-secondary" onClick={toTitleCase}>Title Case</button>
             <button className="btn btn-secondary" onClick={toSentenceCase}>Sentence case</button>
           </div>
-          
+
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}

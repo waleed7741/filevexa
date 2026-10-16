@@ -49,7 +49,7 @@ export default function HeicToPng() {
       title: 'HEIC to PNG Converter – Free Online | FileVexa',
       description:
         'Convert HEIC images to PNG online for free. Lossless browser-based conversion, no signup required.',
-      canonical: 'https://filevexa.com/heic-to-png',
+      canonical: 'https://filevexa.pages.dev/heic-to-png',
     })
     return () => revokeRef.current?.()
   }, [])

@@ -13,7 +13,7 @@ export default function LoremIpsumGenerator() {
     setPageMeta({
       title: 'Free Lorem Ipsum Generator | FileVexa',
       description: 'Generate customized Lorem Ipsum placeholder text instantly. Perfect for web designers, developers, and typography.',
-      canonical: 'https://filevexa.com/lorem-ipsum-generator',
+      canonical: 'https://filevexa.pages.dev/lorem-ipsum-generator',
     });
     generateLorem();
   }, []);
@@ -22,7 +22,7 @@ export default function LoremIpsumGenerator() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Lorem Ipsum Generator",
-    "url": "https://filevexa.com/lorem-ipsum-generator",
+    "url": "https://filevexa.pages.dev/lorem-ipsum-generator",
     "description": "Generate customized Lorem Ipsum placeholder text instantly.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
@@ -74,7 +74,7 @@ export default function LoremIpsumGenerator() {
               <button className="btn btn-primary" onClick={generateLorem}>Generate</button>
             </div>
           </div>
-          
+
           <textarea
             value={output}
             readOnly

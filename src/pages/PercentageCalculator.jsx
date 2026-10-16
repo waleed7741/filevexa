@@ -5,10 +5,10 @@ import RelatedTools from '../components/RelatedTools';
 export default function PercentageCalculator() {
   const [calc1X, setCalc1X] = useState('');
   const [calc1Y, setCalc1Y] = useState('');
-  
+
   const [calc2X, setCalc2X] = useState('');
   const [calc2Y, setCalc2Y] = useState('');
-  
+
   const [calc3X, setCalc3X] = useState('');
   const [calc3Y, setCalc3Y] = useState('');
 
@@ -16,7 +16,7 @@ export default function PercentageCalculator() {
     setPageMeta({
       title: 'Free Online Percentage Calculator | Discounts & Increases',
       description: 'Quickly calculate percentages, discounts, increases, and decreases with our free online percentage calculator.',
-      canonical: 'https://filevexa.com/percentage-calculator',
+      canonical: 'https://filevexa.pages.dev/percentage-calculator',
     });
   }, []);
 
@@ -24,7 +24,7 @@ export default function PercentageCalculator() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Percentage Calculator",
-    "url": "https://filevexa.com/percentage-calculator",
+    "url": "https://filevexa.pages.dev/percentage-calculator",
     "description": "Calculate percentages, discounts, and percentage increases.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
@@ -49,7 +49,7 @@ export default function PercentageCalculator() {
         </header>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginBottom: '40px' }}>
-          
+
           {/* Calc 1 */}
           <div style={{ background: 'var(--color-bg)', padding: '24px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
             <h3 style={{ fontSize: '18px', marginBottom: '16px' }}>What is X% of Y?</h3>

@@ -21,12 +21,12 @@ const TEXT_TOOLS = [
 export default function TextToolsCategory() {
   return (
     <div className="tool-page">
-      <SEO 
+      <SEO
         title="Free Online Text Formatting & Generation Tools | FileVexa"
         description="Format text, convert casing, and generate dummy placeholder text completely offline in your browser."
-        canonical="https://filevexa.com/text-tools"
+        canonical="https://filevexa.pages.dev/text-tools"
       />
-      
+
       <div className="container">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>
