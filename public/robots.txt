@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://filevexa.com/sitemap.xml
+Sitemap: https://filevexa.pages.dev/sitemap.xml
