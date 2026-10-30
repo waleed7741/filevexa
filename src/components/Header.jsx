@@ -1,10 +1,28 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useRecentTools } from '../hooks/useRecentTools'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [recentOpen, setRecentOpen] = useState(false)
+  const recentRef = useRef(null)
+  const { recentTools, clearRecentTools } = useRecentTools()
 
-  const closeMenu = () => setMenuOpen(false)
+  const closeMenu = () => {
+    setMenuOpen(false)
+    setRecentOpen(false)
+  }
+
+  // Close recent dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (recentRef.current && !recentRef.current.contains(e.target)) {
+        setRecentOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <>
@@ -22,6 +40,56 @@ export default function Header() {
             <NavLink to="/daily-utilities" className={({ isActive }) => isActive ? 'active' : ''}>Daily Utilities</NavLink>
             <NavLink to="/text-tools" className={({ isActive }) => isActive ? 'active' : ''}>Text Tools</NavLink>
             <NavLink to="/calculators" className={({ isActive }) => isActive ? 'active' : ''}>Calculators</NavLink>
+
+            {/* Recent Tools Shortcuts Dropdown (Desktop) */}
+            {recentTools.length > 0 && (
+              <div className="recent-tools-wrapper" ref={recentRef}>
+                <button
+                  type="button"
+                  className={`recent-tools-btn ${recentOpen ? 'open' : ''}`}
+                  onClick={() => setRecentOpen((o) => !o)}
+                  aria-expanded={recentOpen}
+                  aria-label="Recent tools menu"
+                >
+                  <span aria-hidden="true">🕒</span>
+                  <span>Recent</span>
+                  <span className="recent-badge">{recentTools.length}</span>
+                </button>
+
+                {recentOpen && (
+                  <div className="recent-tools-dropdown" role="menu">
+                    <div className="recent-tools-header">
+                      <span>Recently Used</span>
+                      <button
+                        type="button"
+                        className="recent-clear-btn"
+                        onClick={clearRecentTools}
+                        aria-label="Clear recent tools history"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                    <div className="recent-tools-list">
+                      {recentTools.map((tool) => (
+                        <Link
+                          key={tool.href}
+                          to={tool.href}
+                          className="recent-tool-item"
+                          onClick={() => setRecentOpen(false)}
+                          role="menuitem"
+                        >
+                          <span className="recent-tool-icon" aria-hidden="true">{tool.icon}</span>
+                          <div className="recent-tool-info">
+                            <span className="recent-tool-title">{tool.title}</span>
+                            {tool.category && <span className="recent-tool-cat">{tool.category}</span>}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </nav>
 
           <button
@@ -29,7 +97,7 @@ export default function Header() {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            onClick={() => setMenuOpen(o => !o)}
+            onClick={() => setMenuOpen((o) => !o)}
           >
             <span></span>
             <span></span>
@@ -39,6 +107,37 @@ export default function Header() {
       </header>
 
       <nav id="mobile-menu" className={`mobile-menu ${menuOpen ? 'open' : ''}`} aria-label="Mobile navigation">
+        {/* Mobile Recently Visited Section */}
+        {recentTools.length > 0 && (
+          <div className="mobile-recent-section">
+            <div className="mobile-recent-header">
+              <span>🕒 Recently Used</span>
+              <button
+                type="button"
+                className="recent-clear-btn"
+                onClick={clearRecentTools}
+              >
+                Clear
+              </button>
+            </div>
+            <div className="mobile-recent-grid">
+              {recentTools.map((tool) => (
+                <Link
+                  key={tool.href}
+                  to={tool.href}
+                  className="mobile-recent-card"
+                  onClick={closeMenu}
+                >
+                  <span aria-hidden="true">{tool.icon}</span>
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {tool.title}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
         <Link to="/" onClick={closeMenu}>Home</Link>
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)' }}>Image Tools</div>
         <Link to="/heic-to-jpg" onClick={closeMenu}>HEIC to JPG</Link>
@@ -68,3 +167,4 @@ export default function Header() {
     </>
   )
 }
+
