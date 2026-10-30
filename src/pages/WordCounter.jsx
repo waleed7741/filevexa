@@ -1,24 +1,16 @@
-import { useState, useEffect } from 'react';
-import { setPageMeta } from '../utils/seoHelpers';
+import { useState } from 'react';
+import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
 
 export default function WordCounter() {
   const [text, setText] = useState('');
-
-  useEffect(() => {
-    setPageMeta({
-      title: 'Free Online Word & Character Counter | FileVexa',
-      description: 'Accurate online tool to count words, characters, sentences, and paragraphs in your text instantly. 100% private.',
-      canonical: 'https://filevexa.pages.dev/word-counter',
-    });
-  }, []);
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Free Online Word Counter",
     "url": "https://filevexa.pages.dev/word-counter",
-    "description": "Accurate online tool to count words, characters, sentences, and paragraphs.",
+    "description": "Accurate online tool to count words, characters, sentences, and paragraphs in real time.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "offers": {
@@ -35,7 +27,12 @@ export default function WordCounter() {
 
   return (
     <div className="tool-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <SEO
+        title="Free Online Word & Character Counter | FileVexa"
+        description="Accurate online tool to count words, characters, sentences, and paragraphs in your text instantly. 100% private."
+        canonical="https://filevexa.pages.dev/word-counter"
+        schema={schema}
+      />
 
       <div className="container" style={{ maxWidth: '800px' }}>
         <nav className="breadcrumb" aria-label="Breadcrumb">

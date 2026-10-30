@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, extractMarkdownFromPage } from '../utils/pdfHelpers'
 
@@ -44,12 +44,22 @@ export default function PdfToMarkdown() {
   const [copied, setCopied] = useState(false)
   const revokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF to Markdown Converter",
+    "url": "https://filevexa.pages.dev/pdf-to-markdown",
+    "description": "Convert PDF documents into clean, structured Markdown text directly in your browser.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'PDF to Markdown Converter – Free Online | FileVexa',
-      description: 'Convert PDF text content to Markdown format. Copy or download the result. Browser-based, no signup.',
-      canonical: 'https://filevexa.pages.dev/pdf-to-markdown',
-    })
     return () => {
       revokeRef.current?.()
     }
@@ -132,6 +142,12 @@ export default function PdfToMarkdown() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="PDF to Markdown Converter – Free Online | FileVexa"
+        description="Convert PDF text content to Markdown format. Copy or download the result. Browser-based, no signup."
+        canonical="https://filevexa.pages.dev/pdf-to-markdown"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'PDF to Markdown' }]} />
 

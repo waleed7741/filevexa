@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, extractPagesFromPdf } from '../utils/pdfHelpers'
 
@@ -143,12 +143,22 @@ export default function ExtractPdfPages() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Extract PDF Pages",
+    "url": "https://filevexa.pages.dev/extract-pdf-pages",
+    "description": "Extract specific pages from a PDF and save them as a new document directly in your browser.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'Extract PDF Pages – Free Online | FileVexa',
-      description: 'Extract specific pages from a PDF and save them as a new document. Free, browser-based, no signup.',
-      canonical: 'https://filevexa.pages.dev/extract-pdf-pages',
-    })
     return () => {
       revokeRef.current?.()
     }
@@ -239,6 +249,12 @@ export default function ExtractPdfPages() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="Extract PDF Pages – Free Online | FileVexa"
+        description="Extract specific pages from a PDF and save them as a new document. Free, browser-based, no signup."
+        canonical="https://filevexa.pages.dev/extract-pdf-pages"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Extract PDF Pages' }]} />
 

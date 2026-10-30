@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { fileToJpegBlob } from '../utils/imageHelpers'
 
@@ -51,13 +51,22 @@ export default function AvifToJpg() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AVIF to JPG Converter",
+    "url": "https://filevexa.pages.dev/avif-to-jpg",
+    "description": "Convert modern AVIF images to universally supported JPG format fast and locally in your browser.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'AVIF to JPG Converter – Free Online | FileVexa',
-      description:
-        'Convert AVIF images to JPG online for free. Uses your browser\'s built-in AVIF support. No signup, no upload.',
-      canonical: 'https://filevexa.pages.dev/avif-to-jpg',
-    })
     return () => revokeRef.current?.()
   }, [])
 
@@ -110,6 +119,12 @@ export default function AvifToJpg() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="AVIF to JPG Converter – Free Online | FileVexa"
+        description="Convert AVIF images to JPG online for free. Uses your browser's built-in AVIF support. No signup, no upload."
+        canonical="https://filevexa.pages.dev/avif-to-jpg"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'AVIF to JPG' }]} />
         <div className="tool-page-header">

@@ -65,10 +65,21 @@ const { render } = await import(serverEntryUrl)
 for (const route of routes) {
   console.log(`Pre-rendering: ${route}`)
   
-  const { html: appHtml, head } = await render(route)
+  let { html: appHtml, head } = await render(route)
 
-  // Inject rendered <head> tags from react-helmet-async
-  let output = template.replace('</head>', `  ${head}\n  </head>`)
+  // Extract JSON-LD script from appHtml and ensure it is placed directly into <head>
+  let headTags = head || ''
+  const jsonLdMatch = appHtml.match(/<script\s+type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/i)
+  if (jsonLdMatch) {
+    if (!headTags.includes('application/ld+json')) {
+      headTags += `\n    ${jsonLdMatch[0]}`
+    }
+    // Remove the script from the body HTML to keep HTML clean
+    appHtml = appHtml.replace(jsonLdMatch[0], '')
+  }
+
+  // Inject rendered <head> tags into <head>
+  let output = template.replace('</head>', `  ${headTags}\n  </head>`)
   
   // Inject the rendered HTML body into the root div
   output = output.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)

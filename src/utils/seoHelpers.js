@@ -1,10 +1,16 @@
+import {
+  injectWebApplicationSchema,
+  createWebApplicationSchema,
+  SCHEMA_SCRIPT_ID,
+} from './schemaGenerator'
+
 /**
  * seoHelpers.js
- * Utility to update document <title>, <meta description>, canonical and Open Graph tags
- * Used on each page's mount to provide per-page SEO without a heavy library
+ * Utility to update document <title>, <meta description>, canonical, Open Graph tags,
+ * and JSON-LD structured data on client-side route mount.
  */
 
-export function setPageMeta({ title, description, canonical }) {
+export function setPageMeta({ title, description, canonical, schema, toolSchema }) {
   // Title
   document.title = title
 
@@ -44,4 +50,25 @@ export function setPageMeta({ title, description, canonical }) {
     }
     canonEl.setAttribute('href', canonical)
   }
+
+  // Structured Data (JSON-LD)
+  const resolvedSchema =
+    schema ||
+    (toolSchema
+      ? createWebApplicationSchema({
+          ...toolSchema,
+          url: toolSchema.url || canonical,
+        })
+      : null)
+
+  if (resolvedSchema) {
+    injectWebApplicationSchema(resolvedSchema)
+  } else {
+    // If navigating to a page without a tool schema, remove previous tool schema
+    const existing = document.head.querySelector(`script#${SCHEMA_SCRIPT_ID}`)
+    if (existing) {
+      existing.remove()
+    }
+  }
 }
+

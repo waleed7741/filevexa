@@ -1,8 +1,37 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import {
+  createWebApplicationSchema,
+  injectWebApplicationSchema,
+  SCHEMA_SCRIPT_ID,
+} from '../utils/schemaGenerator';
 
-export default function SEO({ title, description, keywords, canonical, schema }) {
- const siteUrl = 'https://filevexa.pages.dev';
+export default function SEO({
+  title,
+  description,
+  keywords,
+  canonical,
+  schema,
+  toolSchema,
+}) {
+  const siteUrl = 'https://filevexa.pages.dev';
   const url = canonical || siteUrl;
+
+  const resolvedSchema =
+    schema ||
+    (toolSchema
+      ? createWebApplicationSchema({
+          ...toolSchema,
+          url: toolSchema.url || url,
+        })
+      : null);
+
+  useEffect(() => {
+    if (resolvedSchema) {
+      const cleanup = injectWebApplicationSchema(resolvedSchema);
+      return cleanup;
+    }
+  }, [resolvedSchema]);
 
   return (
     <Helmet>
@@ -26,11 +55,14 @@ export default function SEO({ title, description, keywords, canonical, schema })
       <meta name="twitter:description" content={description} />
 
       {/* Structured Data (JSON-LD) */}
-      {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
+      {resolvedSchema && (
+        <script
+          type="application/ld+json"
+          id={SCHEMA_SCRIPT_ID}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(resolvedSchema) }}
+        />
       )}
     </Helmet>
   );
 }
+

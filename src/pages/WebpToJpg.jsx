@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { fileToJpegBlob } from '../utils/imageHelpers'
 
@@ -53,13 +53,22 @@ export default function WebpToJpg() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "WebP to JPG Converter",
+    "url": "https://filevexa.pages.dev/webp-to-jpg",
+    "description": "Convert WebP images to JPG format directly in your browser with adjustable compression quality.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'WebP to JPG Converter – Free Online | FileVexa',
-      description:
-        'Convert WebP images to JPG online for free. Fast, browser-based conversion with no signup required. Transparent WebP images get a white background.',
-      canonical: 'https://filevexa.pages.dev/webp-to-jpg',
-    })
     return () => revokeRef.current?.()
   }, [])
 
@@ -108,6 +117,12 @@ export default function WebpToJpg() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="WebP to JPG Converter – Free Online | FileVexa"
+        description="Convert WebP images to JPG online for free. Fast, browser-based conversion with no signup required. Transparent WebP images get a white background."
+        canonical="https://filevexa.pages.dev/webp-to-jpg"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'WebP to JPG' }]} />
 

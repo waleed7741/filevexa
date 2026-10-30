@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 
 const MAX_MB = 50
@@ -57,13 +57,22 @@ export default function HeicToJpg() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HEIC to JPG Converter",
+    "url": "https://filevexa.pages.dev/heic-to-jpg",
+    "description": "Convert HEIC and HEIF images from iPhone or Mac to JPG format directly in your browser. Fast, free, and completely private.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'HEIC to JPG Converter – Free Online | FileVexa',
-      description:
-        'Convert HEIC images to JPG online for free. Fast browser-based HEIC to JPG conversion with no signup required.',
-      canonical: 'https://filevexa.pages.dev/heic-to-jpg',
-    })
     return () => {
       revokeRef.current?.()
     }
@@ -126,6 +135,12 @@ export default function HeicToJpg() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="HEIC to JPG Converter – Free Online | FileVexa"
+        description="Convert HEIC images to JPG online for free. Fast browser-based HEIC to JPG conversion with no signup required."
+        canonical="https://filevexa.pages.dev/heic-to-jpg"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'HEIC to JPG' }]} />
 

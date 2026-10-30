@@ -1,24 +1,16 @@
-import { useState, useEffect } from 'react';
-import { setPageMeta } from '../utils/seoHelpers';
+import { useState } from 'react';
+import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
 
 export default function TextCaseConverter() {
   const [text, setText] = useState('');
-
-  useEffect(() => {
-    setPageMeta({
-      title: 'Free Text Case Converter | UPPERCASE, lowercase, Title Case',
-      description: 'Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case. A free, online client-side text formatting tool.',
-      canonical: 'https://filevexa.pages.dev/text-case-converter',
-    });
-  }, []);
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Text Case Converter",
     "url": "https://filevexa.pages.dev/text-case-converter",
-    "description": "Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case.",
+    "description": "Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case in your browser.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "offers": {
@@ -44,7 +36,12 @@ export default function TextCaseConverter() {
 
   return (
     <div className="tool-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <SEO
+        title="Free Text Case Converter | UPPERCASE, lowercase, Title Case"
+        description="Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case. A free, online client-side text formatting tool."
+        canonical="https://filevexa.pages.dev/text-case-converter"
+        schema={schema}
+      />
       <div className="container" style={{ maxWidth: '800px' }}>
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>

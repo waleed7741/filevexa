@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 
 const MAX_MB = 50
@@ -44,13 +44,22 @@ export default function HeicToPng() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HEIC to PNG Converter",
+    "url": "https://filevexa.pages.dev/heic-to-png",
+    "description": "Convert Apple HEIC photos to high-quality PNG with full transparency support in your browser.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'HEIC to PNG Converter – Free Online | FileVexa',
-      description:
-        'Convert HEIC images to PNG online for free. Lossless browser-based conversion, no signup required.',
-      canonical: 'https://filevexa.pages.dev/heic-to-png',
-    })
     return () => revokeRef.current?.()
   }, [])
 
@@ -101,6 +110,12 @@ export default function HeicToPng() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="HEIC to PNG Converter – Free Online | FileVexa"
+        description="Convert HEIC images to PNG online for free. Lossless browser-based conversion, no signup required."
+        canonical="https://filevexa.pages.dev/heic-to-png"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'HEIC to PNG' }]} />
         <div className="tool-page-header">

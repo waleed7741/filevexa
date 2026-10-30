@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, extractTextFromPage } from '../utils/pdfHelpers'
 
@@ -40,12 +40,22 @@ export default function PdfToText() {
   const [copied, setCopied] = useState(false)
   const revokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF to Text Converter",
+    "url": "https://filevexa.pages.dev/pdf-to-text",
+    "description": "Extract plain text content from PDF documents directly in your browser with one click.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'PDF to Text Converter – Free Online | FileVexa',
-      description: 'Extract plain text from PDF files. Copy or download as a .txt file. Browser-based, no signup.',
-      canonical: 'https://filevexa.pages.dev/pdf-to-text',
-    })
     return () => {
       revokeRef.current?.()
     }
@@ -127,6 +137,12 @@ export default function PdfToText() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="PDF to Text Converter – Free Online | FileVexa"
+        description="Extract plain text from PDF files. Copy or download as a .txt file. Browser-based, no signup."
+        canonical="https://filevexa.pages.dev/pdf-to-text"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'PDF to Text' }]} />
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { setPageMeta } from '../utils/seoHelpers';
+import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
 
 export default function PasswordGenerator() {
@@ -36,21 +36,13 @@ export default function PasswordGenerator() {
     generatePassword();
   }, []);
 
-  useEffect(() => {
-    setPageMeta({
-      title: 'Free Random Password Generator | Secure & Private | FileVexa',
-      description: 'Generate strong, secure, random passwords online. 100% private - passwords are created in your browser and never sent to our servers.',
-      canonical: 'https://filevexa.pages.dev/password-generator',
-    });
-  }, []);
-
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Secure Password Generator",
     "url": "https://filevexa.pages.dev/password-generator",
-    "description": "Generate strong, secure, random passwords online.",
-    "applicationCategory": "SecurityApplication",
+    "description": "Generate strong, secure, random passwords online locally in your browser. 100% private.",
+    "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "offers": {
       "@type": "Offer",
@@ -68,7 +60,12 @@ export default function PasswordGenerator() {
 
   return (
     <div className="tool-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <SEO
+        title="Free Random Password Generator | Secure & Private | FileVexa"
+        description="Generate strong, secure, random passwords online. 100% private - passwords are created in your browser and never sent to our servers."
+        canonical="https://filevexa.pages.dev/password-generator"
+        schema={schema}
+      />
 
       <div className="container" style={{ maxWidth: '600px' }}>
         <nav className="breadcrumb" aria-label="Breadcrumb">

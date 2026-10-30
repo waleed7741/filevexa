@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { setPageMeta } from '../utils/seoHelpers';
+import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
 
 export default function AgeCalculator() {
@@ -7,21 +7,12 @@ export default function AgeCalculator() {
   const [endDate, setEndDate] = useState(new Date().toISOString().split('T')[0]);
   const [result, setResult] = useState(null);
 
-  useEffect(() => {
-    setPageMeta({
-      title: 'Exact Age Calculator | Calculate Years, Months, Days',
-      description: 'Calculate your exact age in years, months, and days. Free online chronological age calculator.',
-      canonical: 'https://filevexa.pages.dev/age-calculator',
-    });
-    calculateAge();
-  }, []);
-
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Exact Age Calculator",
     "url": "https://filevexa.pages.dev/age-calculator",
-    "description": "Calculate exact age in years, months, and days.",
+    "description": "Calculate your exact age in years, months, and days with next birthday countdown.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -56,9 +47,18 @@ export default function AgeCalculator() {
     setResult({ years, months, days });
   };
 
+  useEffect(() => {
+    calculateAge();
+  }, []);
+
   return (
     <div className="tool-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <SEO
+        title="Exact Age Calculator | Calculate Years, Months, Days"
+        description="Calculate your exact age in years, months, and days. Free online chronological age calculator."
+        canonical="https://filevexa.pages.dev/age-calculator"
+        schema={schema}
+      />
       <div className="container" style={{ maxWidth: '600px' }}>
         <nav className="breadcrumb">
           <a href="/">Home</a> <span className="breadcrumb-sep">/</span> <span aria-current="page">Age Calculator</span>

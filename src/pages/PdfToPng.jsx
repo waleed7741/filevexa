@@ -7,7 +7,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, renderPdfPageToPngBlob } from '../utils/pdfHelpers'
 
@@ -43,12 +43,22 @@ export default function PdfToPng() {
   const [zipName, setZipName] = useState('')
   const zipRevokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF to PNG Converter",
+    "url": "https://filevexa.pages.dev/pdf-to-png",
+    "description": "Convert PDF pages into high-resolution PNG image files directly in your browser without uploading.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'PDF to PNG Converter – Free Online | FileVexa',
-      description: 'Convert PDF pages to PNG images online. Download each page as a PNG or as a ZIP. No signup required.',
-      canonical: 'https://filevexa.pages.dev/pdf-to-png',
-    })
     return () => {
       handleCleanup()
     }
@@ -135,6 +145,12 @@ export default function PdfToPng() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="PDF to PNG Converter – Free Online | FileVexa"
+        description="Convert PDF pages to PNG images online. Download each page as a PNG or as a ZIP. No signup required."
+        canonical="https://filevexa.pages.dev/pdf-to-png"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'PDF to PNG' }]} />
 

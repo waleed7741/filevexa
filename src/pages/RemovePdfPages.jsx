@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, removePagesFromPdf } from '../utils/pdfHelpers'
 
@@ -143,12 +143,22 @@ export default function RemovePdfPages() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Remove PDF Pages",
+    "url": "https://filevexa.pages.dev/remove-pdf-pages",
+    "description": "Select and delete unwanted pages from PDF files and download a new PDF instantly in your browser.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   useEffect(() => {
-    setPageMeta({
-      title: 'Remove PDF Pages – Free Online | FileVexa',
-      description: 'Remove specific pages from a PDF file in your browser. No signup, no upload.',
-      canonical: 'https://filevexa.pages.dev/remove-pdf-pages',
-    })
     return () => {
       revokeRef.current?.()
     }
@@ -242,6 +252,12 @@ export default function RemovePdfPages() {
 
   return (
     <div className="tool-page">
+      <SEO
+        title="Remove PDF Pages – Free Online | FileVexa"
+        description="Remove specific pages from a PDF file in your browser. No signup, no upload."
+        canonical="https://filevexa.pages.dev/remove-pdf-pages"
+        schema={schema}
+      />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Remove PDF Pages' }]} />
 

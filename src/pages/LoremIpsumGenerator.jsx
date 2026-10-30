@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { setPageMeta } from '../utils/seoHelpers';
+import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
 
 const LOREM_WORDS = ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua", "enim", "ad", "minim", "veniam", "quis", "nostrud", "exercitation", "ullamco", "laboris", "nisi", "aliquip", "ex", "ea", "commodo", "consequat", "duis", "aute", "irure", "reprehenderit", "in", "voluptate", "velit", "esse", "cillum", "fugiat", "nulla", "pariatur", "excepteur", "sint", "occaecat", "cupidatat", "non", "proident", "sunt", "culpa", "qui", "officia", "deserunt", "mollit", "anim", "id", "est", "laborum"];
@@ -9,21 +9,12 @@ export default function LoremIpsumGenerator() {
   const [wordsPerParagraph, setWordsPerParagraph] = useState(30);
   const [output, setOutput] = useState('');
 
-  useEffect(() => {
-    setPageMeta({
-      title: 'Free Lorem Ipsum Generator | FileVexa',
-      description: 'Generate customized Lorem Ipsum placeholder text instantly. Perfect for web designers, developers, and typography.',
-      canonical: 'https://filevexa.pages.dev/lorem-ipsum-generator',
-    });
-    generateLorem();
-  }, []);
-
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Lorem Ipsum Generator",
     "url": "https://filevexa.pages.dev/lorem-ipsum-generator",
-    "description": "Generate customized Lorem Ipsum placeholder text instantly.",
+    "description": "Generate customized Lorem Ipsum placeholder dummy text instantly in your browser.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -42,6 +33,10 @@ export default function LoremIpsumGenerator() {
     setOutput(result.trim());
   };
 
+  useEffect(() => {
+    generateLorem();
+  }, []);
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(output);
     alert('Copied to clipboard!');
@@ -49,7 +44,12 @@ export default function LoremIpsumGenerator() {
 
   return (
     <div className="tool-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <SEO
+        title="Free Lorem Ipsum Generator | FileVexa"
+        description="Generate customized Lorem Ipsum placeholder text instantly. Perfect for web designers, developers, and typography."
+        canonical="https://filevexa.pages.dev/lorem-ipsum-generator"
+        schema={schema}
+      />
       <div className="container" style={{ maxWidth: '800px' }}>
         <nav className="breadcrumb">
           <a href="/">Home</a> <span className="breadcrumb-sep">/</span> <span aria-current="page">Lorem Ipsum</span>

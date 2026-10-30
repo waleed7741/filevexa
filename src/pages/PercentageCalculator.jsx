@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { setPageMeta } from '../utils/seoHelpers';
+import { useState } from 'react';
+import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
 
 export default function PercentageCalculator() {
@@ -12,20 +12,12 @@ export default function PercentageCalculator() {
   const [calc3X, setCalc3X] = useState('');
   const [calc3Y, setCalc3Y] = useState('');
 
-  useEffect(() => {
-    setPageMeta({
-      title: 'Free Online Percentage Calculator | Discounts & Increases',
-      description: 'Quickly calculate percentages, discounts, increases, and decreases with our free online percentage calculator.',
-      canonical: 'https://filevexa.pages.dev/percentage-calculator',
-    });
-  }, []);
-
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Percentage Calculator",
+    "name": "Percentage & Discount Calculator",
     "url": "https://filevexa.pages.dev/percentage-calculator",
-    "description": "Calculate percentages, discounts, and percentage increases.",
+    "description": "Quickly calculate percentages, discounts, increases, and decreases directly in your browser.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -37,7 +29,12 @@ export default function PercentageCalculator() {
 
   return (
     <div className="tool-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <SEO
+        title="Free Online Percentage Calculator | Discounts & Increases"
+        description="Quickly calculate percentages, discounts, increases, and decreases with our free online percentage calculator."
+        canonical="https://filevexa.pages.dev/percentage-calculator"
+        schema={schema}
+      />
       <div className="container" style={{ maxWidth: '700px' }}>
         <nav className="breadcrumb">
           <a href="/">Home</a> <span className="breadcrumb-sep">/</span> <span aria-current="page">Percentage Calculator</span>
