@@ -23,7 +23,6 @@ export default function ToolPageLayout({
           description={tool.description}
           canonical={tool.url}
           keywords={[tool.targetKeywords.primary, ...tool.targetKeywords.longTail].join(', ')}
-          faqs={tool.faqs.map(({ q, a }) => ({ question: q, answer: a }))}
         />
       )}
       {children}

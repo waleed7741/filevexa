@@ -58,21 +58,6 @@ export default function HeicToJpg() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "HEIC to JPG Converter",
-    "url": "https://filevexa.pages.dev/heic-to-jpg",
-    "description": "Convert HEIC and HEIF images from iPhone or Mac to JPG format directly in your browser. Fast, free, and completely private.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-
   useEffect(() => {
     return () => {
       revokeRef.current?.()
@@ -140,8 +125,6 @@ export default function HeicToJpg() {
         title="HEIC to JPG Converter – Free Online | FileVexa"
         description="Convert HEIC images to JPG online for free. Fast browser-based HEIC to JPG conversion with no signup required."
         canonical="https://filevexa.pages.dev/heic-to-jpg"
-        schema={schema}
-        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'HEIC to JPG' }]} />

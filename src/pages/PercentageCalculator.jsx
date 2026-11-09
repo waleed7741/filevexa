@@ -15,17 +15,6 @@ export default function PercentageCalculator() {
   const [calc3X, setCalc3X] = useState('');
   const [calc3Y, setCalc3Y] = useState('');
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Percentage & Discount Calculator",
-    "url": "https://filevexa.pages.dev/percentage-calculator",
-    "description": "Quickly calculate percentages, discounts, increases, and decreases directly in your browser.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  };
-
   const res1 = (calc1X && calc1Y) ? (Number(calc1X) / 100) * Number(calc1Y) : null;
   const res2 = (calc2X && calc2Y) ? (Number(calc2X) / Number(calc2Y)) * 100 : null;
   const res3 = (calc3X && calc3Y) ? ((Number(calc3Y) - Number(calc3X)) / Math.abs(Number(calc3X))) * 100 : null;
@@ -36,7 +25,6 @@ export default function PercentageCalculator() {
         title="Free Online Percentage Calculator | Discounts & Increases"
         description="Quickly calculate percentages, discounts, increases, and decreases with our free online percentage calculator."
         canonical="https://filevexa.pages.dev/percentage-calculator"
-        schema={schema}
       />
       <div className="container" style={{ maxWidth: '700px' }}>
         <nav className="breadcrumb">

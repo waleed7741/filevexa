@@ -53,21 +53,6 @@ export default function WebpToPng() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "WebP to PNG Converter",
-    "url": "https://filevexa.pages.dev/webp-to-png",
-    "description": "Convert WebP images to lossless, transparent PNG format directly in your browser. Free and private.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-
   useEffect(() => {
     return () => revokeRef.current?.()
   }, [])
@@ -121,8 +106,6 @@ export default function WebpToPng() {
         title="WebP to PNG Converter – Free Online | FileVexa"
         description="Convert WebP images to PNG online for free. Preserves transparency. Browser-based conversion, no signup required."
         canonical="https://filevexa.pages.dev/webp-to-png"
-        schema={schema}
-        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'WebP to PNG' }]} />

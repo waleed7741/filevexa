@@ -44,21 +44,6 @@ export default function PdfToPng() {
   const [zipName, setZipName] = useState('')
   const zipRevokeRef = useRef(null)
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "PDF to PNG Converter",
-    "url": "https://filevexa.pages.dev/pdf-to-png",
-    "description": "Convert PDF pages into high-resolution PNG image files directly in your browser without uploading.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-
   useEffect(() => {
     return () => {
       handleCleanup()
@@ -150,8 +135,6 @@ export default function PdfToPng() {
         title="PDF to PNG Converter – Free Online | FileVexa"
         description="Convert PDF pages to PNG images online. Download each page as a PNG or as a ZIP. No signup required."
         canonical="https://filevexa.pages.dev/pdf-to-png"
-        schema={schema}
-        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'PDF to PNG' }]} />

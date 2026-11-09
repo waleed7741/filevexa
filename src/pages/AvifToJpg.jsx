@@ -52,21 +52,6 @@ export default function AvifToJpg() {
   const [resultName, setResultName] = useState('')
   const revokeRef = useRef(null)
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "AVIF to JPG Converter",
-    "url": "https://filevexa.pages.dev/avif-to-jpg",
-    "description": "Convert modern AVIF images to universally supported JPG format fast and locally in your browser.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-
   useEffect(() => {
     return () => revokeRef.current?.()
   }, [])
@@ -124,8 +109,6 @@ export default function AvifToJpg() {
         title="AVIF to JPG Converter – Free Online | FileVexa"
         description="Convert AVIF images to JPG online for free. Uses your browser's built-in AVIF support. No signup, no upload."
         canonical="https://filevexa.pages.dev/avif-to-jpg"
-        schema={schema}
-        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'AVIF to JPG' }]} />

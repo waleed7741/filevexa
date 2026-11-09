@@ -11,21 +11,6 @@ export default function QrCodeGenerator() {
 
 
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Free Online QR Code Generator",
-    "url": "https://filevexa.pages.dev/qr-code-generator",
-    "description": "Create free, permanent QR codes online instantly. No signup required.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-
   const handleDownload = () => {
     const svg = document.getElementById('qr-code-svg');
     if (!svg) return;
@@ -54,7 +39,6 @@ export default function QrCodeGenerator() {
         title="Free Online QR Code Generator - No Signup | FileVexa"
         description="Create free, permanent QR codes online instantly. No signup required. Generate QR codes for URLs, text, Wi-Fi, and more directly in your browser."
         canonical="https://filevexa.pages.dev/qr-code-generator"
-        schema={schema}
       />
 
       <div className="container" style={{ maxWidth: '800px' }}>

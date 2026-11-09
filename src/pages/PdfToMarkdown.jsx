@@ -45,21 +45,6 @@ export default function PdfToMarkdown() {
   const [copied, setCopied] = useState(false)
   const revokeRef = useRef(null)
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "PDF to Markdown Converter",
-    "url": "https://filevexa.pages.dev/pdf-to-markdown",
-    "description": "Convert PDF documents into clean, structured Markdown text directly in your browser.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-
   useEffect(() => {
     return () => {
       revokeRef.current?.()
@@ -147,8 +132,6 @@ export default function PdfToMarkdown() {
         title="PDF to Markdown Converter – Free Online | FileVexa"
         description="Convert PDF text content to Markdown format. Copy or download the result. Browser-based, no signup."
         canonical="https://filevexa.pages.dev/pdf-to-markdown"
-        schema={schema}
-        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'PDF to Markdown' }]} />

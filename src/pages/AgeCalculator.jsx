@@ -10,17 +10,6 @@ export default function AgeCalculator() {
   const [endDate, setEndDate] = useState(new Date().toISOString().split('T')[0]);
   const [result, setResult] = useState(null);
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Exact Age Calculator",
-    "url": "https://filevexa.pages.dev/age-calculator",
-    "description": "Calculate your exact age in years, months, and days with next birthday countdown.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  };
-
   const calculateAge = () => {
     if (!dob || !endDate) return;
 
@@ -60,7 +49,6 @@ export default function AgeCalculator() {
         title="Exact Age Calculator | Calculate Years, Months, Days"
         description="Calculate your exact age in years, months, and days. Free online chronological age calculator."
         canonical="https://filevexa.pages.dev/age-calculator"
-        schema={schema}
       />
       <div className="container" style={{ maxWidth: '600px' }}>
         <nav className="breadcrumb">

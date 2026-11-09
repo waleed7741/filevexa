@@ -1,16 +1,9 @@
-import {
-  injectWebApplicationSchema,
-  injectFaqPageSchema,
-  createPageSchema,
-} from './schemaGenerator'
-
 /**
  * seoHelpers.js
- * Utility to update document <title>, <meta description>, canonical, Open Graph tags,
- * and JSON-LD structured data on client-side route mount.
+ * Utility to update document metadata on client-side route mount.
  */
 
-export function setPageMeta({ title, description, keywords, canonical, schema, toolSchema, faqs = [] }) {
+export function setPageMeta({ title, description, keywords, canonical }) {
   // Title
   document.title = title
 
@@ -66,23 +59,6 @@ export function setPageMeta({ title, description, keywords, canonical, schema, t
     canonEl.setAttribute('href', canonical)
   }
 
-  // Structured Data (JSON-LD)
-  const applicationSchema =
-    schema ||
-    (toolSchema
-      ? {
-          ...toolSchema,
-          url: toolSchema.url || canonical,
-        }
-      : {
-          name: title,
-          description,
-          url: canonical,
-        })
-  const resolvedSchema = createPageSchema(applicationSchema, faqs)
-
-  injectWebApplicationSchema(resolvedSchema)
-  injectFaqPageSchema(faqs)
 }
 
 function setMeta(attribute, name, content) {

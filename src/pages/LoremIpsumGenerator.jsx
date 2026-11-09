@@ -12,17 +12,6 @@ export default function LoremIpsumGenerator() {
   const [wordsPerParagraph, setWordsPerParagraph] = useState(30);
   const [output, setOutput] = useState('');
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Lorem Ipsum Generator",
-    "url": "https://filevexa.pages.dev/lorem-ipsum-generator",
-    "description": "Generate customized Lorem Ipsum placeholder dummy text instantly in your browser.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  };
-
   const generateLorem = () => {
     let result = '';
     for (let p = 0; p < paragraphs; p++) {
@@ -51,7 +40,6 @@ export default function LoremIpsumGenerator() {
         title="Free Lorem Ipsum Generator | FileVexa"
         description="Generate customized Lorem Ipsum placeholder text instantly. Perfect for web designers, developers, and typography."
         canonical="https://filevexa.pages.dev/lorem-ipsum-generator"
-        schema={schema}
       />
       <div className="container" style={{ maxWidth: '800px' }}>
         <nav className="breadcrumb">

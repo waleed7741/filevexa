@@ -8,21 +8,6 @@ import { getToolFaqItems } from '../config/toolsSEOData';
 export default function WordCounter() {
   const [text, setText] = useState('');
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Free Online Word Counter",
-    "url": "https://filevexa.pages.dev/word-counter",
-    "description": "Accurate online tool to count words, characters, sentences, and paragraphs in real time.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-
   const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
   const charCount = text.length;
   const charNoSpaces = text.replace(/\s/g, '').length;
@@ -34,7 +19,6 @@ export default function WordCounter() {
         title="Free Online Word & Character Counter | FileVexa"
         description="Accurate online tool to count words, characters, sentences, and paragraphs in your text instantly. 100% private."
         canonical="https://filevexa.pages.dev/word-counter"
-        schema={schema}
       />
 
       <div className="container" style={{ maxWidth: '800px' }}>

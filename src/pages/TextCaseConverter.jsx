@@ -8,21 +8,6 @@ import { getToolFaqItems } from '../config/toolsSEOData';
 export default function TextCaseConverter() {
   const [text, setText] = useState('');
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Text Case Converter",
-    "url": "https://filevexa.pages.dev/text-case-converter",
-    "description": "Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case in your browser.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-
   const toUpperCase = () => setText(text.toUpperCase());
   const toLowerCase = () => setText(text.toLowerCase());
   const toTitleCase = () => setText(
@@ -43,7 +28,6 @@ export default function TextCaseConverter() {
         title="Free Text Case Converter | UPPERCASE, lowercase, Title Case"
         description="Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case. A free, online client-side text formatting tool."
         canonical="https://filevexa.pages.dev/text-case-converter"
-        schema={schema}
       />
       <div className="container" style={{ maxWidth: '800px' }}>
         <nav className="breadcrumb" aria-label="Breadcrumb">
