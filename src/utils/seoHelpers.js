@@ -1,7 +1,7 @@
 import {
   injectWebApplicationSchema,
-  createWebApplicationSchema,
-  SCHEMA_SCRIPT_ID,
+  injectFaqPageSchema,
+  createPageSchema,
 } from './schemaGenerator'
 
 /**
@@ -10,13 +10,29 @@ import {
  * and JSON-LD structured data on client-side route mount.
  */
 
-export function setPageMeta({ title, description, canonical, schema, toolSchema }) {
+export function setPageMeta({ title, description, keywords, canonical, schema, toolSchema, faqs = [] }) {
   // Title
   document.title = title
 
   // Meta description
   let descEl = document.querySelector('meta[name="description"]')
-  if (descEl) descEl.setAttribute('content', description)
+  if (!descEl) {
+    descEl = document.createElement('meta')
+    descEl.name = 'description'
+    document.head.appendChild(descEl)
+  }
+  descEl.setAttribute('content', description)
+
+  let keywordsEl = document.querySelector('meta[name="keywords"]')
+  if (keywordsEl && !keywords) keywordsEl.remove()
+  if (keywords) {
+    if (!keywordsEl) {
+      keywordsEl = document.createElement('meta')
+      keywordsEl.name = 'keywords'
+      document.head.appendChild(keywordsEl)
+    }
+    keywordsEl.content = keywords
+  }
 
   // OG title
   let ogTitle = document.querySelector('meta[property="og:title"]')
@@ -26,11 +42,8 @@ export function setPageMeta({ title, description, canonical, schema, toolSchema 
   let ogDesc = document.querySelector('meta[property="og:description"]')
   if (ogDesc) ogDesc.setAttribute('content', description)
 
-  // OG url
-  if (canonical) {
-    let ogUrl = document.querySelector('meta[property="og:url"]')
-    if (ogUrl) ogUrl.setAttribute('content', canonical)
-  }
+  setMeta('property', 'og:url', canonical)
+  setMeta('property', 'og:type', 'website')
 
   // Twitter title
   let twTitle = document.querySelector('meta[name="twitter:title"]')
@@ -39,6 +52,8 @@ export function setPageMeta({ title, description, canonical, schema, toolSchema 
   // Twitter description
   let twDesc = document.querySelector('meta[name="twitter:description"]')
   if (twDesc) twDesc.setAttribute('content', description)
+  setMeta('name', 'twitter:url', canonical)
+  setMeta('name', 'twitter:card', 'summary_large_image')
 
   // Canonical link
   if (canonical) {
@@ -52,23 +67,34 @@ export function setPageMeta({ title, description, canonical, schema, toolSchema 
   }
 
   // Structured Data (JSON-LD)
-  const resolvedSchema =
+  const applicationSchema =
     schema ||
     (toolSchema
-      ? createWebApplicationSchema({
+      ? {
           ...toolSchema,
           url: toolSchema.url || canonical,
+        }
+      : {
+          name: title,
+          description,
+          url: canonical,
         })
-      : null)
+  const resolvedSchema = createPageSchema(applicationSchema, faqs)
 
-  if (resolvedSchema) {
-    injectWebApplicationSchema(resolvedSchema)
-  } else {
-    // If navigating to a page without a tool schema, remove previous tool schema
-    const existing = document.head.querySelector(`script#${SCHEMA_SCRIPT_ID}`)
-    if (existing) {
-      existing.remove()
-    }
-  }
+  injectWebApplicationSchema(resolvedSchema)
+  injectFaqPageSchema(faqs)
 }
 
+function setMeta(attribute, name, content) {
+  let element = document.querySelector(`meta[${attribute}="${name}"]`)
+  if (!content) {
+    element?.remove()
+    return
+  }
+  if (!element) {
+    element = document.createElement('meta')
+    element.setAttribute(attribute, name)
+    document.head.appendChild(element)
+  }
+  element.setAttribute('content', content)
+}

@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, removePagesFromPdf } from '../utils/pdfHelpers'
@@ -257,12 +258,13 @@ export default function RemovePdfPages() {
         description="Remove specific pages from a PDF file in your browser. No signup, no upload."
         canonical="https://filevexa.pages.dev/remove-pdf-pages"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Remove PDF Pages' }]} />
 
         <div className="tool-page-header">
-          <h1>Remove PDF Pages</h1>
+          <h1>Free Online Remove PDF Pages Tool</h1>
           <p>Upload a PDF, visually select pages to delete, and download the updated PDF.</p>
           <p className="privacy-notice">
             <span aria-hidden="true">🔒</span> Your files are processed locally and are not uploaded to any server.
@@ -351,18 +353,9 @@ export default function RemovePdfPages() {
         )}
 
         <div className="tool-info">
+          <ToolPageLayout toolId="remove-pdf-pages" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
           <div className="info-section">
-            <h2>How to remove PDF pages</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag and drop your PDF.</li>
-              <li>Wait a moment for the tool to read the page count.</li>
-              <li>Click on the thumbnails of the pages you want to delete.</li>
-              <li>Click the <strong>Remove Pages</strong> button.</li>
-              <li>Download your new PDF.</li>
-            </ol>
-          </div>
-          <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
           <RelatedTools tools={RELATED} />

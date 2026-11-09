@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
+import FaqSection from '../components/FaqSection';
+import ToolPageLayout from '../components/ToolPageLayout';
+import { getToolFaqItems } from '../config/toolsSEOData';
 
 export default function QrCodeGenerator() {
   const [text, setText] = useState('');
@@ -62,7 +65,7 @@ export default function QrCodeGenerator() {
         </nav>
 
         <header className="tool-page-header">
-          <h1>QR Code Generator</h1>
+          <h1>Free Online QR Code Generator</h1>
           <p>Create free QR codes instantly in your browser. No signup, no expiration, no tracking.</p>
         </header>
 
@@ -93,28 +96,11 @@ export default function QrCodeGenerator() {
           </div>
         </div>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>How to generate a QR Code</h2>
-          <p style={{ marginTop: '12px', lineHeight: '1.6' }}>
-            1. Enter your website URL, text, email, or any other data into the text box above.<br />
-            2. The QR code will instantly generate in real-time as you type.<br />
-            3. Click the "Download PNG" button to save the QR code to your device.<br />
-            4. You can freely use this QR code anywhere. It never expires!
-          </p>
-        </section>
+        <ToolPageLayout toolId="qr-code-generator" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
         <section>
           <h2>Frequently Asked Questions</h2>
-          <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Do these QR codes expire?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>No! The QR codes generated here are static and contain the raw data you entered. They will never expire and will work forever.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Is my data sent to a server?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>No. The QR code is generated 100% locally in your web browser using JavaScript. We do not track or save what you generate.</p>
-            </div>
-          </div>
+          <FaqSection items={getToolFaqItems('qr-code-generator')} />
         </section>
 
         <RelatedTools currentPath="/qr-code-generator" />

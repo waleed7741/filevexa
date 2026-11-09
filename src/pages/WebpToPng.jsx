@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { fileToPngBlob } from '../utils/imageHelpers'
@@ -121,12 +122,13 @@ export default function WebpToPng() {
         description="Convert WebP images to PNG online for free. Preserves transparency. Browser-based conversion, no signup required."
         canonical="https://filevexa.pages.dev/webp-to-png"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'WebP to PNG' }]} />
 
         <div className="tool-page-header">
-          <h1>WebP to PNG Converter</h1>
+          <h1>Free Online WebP to PNG Converter</h1>
           <p>Convert WebP images to PNG format, preserving transparency where possible.</p>
           <p className="privacy-notice">
             <span aria-hidden="true">🔒</span>
@@ -180,14 +182,7 @@ export default function WebpToPng() {
         )}
 
         <div className="tool-info">
-          <div className="info-section">
-            <h2>How to convert WebP to PNG</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag and drop your WebP image into the upload area.</li>
-              <li>Click <strong>Convert to PNG</strong>.</li>
-              <li>Click <strong>Download PNG</strong> to save the result.</li>
-            </ol>
-          </div>
+          <ToolPageLayout toolId="webp-to-png" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
           <div className="info-section">
             <h2>About WebP to PNG conversion</h2>
@@ -212,7 +207,7 @@ export default function WebpToPng() {
           </div>
 
           <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
 

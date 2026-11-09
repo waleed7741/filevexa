@@ -11,7 +11,7 @@ export default function RelatedTools({ tools }) {
 
   return (
     <div className="info-section">
-      <h2>Related Tools</h2>
+      <h2>Related Web Utilities</h2>
       <div className="related-tools">
         {tools.map((tool) => (
           <Link key={tool.href} to={tool.href} className="related-tool-link">

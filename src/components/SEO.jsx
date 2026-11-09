@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
-  createWebApplicationSchema,
-  injectWebApplicationSchema,
+  createPageSchema,
+  createFaqPageSchema,
+  FAQ_SCHEMA_SCRIPT_ID,
   SCHEMA_SCRIPT_ID,
 } from '../utils/schemaGenerator';
+import { useLocation } from 'react-router-dom';
+import { TOOLS_SEO_DATA, TOOL_SITE_URL } from '../config/toolsSEOData';
 
 export default function SEO({
   title,
@@ -13,56 +15,77 @@ export default function SEO({
   canonical,
   schema,
   toolSchema,
+  faqs = [],
 }) {
-  const siteUrl = 'https://filevexa.pages.dev';
-  const url = canonical || siteUrl;
+  const location = useLocation();
+  const routePath = location.pathname === '/'
+    ? '/'
+    : location.pathname.replace(/\/+$/, '');
+  const tool = TOOLS_SEO_DATA[routePath.replace(/^\//, '')];
+  const pageTitle = tool?.title || title;
+  const pageDescription = tool?.description || description;
+  const pageCanonical = tool?.url || canonical || `${TOOL_SITE_URL}${routePath}`;
+  const pageKeywords = tool
+    ? [tool.targetKeywords.primary, ...tool.targetKeywords.longTail].join(', ')
+    : keywords;
+  const routeFaqs = faqs.length > 0
+    ? faqs
+    : tool?.faqs.map(({ q, a }) => ({ question: q, answer: a })) || [];
 
-  const resolvedSchema =
-    schema ||
-    (toolSchema
-      ? createWebApplicationSchema({
-          ...toolSchema,
-          url: toolSchema.url || url,
+  const resolvedSchema = createPageSchema(
+    tool
+      ? {
+          name: tool.name,
+          description: pageDescription,
+          url: pageCanonical,
+          applicationCategory: tool.applicationCategory,
+          operatingSystem: 'All',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        }
+      : schema || (toolSchema ? { ...toolSchema, url: toolSchema.url || pageCanonical } : {
+          name: pageTitle,
+          description: pageDescription,
+          url: pageCanonical,
         })
-      : null);
-
-  useEffect(() => {
-    if (resolvedSchema) {
-      const cleanup = injectWebApplicationSchema(resolvedSchema);
-      return cleanup;
-    }
-  }, [resolvedSchema]);
+  );
+  const faqSchema = createFaqPageSchema(routeFaqs);
 
   return (
     <Helmet>
       {/* Standard SEO */}
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
-      <link rel="canonical" href={url} />
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
+      {pageKeywords && <meta name="keywords" content={pageKeywords} />}
+      <link rel="canonical" href={pageCanonical} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:url" content={pageCanonical} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
       <meta property="og:site_name" content="FileVexa" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={url} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:url" content={pageCanonical} />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={pageDescription} />
 
       {/* Structured Data (JSON-LD) */}
       {resolvedSchema && (
         <script
           type="application/ld+json"
           id={SCHEMA_SCRIPT_ID}
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(resolvedSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(resolvedSchema).replace(/</g, '\\u003c') }}
+        />
+      )}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          id={FAQ_SCHEMA_SCRIPT_ID}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
         />
       )}
     </Helmet>
   );
 }
-

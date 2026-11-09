@@ -5,12 +5,10 @@
  * Lazy() is replaced with direct imports so renderToString is synchronous.
  * DO NOT use this file on the client.
  */
-import { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import ScrollToTop from './components/ScrollToTop'
+import ToolRouteFaq from './components/ToolRouteFaq'
 
 // Direct (non-lazy) imports for SSR compatibility
 import Home from './pages/Home'
@@ -39,6 +37,7 @@ import PdfToolsCategory from './pages/PdfToolsCategory'
 import DailyUtilitiesCategory from './pages/DailyUtilitiesCategory'
 import TextToolsCategory from './pages/TextToolsCategory'
 import CalculatorsCategory from './pages/CalculatorsCategory'
+import ProgrammaticToolPage from './components/ProgrammaticToolPage'
 
 export default function AppServer() {
   return (
@@ -52,6 +51,9 @@ export default function AppServer() {
           <Route path="/webp-to-png" element={<WebpToPng />} />
           <Route path="/heic-to-png" element={<HeicToPng />} />
           <Route path="/avif-to-jpg" element={<AvifToJpg />} />
+          <Route path="/convert-png-to-jpg" element={<ProgrammaticToolPage />} />
+          <Route path="/convert-png-to-webp" element={<ProgrammaticToolPage />} />
+          <Route path="/compress-pdf-to-200kb" element={<ProgrammaticToolPage />} />
           <Route path="/pdf-to-png" element={<PdfToPng />} />
           <Route path="/remove-pdf-pages" element={<RemovePdfPages />} />
           <Route path="/extract-pdf-pages" element={<ExtractPdfPages />} />
@@ -73,6 +75,7 @@ export default function AppServer() {
           <Route path="/text-tools" element={<TextToolsCategory />} />
           <Route path="/calculators" element={<CalculatorsCategory />} />
         </Routes>
+        <ToolRouteFaq />
       </main>
       <Footer />
     </>

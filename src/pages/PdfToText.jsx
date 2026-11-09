@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, extractTextFromPage } from '../utils/pdfHelpers'
@@ -142,12 +143,13 @@ export default function PdfToText() {
         description="Extract plain text from PDF files. Copy or download as a .txt file. Browser-based, no signup."
         canonical="https://filevexa.pages.dev/pdf-to-text"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'PDF to Text' }]} />
 
         <div className="tool-page-header">
-          <h1>PDF to Text Converter</h1>
+          <h1>Free Online PDF to Text Converter</h1>
           <p>Extract plain text from text-based PDF files. Copy to clipboard or download as a .txt file.</p>
           <p className="privacy-notice">
             <span aria-hidden="true">🔒</span> Your files are processed locally and are not uploaded to any server.
@@ -215,15 +217,7 @@ export default function PdfToText() {
         )}
 
         <div className="tool-info">
-          <div className="info-section">
-            <h2>How to extract text from PDF</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag and drop your PDF.</li>
-              <li>Click <strong>Extract Text</strong>.</li>
-              <li>Review the extracted text below.</li>
-              <li>Click <strong>Copy Text</strong> or <strong>Download TXT</strong> to save it.</li>
-            </ol>
-          </div>
+          <ToolPageLayout toolId="pdf-to-text" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
           <div className="info-section">
             <h2>Limitations</h2>
             <p>
@@ -232,7 +226,7 @@ export default function PdfToText() {
             </p>
           </div>
           <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
           <RelatedTools tools={RELATED} />

@@ -1,9 +1,8 @@
-import { useEffect } from 'react'
 import ToolCard from '../components/ToolCard'
 import DailyUtilitiesSection from '../components/DailyUtilitiesSection'
 import TextToolsSection from '../components/TextToolsSection'
 import CalculatorsSection from '../components/CalculatorsSection'
-import { setPageMeta } from '../utils/seoHelpers'
+import SEO from '../components/SEO'
 
 const IMAGE_TOOLS = [
   {
@@ -82,31 +81,27 @@ const PDF_TOOLS = [
 ]
 
 export default function Home() {
-  useEffect(() => {
-    setPageMeta({
-      title: 'FileVexa – Free Online File Converter',
-      description:
-        'Free online file conversion tools. Convert HEIC, WebP, AVIF images and PDF files directly in your browser. No signup required.',
-      canonical: 'https://filevexa.pages.dev/',
-    })
-  }, [])
-
   return (
     <>
+      <SEO
+        title="Free Online File Converters & Utilities | FileVexa"
+        description="Convert images and PDFs in your browser with free online tools and no account required."
+        canonical="https://filevexa.pages.dev/"
+      />
       {/* Hero */}
       <section className="hero">
         <div className="container">
           <div className="hero-badge" aria-hidden="true">
-            <span>🔒</span> No uploads · No signup · 100% free
+            <span>🛠️</span> Free tools · No signup
           </div>
           <h1>Free Online File Tools</h1>
-          <p>Convert and manage your files quickly, easily and privately.</p>
+          <p>Convert and manage your files quickly, with clear information about how each tool processes them.</p>
 
           <div className="hero-features" role="list">
             {[
-              'Files stay in your browser',
+              'Most file tools process in your browser',
               'No account needed',
-              'No file size limits beyond browser memory',
+              'Limits vary by tool',
               'Works on any device',
             ].map((f) => (
               <div key={f} className="hero-feature" role="listitem">
@@ -123,7 +118,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title" id="image-tools-heading">Image Tools</h2>
-            <p className="section-subtitle">Convert image files directly in your browser — no upload required.</p>
+            <p className="section-subtitle">Convert images directly in your browser.</p>
           </div>
           <div className="tools-grid">
             {IMAGE_TOOLS.map((tool) => (
@@ -163,9 +158,7 @@ export default function Home() {
           <div style={{ fontSize: '40px', marginBottom: '16px' }} aria-hidden="true">🔒</div>
           <h2 className="section-title" id="privacy-heading">Your Files Stay With You</h2>
           <p style={{ fontSize: '16px', color: 'var(--color-text-secondary)', lineHeight: '1.7', marginTop: '12px' }}>
-            FileVexa processes all files directly inside your web browser using JavaScript.
-            Your files are <strong>never uploaded to any server</strong>.
-            We don't store, read, or transmit your files anywhere.
+            FileVexa processes images and PDFs directly in your browser. Files are not uploaded to a processing service.
           </p>
           <a href="/privacy" className="btn btn-secondary mt-6" style={{ display: 'inline-flex', marginTop: '24px' }}>
             Read our Privacy Policy

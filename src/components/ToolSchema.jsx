@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
   createWebApplicationSchema,
-  injectWebApplicationSchema,
+  createFaqPageSchema,
+  FAQ_SCHEMA_SCRIPT_ID,
   SCHEMA_SCRIPT_ID,
 } from '../utils/schemaGenerator';
 
@@ -24,11 +24,12 @@ export default function ToolSchema({
   name,
   description,
   url,
-  applicationCategory = 'UtilitiesApplication',
+  applicationCategory = 'UtilityApplication',
   operatingSystem = 'All',
   price = '0',
   priceCurrency = 'USD',
   schema: customSchema,
+  faqs = [],
 }) {
   const schema =
     customSchema ||
@@ -42,19 +43,22 @@ export default function ToolSchema({
       priceCurrency,
     });
 
-  // Client-side direct document.head management
-  useEffect(() => {
-    const cleanup = injectWebApplicationSchema(schema);
-    return cleanup;
-  }, [schema]);
+  const faqSchema = createFaqPageSchema(faqs);
 
   return (
     <Helmet>
       <script
         type="application/ld+json"
         id={SCHEMA_SCRIPT_ID}
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          id={FAQ_SCHEMA_SCRIPT_ID}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
+        />
+      )}
     </Helmet>
   );
 }

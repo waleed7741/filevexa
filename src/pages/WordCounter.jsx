@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
+import FaqSection from '../components/FaqSection';
+import ToolPageLayout from '../components/ToolPageLayout';
+import { getToolFaqItems } from '../config/toolsSEOData';
 
 export default function WordCounter() {
   const [text, setText] = useState('');
@@ -42,7 +45,7 @@ export default function WordCounter() {
         </nav>
 
         <header className="tool-page-header">
-          <h1>Word & Character Counter</h1>
+          <h1>Free Online Word &amp; Character Counter</h1>
           <p>Instantly count words, characters, and paragraphs. No data is sent to our servers.</p>
         </header>
 
@@ -67,25 +70,11 @@ export default function WordCounter() {
           style={{ width: '100%', minHeight: '300px', padding: '20px', fontSize: '16px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)', marginBottom: '40px', fontFamily: 'inherit', resize: 'vertical' }}
         />
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>How it works</h2>
-          <p style={{ marginTop: '12px', lineHeight: '1.6' }}>
-            Simply type or paste your text into the text box above. As you type, the tool will instantly analyze your text and update the counters for words, characters, characters without spaces, and paragraphs in real-time.
-          </p>
-        </section>
+        <ToolPageLayout toolId="word-counter" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
         <section>
           <h2>Frequently Asked Questions</h2>
-          <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Is my text saved anywhere?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>No! Everything runs directly inside your web browser. We never send, store, or see your text, ensuring total privacy.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>What counts as a word?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>A word is defined as any sequence of characters separated by a space or new line.</p>
-            </div>
-          </div>
+          <FaqSection items={getToolFaqItems('word-counter')} />
         </section>
 
         <RelatedTools currentPath="/word-counter" />

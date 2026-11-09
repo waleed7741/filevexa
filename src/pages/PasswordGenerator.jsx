@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
+import FaqSection from '../components/FaqSection';
+import ToolPageLayout from '../components/ToolPageLayout';
+import { getToolFaqItems } from '../config/toolsSEOData';
 
 export default function PasswordGenerator() {
   const [length, setLength] = useState(16);
@@ -75,7 +78,7 @@ export default function PasswordGenerator() {
         </nav>
 
         <header className="tool-page-header">
-          <h1>Secure Password Generator</h1>
+          <h1>Free Online Secure Password Generator</h1>
           <p>Create strong, complex passwords instantly. Your passwords are never stored or transmitted.</p>
         </header>
 
@@ -129,25 +132,11 @@ export default function PasswordGenerator() {
           </button>
         </div>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>How to generate a secure password</h2>
-          <p style={{ marginTop: '12px', lineHeight: '1.6' }}>
-            Adjust the slider to choose your desired password length (we recommend at least 16 characters). Toggle the checkboxes to include or exclude uppercase, lowercase, numbers, or symbols. The password is created using cryptographically secure random number generation right in your browser.
-          </p>
-        </section>
+        <ToolPageLayout toolId="password-generator" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
         <section>
           <h2>Frequently Asked Questions</h2>
-          <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Are the passwords saved or tracked?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>Absolutely not. We do not use servers, databases, or cookies to track the passwords you generate. Your password exists only on your device.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>What makes a password strong?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>A strong password is long (12+ characters), unpredictable, and utilizes a mix of various character types like letters, numbers, and symbols.</p>
-            </div>
-          </div>
+          <FaqSection items={getToolFaqItems('password-generator')} />
         </section>
 
         <RelatedTools currentPath="/password-generator" />

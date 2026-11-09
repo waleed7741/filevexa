@@ -1,17 +1,9 @@
-import { useEffect, useState } from 'react'
-import { setPageMeta } from '../utils/seoHelpers'
+import { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
+import SEO from '../components/SEO'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
-
-  useEffect(() => {
-    setPageMeta({
-      title: 'Contact | FileVexa',
-      description: 'Get in touch with the FileVexa team. Send us a message with your questions or feedback.',
-      canonical: 'https://filevexa.pages.dev/contact',
-    })
-  }, [])
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -21,6 +13,11 @@ export default function Contact() {
 
   return (
     <div className="container">
+      <SEO
+        title="Contact | FileVexa"
+        description="Get in touch with the FileVexa team. Send us a message with your questions or feedback."
+        canonical="https://filevexa.pages.dev/contact"
+      />
       <div className="static-page">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
         <h1>Contact Us</h1>

@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { fileToJpegBlob } from '../utils/imageHelpers'
@@ -124,11 +125,12 @@ export default function AvifToJpg() {
         description="Convert AVIF images to JPG online for free. Uses your browser's built-in AVIF support. No signup, no upload."
         canonical="https://filevexa.pages.dev/avif-to-jpg"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'AVIF to JPG' }]} />
         <div className="tool-page-header">
-          <h1>AVIF to JPG Converter</h1>
+          <h1>Free Online AVIF to JPG Converter</h1>
           <p>Convert AVIF images to JPG using your browser's built-in image support. Fast, private, and free.</p>
           <p className="privacy-notice"><span aria-hidden="true">🔒</span> Your files are processed locally and are not uploaded to any server.</p>
         </div>
@@ -194,22 +196,14 @@ export default function AvifToJpg() {
         )}
 
         <div className="tool-info">
-          <div className="info-section">
-            <h2>How to convert AVIF to JPG</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag your AVIF image into the upload area.</li>
-              <li>Optionally adjust the quality slider.</li>
-              <li>Click <strong>Convert to JPG</strong>.</li>
-              <li>Click <strong>Download JPG</strong> to save your file.</li>
-            </ol>
-          </div>
+          <ToolPageLayout toolId="avif-to-jpg" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
           <div className="info-section">
             <h2>About AVIF to JPG conversion</h2>
             <p>AVIF is a next-generation image format that offers impressive compression and quality. However, it is not yet supported by all applications. Converting to JPG ensures broad compatibility.</p>
             <p>This tool relies on your browser's native AVIF decoding capability and uses the Canvas API to re-encode the image as JPEG. No external services are used.</p>
           </div>
           <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
           <RelatedTools tools={RELATED} />

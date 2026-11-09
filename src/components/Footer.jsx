@@ -1,7 +1,33 @@
 import { Link } from 'react-router-dom'
+import { TOOL_SEO_DATA } from '../data/toolSEO'
+import { PROGRAMMATIC_TOOLS } from '../data/programmaticTools'
+
+const DIRECTORY_TOOLS = [
+  ...Object.values(TOOL_SEO_DATA).map((tool) => ({
+    title: tool.title,
+    href: tool.href,
+    category: tool.category?.name,
+  })),
+  ...Object.entries(PROGRAMMATIC_TOOLS).map(([slug, tool]) => ({
+    title: slug === 'compress-pdf-to-200kb' ? 'PDF Size Guide' : tool.heading,
+    href: `/${slug}`,
+    category: tool.kind === 'image' ? 'Image Tools' : 'PDF Tools',
+  })),
+]
+
+const DIRECTORY_GROUPS = [
+  { title: 'Image Tools', categories: ['Image Tools'] },
+  { title: 'PDF Tools', categories: ['PDF Tools'] },
+  { title: 'Text Tools', categories: ['Text Tools'] },
+  { title: 'Utilities & Calcs', categories: ['Daily Utilities', 'Calculators'] },
+]
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const toolGroups = DIRECTORY_GROUPS.map((group) => ({
+    ...group,
+    tools: DIRECTORY_TOOLS.filter((tool) => group.categories.includes(tool.category)),
+  }))
 
   return (
     <footer className="site-footer">
@@ -12,49 +38,19 @@ export default function Footer() {
               <div className="logo-icon" aria-hidden="true">FV</div>
               <span className="logo-text" style={{ marginLeft: '8px' }}>File<span>Vexa</span></span>
             </Link>
-            <p>Free online file conversion tools. Process files directly in your browser — no uploads, no signup.</p>
+            <p>Free online file tools. Most file processing runs in your browser with no account required.</p>
           </div>
 
-          <div className="footer-col">
-            <h4>Image Tools</h4>
-            <ul>
-              <li><Link to="/heic-to-jpg">HEIC to JPG</Link></li>
-              <li><Link to="/webp-to-jpg">WebP to JPG</Link></li>
-              <li><Link to="/webp-to-png">WebP to PNG</Link></li>
-              <li><Link to="/heic-to-png">HEIC to PNG</Link></li>
-              <li><Link to="/avif-to-jpg">AVIF to JPG</Link></li>
-            </ul>
-          </div>
-
-          <div className="footer-col">
-            <h4>PDF Tools</h4>
-            <ul>
-              <li><Link to="/pdf-to-png">PDF to PNG</Link></li>
-              <li><Link to="/remove-pdf-pages">Remove PDF Pages</Link></li>
-              <li><Link to="/extract-pdf-pages">Extract PDF Pages</Link></li>
-              <li><Link to="/pdf-to-text">PDF to Text</Link></li>
-              <li><Link to="/pdf-to-markdown">PDF to Markdown</Link></li>
-            </ul>
-          </div>
-
-          <div className="footer-col">
-            <h4>Text Tools</h4>
-            <ul>
-              <li><Link to="/text-case-converter">Text Case Converter</Link></li>
-              <li><Link to="/lorem-ipsum-generator">Lorem Ipsum Generator</Link></li>
-              <li><Link to="/word-counter">Word Counter</Link></li>
-            </ul>
-          </div>
-
-          <div className="footer-col">
-            <h4>Utilities & Calcs</h4>
-            <ul>
-              <li><Link to="/qr-code-generator">QR Code Generator</Link></li>
-              <li><Link to="/password-generator">Password Generator</Link></li>
-              <li><Link to="/age-calculator">Age Calculator</Link></li>
-              <li><Link to="/percentage-calculator">Percentage Calculator</Link></li>
-            </ul>
-          </div>
+          {toolGroups.map((group) => (
+            <div className="footer-col" key={group.title}>
+              <h4>{group.title}</h4>
+              <ul>
+                {group.tools.map((tool) => (
+                  <li key={tool.href}><Link to={tool.href}>{tool.title}</Link></li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <div className="footer-col">
             <h4>Company</h4>
@@ -68,7 +64,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>© {year} FileVexa. All files are processed locally in your browser.</p>
+          <p>© {year} FileVexa. Files are processed locally in your browser.</p>
         </div>
       </div>
     </footer>

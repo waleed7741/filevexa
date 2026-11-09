@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, extractPagesFromPdf } from '../utils/pdfHelpers'
@@ -254,12 +255,13 @@ export default function ExtractPdfPages() {
         description="Extract specific pages from a PDF and save them as a new document. Free, browser-based, no signup."
         canonical="https://filevexa.pages.dev/extract-pdf-pages"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Extract PDF Pages' }]} />
 
         <div className="tool-page-header">
-          <h1>Extract PDF Pages</h1>
+          <h1>Free Online Extract PDF Pages Tool</h1>
           <p>Select specific pages from a PDF and download them as a new document.</p>
           <p className="privacy-notice">
             <span aria-hidden="true">🔒</span> Your files are processed locally and are not uploaded to any server.
@@ -347,18 +349,9 @@ export default function ExtractPdfPages() {
         )}
 
         <div className="tool-info">
+          <ToolPageLayout toolId="extract-pdf-pages" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
           <div className="info-section">
-            <h2>How to extract PDF pages</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag and drop your PDF.</li>
-              <li>Wait a moment for the tool to read the page count.</li>
-              <li>Click on the thumbnails of the pages you want to extract (keep).</li>
-              <li>Click the <strong>Extract Pages</strong> button.</li>
-              <li>Download your new PDF.</li>
-            </ol>
-          </div>
-          <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
           <RelatedTools tools={RELATED} />

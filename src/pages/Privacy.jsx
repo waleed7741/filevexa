@@ -1,18 +1,14 @@
-import { useEffect } from 'react'
-import { setPageMeta } from '../utils/seoHelpers'
 import Breadcrumb from '../components/Breadcrumb'
+import SEO from '../components/SEO'
 
 export default function Privacy() {
-  useEffect(() => {
-    setPageMeta({
-      title: 'Privacy Policy | FileVexa',
-      description: 'FileVexa privacy policy. Learn how we handle your files and data.',
-      canonical: 'https://filevexa.pages.dev/privacy',
-    })
-  }, [])
-
   return (
     <div className="container">
+      <SEO
+        title="Privacy Policy | FileVexa"
+        description="FileVexa privacy policy. Learn how we handle your files and data."
+        canonical="https://filevexa.pages.dev/privacy"
+      />
       <div className="static-page">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]} />
         <h1>Privacy Policy</h1>
@@ -25,20 +21,12 @@ export default function Privacy() {
         </p>
 
         <h2>File Processing</h2>
-        <p>
-          <strong>All file conversion on FileVexa happens entirely inside your browser.</strong> When you use a
-          conversion tool on FileVexa, your files are processed using JavaScript running locally on your device.
-        </p>
-        <p>
-          Your files are <strong>never uploaded to our servers</strong>, stored on our servers, or transmitted to any
-          third party. We have no access to the content of your files.
-        </p>
+        <p>FileVexa's image and PDF tools process selected files entirely in your browser. File contents are not uploaded to a processing service.</p>
 
-        <h2>Data We Do Not Collect</h2>
+        <h2>Data Handling</h2>
         <ul>
-          <li>File content or file names</li>
-          <li>Converted output files</li>
-          <li>Personal information (we have no accounts or login system)</li>
+          <li>FileVexa does not ask for personal information or require an account.</li>
+          <li>Browser-based tools keep file contents in your device's browser while processing.</li>
         </ul>
 
         <h2>Analytics and Cookies</h2>
@@ -49,8 +37,8 @@ export default function Privacy() {
 
         <h2>Third-Party Libraries</h2>
         <p>
-          FileVexa uses open-source JavaScript libraries (such as heic2any) that run entirely in your browser. These
-          libraries do not transmit your files or data externally.
+          FileVexa uses open-source JavaScript libraries to power browser-based tools. File contents are processed
+          locally and are not sent to library maintainers.
         </p>
 
         <h2>Children's Privacy</h2>

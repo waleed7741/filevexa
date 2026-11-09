@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 
@@ -115,11 +116,12 @@ export default function HeicToPng() {
         description="Convert HEIC images to PNG online for free. Lossless browser-based conversion, no signup required."
         canonical="https://filevexa.pages.dev/heic-to-png"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'HEIC to PNG' }]} />
         <div className="tool-page-header">
-          <h1>HEIC to PNG Converter</h1>
+          <h1>Free Online HEIC to PNG Converter</h1>
           <p>Convert HEIC/HEIF images to PNG format. Lossless output, no upload required.</p>
           <p className="privacy-notice"><span aria-hidden="true">🔒</span> Your files are processed locally and are not uploaded to any server.</p>
         </div>
@@ -164,20 +166,13 @@ export default function HeicToPng() {
         )}
 
         <div className="tool-info">
-          <div className="info-section">
-            <h2>How to convert HEIC to PNG</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag your HEIC file into the upload area.</li>
-              <li>Click <strong>Convert to PNG</strong>.</li>
-              <li>Click <strong>Download PNG</strong> to save the result.</li>
-            </ol>
-          </div>
+          <ToolPageLayout toolId="heic-to-png" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
           <div className="info-section">
             <h2>About HEIC to PNG</h2>
             <p>PNG is a lossless image format widely supported across all platforms and devices. Converting HEIC to PNG is ideal when image quality is a priority and file size is less of a concern.</p>
           </div>
           <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
           <RelatedTools tools={RELATED} />

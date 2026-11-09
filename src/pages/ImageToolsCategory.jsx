@@ -43,8 +43,8 @@ export default function ImageToolsCategory() {
   return (
     <div className="tool-page">
       <SEO
-        title="Free Online Image Converter Tools | HEIC, WebP, AVIF | FileVexa"
-        description="Convert image files directly in your browser without uploading them. Fast, free, and private image format converters."
+        title="Free Online Image Conversion Tools | FileVexa"
+        description="Convert HEIC, WebP, and AVIF images directly in your browser."
         canonical="https://filevexa.pages.dev/image-tools"
       />
 
@@ -57,7 +57,7 @@ export default function ImageToolsCategory() {
 
         <header className="tool-page-header" style={{ textAlign: 'center', marginBottom: '48px' }}>
           <h1>Free Online Image Tools</h1>
-          <p style={{ margin: '0 auto' }}>Convert image formats locally in your browser — zero uploads, zero wait times.</p>
+          <p style={{ margin: '0 auto' }}>Convert images directly in your browser.</p>
         </header>
 
         <div className="tools-grid">

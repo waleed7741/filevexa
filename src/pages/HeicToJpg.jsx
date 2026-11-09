@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 
@@ -140,12 +141,13 @@ export default function HeicToJpg() {
         description="Convert HEIC images to JPG online for free. Fast browser-based HEIC to JPG conversion with no signup required."
         canonical="https://filevexa.pages.dev/heic-to-jpg"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'HEIC to JPG' }]} />
 
         <div className="tool-page-header">
-          <h1>HEIC to JPG Converter</h1>
+          <h1>Free Online HEIC to JPG Converter</h1>
           <p>Convert HEIC images to JPG quickly and easily. Your files are processed directly in your browser.</p>
           <p className="privacy-notice">
             <span aria-hidden="true">🔒</span>
@@ -237,15 +239,7 @@ export default function HeicToJpg() {
 
         {/* Tool Info */}
         <div className="tool-info">
-          <div className="info-section">
-            <h2>How to convert HEIC to JPG</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag and drop your HEIC file into the upload area.</li>
-              <li>Adjust the <strong>JPG Quality</strong> slider if needed (90% is recommended for most uses).</li>
-              <li>Click <strong>Convert to JPG</strong> and wait a moment.</li>
-              <li>Click <strong>Download JPG</strong> to save your converted image.</li>
-            </ol>
-          </div>
+          <ToolPageLayout toolId="heic-to-jpg" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
           <div className="info-section">
             <h2>About HEIC to JPG conversion</h2>
@@ -280,7 +274,7 @@ export default function HeicToJpg() {
           </div>
 
           <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
 

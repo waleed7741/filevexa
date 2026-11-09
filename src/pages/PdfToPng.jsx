@@ -7,6 +7,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, renderPdfPageToPngBlob } from '../utils/pdfHelpers'
@@ -150,12 +151,13 @@ export default function PdfToPng() {
         description="Convert PDF pages to PNG images online. Download each page as a PNG or as a ZIP. No signup required."
         canonical="https://filevexa.pages.dev/pdf-to-png"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'PDF to PNG' }]} />
 
         <div className="tool-page-header">
-          <h1>PDF to PNG Converter</h1>
+          <h1>Free Online PDF to PNG Converter</h1>
           <p>Convert PDF pages to PNG images. Download pages individually or as a ZIP archive.</p>
           <p className="privacy-notice">
             <span aria-hidden="true">🔒</span> Your files are processed locally and are not uploaded to any server.
@@ -224,16 +226,9 @@ export default function PdfToPng() {
         )}
 
         <div className="tool-info">
+          <ToolPageLayout toolId="pdf-to-png" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
           <div className="info-section">
-            <h2>How to convert PDF to PNG</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag and drop your PDF into the upload area.</li>
-              <li>Click <strong>Convert to PNG</strong>. Wait for the pages to render.</li>
-              <li>Download your pages individually, or click <strong>Download All (ZIP)</strong>.</li>
-            </ol>
-          </div>
-          <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
           <RelatedTools tools={RELATED} />

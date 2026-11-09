@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { loadPdfJs, extractMarkdownFromPage } from '../utils/pdfHelpers'
@@ -147,12 +148,13 @@ export default function PdfToMarkdown() {
         description="Convert PDF text content to Markdown format. Copy or download the result. Browser-based, no signup."
         canonical="https://filevexa.pages.dev/pdf-to-markdown"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'PDF to Markdown' }]} />
 
         <div className="tool-page-header">
-          <h1>PDF to Markdown Converter</h1>
+          <h1>Free Online PDF to Markdown Converter</h1>
           <p>Convert text-based PDFs to basic Markdown format. View, copy, and download the result.</p>
           <p className="privacy-notice">
             <span aria-hidden="true">🔒</span> Your files are processed locally and are not uploaded to any server.
@@ -220,15 +222,7 @@ export default function PdfToMarkdown() {
         )}
 
         <div className="tool-info">
-          <div className="info-section">
-            <h2>How to convert PDF to Markdown</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag and drop your PDF.</li>
-              <li>Click <strong>Convert to Markdown</strong>.</li>
-              <li>Review the generated Markdown below.</li>
-              <li>Click <strong>Copy Markdown</strong> or <strong>Download MD</strong> to save it.</li>
-            </ol>
-          </div>
+          <ToolPageLayout toolId="pdf-to-markdown" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
           <div className="info-section">
             <h2>Limitations</h2>
             <p>
@@ -240,7 +234,7 @@ export default function PdfToMarkdown() {
             </p>
           </div>
           <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
           <RelatedTools tools={RELATED} />

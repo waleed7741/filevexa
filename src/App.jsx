@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import ScrollToTop from './components/ScrollToTop'
+import ToolRouteFaq from './components/ToolRouteFaq'
 
 // Lazy-load tool pages for code splitting
 const HeicToJpg = lazy(() => import('./pages/HeicToJpg'))
@@ -32,6 +33,7 @@ const PdfToolsCategory = lazy(() => import('./pages/PdfToolsCategory'))
 const DailyUtilitiesCategory = lazy(() => import('./pages/DailyUtilitiesCategory'))
 const TextToolsCategory = lazy(() => import('./pages/TextToolsCategory'))
 const CalculatorsCategory = lazy(() => import('./pages/CalculatorsCategory'))
+const ProgrammaticToolPage = lazy(() => import('./components/ProgrammaticToolPage'))
 
 function PageLoader() {
   return (
@@ -56,6 +58,9 @@ export default function App() {
               <Route path="/webp-to-png" element={<WebpToPng />} />
               <Route path="/heic-to-png" element={<HeicToPng />} />
               <Route path="/avif-to-jpg" element={<AvifToJpg />} />
+              <Route path="/convert-png-to-jpg" element={<ProgrammaticToolPage />} />
+              <Route path="/convert-png-to-webp" element={<ProgrammaticToolPage />} />
+              <Route path="/compress-pdf-to-200kb" element={<ProgrammaticToolPage />} />
               <Route path="/pdf-to-png" element={<PdfToPng />} />
               <Route path="/remove-pdf-pages" element={<RemovePdfPages />} />
               <Route path="/extract-pdf-pages" element={<ExtractPdfPages />} />
@@ -77,6 +82,7 @@ export default function App() {
               <Route path="/text-tools" element={<TextToolsCategory />} />
               <Route path="/calculators" element={<CalculatorsCategory />} />
             </Routes>
+            <ToolRouteFaq />
           </main>
           <Footer />
         </Suspense>

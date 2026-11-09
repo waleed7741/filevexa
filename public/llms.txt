@@ -1,0 +1,49 @@
+# FileVexa
+
+> FileVexa offers free browser-based file tools. No account is required to use the available tools, and file contents are processed locally.
+
+## About
+
+FileVexa provides image and PDF converters, text utilities, and calculators. File processing runs locally in the browser.
+
+This file is a concise guide for AI assistants and other readers. See the privacy policy and individual tool pages for current details. Access to public pages does not imply any particular crawler policy beyond the site's robots.txt.
+
+## Image tools
+
+- [HEIC to JPG](/heic-to-jpg): Convert HEIC images to JPG in the browser.
+- [HEIC to PNG](/heic-to-png): Convert HEIC images to PNG in the browser.
+- [WebP to JPG](/webp-to-jpg): Convert WebP images to JPG in the browser.
+- [WebP to PNG](/webp-to-png): Convert WebP images to PNG in the browser.
+- [AVIF to JPG](/avif-to-jpg): Convert AVIF images to JPG in the browser.
+- [PNG to JPG](/convert-png-to-jpg): Convert PNG images to JPG in the browser.
+- [PNG to WebP](/convert-png-to-webp): Convert PNG images to WebP in the browser.
+- [Image Tools Directory](/image-tools): Browse image converters and utilities.
+
+## PDF tools
+
+- [PDF to PNG](/pdf-to-png): Render PDF pages to PNG images in the browser.
+- [Remove PDF Pages](/remove-pdf-pages): Remove selected pages from a PDF in the browser.
+- [Extract PDF Pages](/extract-pdf-pages): Extract selected pages from a PDF in the browser.
+- [PDF to Text](/pdf-to-text): Extract text from text-based PDF files in the browser.
+- [PDF to Markdown](/pdf-to-markdown): Convert PDF text content to Markdown in the browser.
+- [PDF size guide](/compress-pdf-to-200kb): Learn about PDF size; FileVexa does not currently offer a PDF compressor.
+- [PDF Tools Directory](/pdf-tools): Browse PDF utilities.
+
+## Text, utility, and calculator tools
+
+- [QR Code Generator](/qr-code-generator)
+- [Word Counter](/word-counter)
+- [Password Generator](/password-generator)
+- [Text Case Converter](/text-case-converter)
+- [Lorem Ipsum Generator](/lorem-ipsum-generator)
+- [Age Calculator](/age-calculator)
+- [Percentage Calculator](/percentage-calculator)
+- [Text Tools Directory](/text-tools)
+- [Daily Utilities Directory](/daily-utilities)
+- [Calculators Directory](/calculators)
+
+## Policies and index
+
+- [Privacy Policy](/privacy): Details on local file processing.
+- [Terms of Use](/terms): Service terms.
+- [Sitemap](/sitemap.xml): Public route index.

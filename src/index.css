@@ -35,7 +35,7 @@
   --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
   --shadow-lg: 0 10px 30px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   --container-width: 1100px;
   --header-height: 64px;
@@ -639,6 +639,47 @@ ul, ol {
   margin-top: 10px;
 }
 
+.programmatic-converter {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.programmatic-image-preview {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-subtle);
+}
+
+.programmatic-guide {
+  max-width: 900px;
+  margin: 28px auto;
+}
+
+.programmatic-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .programmatic-converter {
+    padding: 16px;
+  }
+
+  .programmatic-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
 /* ---------- File Uploader ---------- */
 .uploader {
   border: 2px dashed var(--color-border);
@@ -960,6 +1001,14 @@ ul, ol {
   overflow: hidden;
 }
 
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::marker {
+  content: '';
+}
+
 .faq-question {
   width: 100%;
   text-align: left;
@@ -978,6 +1027,10 @@ ul, ol {
   transition: background var(--transition);
 }
 
+.faq-question {
+  list-style: none;
+}
+
 .faq-question:hover {
   background: var(--color-primary-faint);
 }
@@ -994,20 +1047,12 @@ ul, ol {
   flex-shrink: 0;
 }
 
-.faq-item.open .faq-chevron {
+.faq-item[open] .faq-chevron {
   transform: rotate(180deg);
 }
 
 .faq-answer {
-  padding: 0 20px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-.faq-item.open .faq-answer {
   padding: 16px 20px;
-  max-height: 400px;
 }
 
 .faq-answer p {
@@ -1048,6 +1093,59 @@ ul, ol {
 
 .related-tool-emoji {
   font-size: 18px;
+}
+
+.tool-seo-content {
+  padding-bottom: 48px;
+}
+
+.tool-summary {
+  margin: 32px 0;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-subtle);
+}
+
+.tool-summary h2,
+.tool-seo-content .info-section h2 {
+  margin-bottom: 14px;
+}
+
+.tool-summary p,
+.tool-seo-content .info-section p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.tool-specifications,
+.tool-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-specifications li,
+.tool-feature-grid li {
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+.tool-specifications strong {
+  color: var(--color-text);
+}
+
+.tool-seo-content .info-section ol {
+  padding-left: 24px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
 }
 
 /* ---------- Page Layout Static Pages ---------- */

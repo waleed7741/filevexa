@@ -6,6 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import DownloadButton from '../components/DownloadButton'
 import FaqSection from '../components/FaqSection'
 import RelatedTools from '../components/RelatedTools'
+import ToolPageLayout from '../components/ToolPageLayout'
 import SEO from '../components/SEO'
 import { formatBytes, validateFileSize, validateFileType, replaceExtension, createObjectUrl } from '../utils/fileHelpers'
 import { fileToJpegBlob } from '../utils/imageHelpers'
@@ -122,12 +123,13 @@ export default function WebpToJpg() {
         description="Convert WebP images to JPG online for free. Fast, browser-based conversion with no signup required. Transparent WebP images get a white background."
         canonical="https://filevexa.pages.dev/webp-to-jpg"
         schema={schema}
+        faqs={FAQ}
       />
       <div className="container">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'WebP to JPG' }]} />
 
         <div className="tool-page-header">
-          <h1>WebP to JPG Converter</h1>
+          <h1>Free Online WebP to JPG Converter</h1>
           <p>Convert WebP images to JPG format. Transparent areas are given a white background automatically.</p>
           <p className="privacy-notice">
             <span aria-hidden="true">🔒</span>
@@ -202,15 +204,7 @@ export default function WebpToJpg() {
         )}
 
         <div className="tool-info">
-          <div className="info-section">
-            <h2>How to convert WebP to JPG</h2>
-            <ol>
-              <li>Click <strong>Choose File</strong> or drag and drop your WebP image.</li>
-              <li>Optionally adjust the quality slider.</li>
-              <li>Click <strong>Convert to JPG</strong>.</li>
-              <li>Click <strong>Download JPG</strong> to save your file.</li>
-            </ol>
-          </div>
+          <ToolPageLayout toolId="webp-to-jpg" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
           <div className="info-section">
             <h2>About WebP to JPG conversion</h2>
@@ -235,7 +229,7 @@ export default function WebpToJpg() {
           </div>
 
           <div className="info-section">
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqSection items={FAQ} />
           </div>
 

@@ -3,7 +3,7 @@
  * Enables offline caching and PWA installation for browser-based utility tools.
  */
 
-const CACHE_NAME = 'filevexa-cache-v1';
+const CACHE_NAME = 'filevexa-cache-v2';
 
 const STATIC_PRECACHE = [
   '/',
@@ -41,7 +41,7 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
 
   // Only handle GET requests from same origin
-  if (request.method !== 'GET' || !request.url.startsWith(self.location.origin)) {
+  if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) {
     return;
   }
 

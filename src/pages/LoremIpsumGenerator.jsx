@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
+import FaqSection from '../components/FaqSection';
+import ToolPageLayout from '../components/ToolPageLayout';
+import { getToolFaqItems } from '../config/toolsSEOData';
 
 const LOREM_WORDS = ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua", "enim", "ad", "minim", "veniam", "quis", "nostrud", "exercitation", "ullamco", "laboris", "nisi", "aliquip", "ex", "ea", "commodo", "consequat", "duis", "aute", "irure", "reprehenderit", "in", "voluptate", "velit", "esse", "cillum", "fugiat", "nulla", "pariatur", "excepteur", "sint", "occaecat", "cupidatat", "non", "proident", "sunt", "culpa", "qui", "officia", "deserunt", "mollit", "anim", "id", "est", "laborum"];
 
@@ -56,7 +59,7 @@ export default function LoremIpsumGenerator() {
         </nav>
 
         <header className="tool-page-header">
-          <h1>Lorem Ipsum Generator</h1>
+          <h1>Free Online Lorem Ipsum Generator</h1>
           <p>Generate dummy text for your layouts and mockups.</p>
         </header>
 
@@ -86,29 +89,11 @@ export default function LoremIpsumGenerator() {
           </div>
         </div>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>How to use the generator</h2>
-          <p style={{ marginTop: '12px', lineHeight: '1.6' }}>
-            Specify the number of paragraphs and words per paragraph you need, then hit generate. The tool will output classic pseudo-Latin text that mimics natural word distribution.
-          </p>
-        </section>
+        <ToolPageLayout toolId="lorem-ipsum-generator" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
         <section>
           <h2>Frequently Asked Questions</h2>
-          <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>What is Lorem Ipsum?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>It is a placeholder text commonly used in design and publishing to demonstrate the visual form of a document without relying on meaningful content.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Why use dummy text?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>People tend to get distracted by readable content. Using Lorem Ipsum ensures viewers focus entirely on the design layout.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Is this free to use?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>Yes, this tool is 100% free and you can generate as much text as you need.</p>
-            </div>
-          </div>
+          <FaqSection items={getToolFaqItems('lorem-ipsum-generator')} />
         </section>
 
         <RelatedTools currentPath="/lorem-ipsum-generator" />

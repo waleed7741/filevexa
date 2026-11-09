@@ -1,18 +1,14 @@
-import { useEffect } from 'react'
-import { setPageMeta } from '../utils/seoHelpers'
 import Breadcrumb from '../components/Breadcrumb'
+import SEO from '../components/SEO'
 
 export default function Terms() {
-  useEffect(() => {
-    setPageMeta({
-      title: 'Terms of Use | FileVexa',
-      description: 'FileVexa Terms of Use. Read our terms before using our free file conversion tools.',
-      canonical: 'https://filevexa.pages.dev/terms',
-    })
-  }, [])
-
   return (
     <div className="container">
+      <SEO
+        title="Terms of Use | FileVexa"
+        description="FileVexa Terms of Use. Read our terms before using our free file conversion tools."
+        canonical="https://filevexa.pages.dev/terms"
+      />
       <div className="static-page">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Terms of Use' }]} />
         <h1>Terms of Use</h1>
@@ -26,8 +22,8 @@ export default function Terms() {
 
         <h2>Description of Service</h2>
         <p>
-          FileVexa provides free, browser-based file conversion tools. All processing is performed locally in your
-          browser. We do not store, transmit, or process your files on our servers.
+          FileVexa provides online file tools. File processing runs locally in your browser; file contents are not
+          uploaded to an external processing service.
         </p>
 
         <h2>Permitted Use</h2>

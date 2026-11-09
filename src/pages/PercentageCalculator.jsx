@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
+import FaqSection from '../components/FaqSection';
+import ToolPageLayout from '../components/ToolPageLayout';
+import { getToolFaqItems } from '../config/toolsSEOData';
 
 export default function PercentageCalculator() {
   const [calc1X, setCalc1X] = useState('');
@@ -41,7 +44,7 @@ export default function PercentageCalculator() {
         </nav>
 
         <header className="tool-page-header">
-          <h1>Percentage & Discount Calculator</h1>
+          <h1>Free Online Percentage &amp; Discount Calculator</h1>
           <p>Easily solve percentage problems, find discounts, or calculate percentage growth.</p>
         </header>
 
@@ -98,29 +101,11 @@ export default function PercentageCalculator() {
 
         </div>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>How to use the Percentage Calculator</h2>
-          <p style={{ marginTop: '12px', lineHeight: '1.6' }}>
-            We've broken down percentages into the three most common everyday scenarios. Just type your numbers into the relevant boxes, and the result will automatically calculate instantly without needing to click a button.
-          </p>
-        </section>
+        <ToolPageLayout toolId="percentage-calculator" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
         <section>
           <h2>Frequently Asked Questions</h2>
-          <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>How do I calculate a discount?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>Use the first calculator ("What is X% of Y?"). Put the discount percentage in X, and the total price in Y. This gives you the amount saved!</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>How do I find a percentage increase?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>Use the third calculator ("Percentage Increase/Decrease"). Enter the old value as 'From' and the new value as 'To'.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Are there decimals limitations?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>The calculator formats results up to 4 decimal places for high precision.</p>
-            </div>
-          </div>
+          <FaqSection items={getToolFaqItems('percentage-calculator')} />
         </section>
 
         <RelatedTools currentPath="/percentage-calculator" />

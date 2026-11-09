@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
+import FaqSection from '../components/FaqSection';
+import ToolPageLayout from '../components/ToolPageLayout';
+import { getToolFaqItems } from '../config/toolsSEOData';
 
 export default function TextCaseConverter() {
   const [text, setText] = useState('');
@@ -50,7 +53,7 @@ export default function TextCaseConverter() {
         </nav>
 
         <header className="tool-page-header">
-          <h1>Text Case Converter</h1>
+          <h1>Free Online Text Case Converter</h1>
           <p>Instantly convert your text to UPPERCASE, lowercase, Title Case, or Sentence case right in your browser.</p>
         </header>
 
@@ -77,29 +80,11 @@ export default function TextCaseConverter() {
           </div>
         </div>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>How to convert text casing</h2>
-          <p style={{ marginTop: '12px', lineHeight: '1.6' }}>
-            Paste your block of text into the area above. Select the desired capitalization format from the buttons (like UPPERCASE or Title Case). The text will instantly transform, and you can easily copy the result back to your clipboard.
-          </p>
-        </section>
+        <ToolPageLayout toolId="text-case-converter" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
         <section>
           <h2>Frequently Asked Questions</h2>
-          <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Is this tool private?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>Yes. Your text is processed entirely in your local browser and is never uploaded or sent to any server.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>What is Title Case?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>Title Case capitalizes the first letter of every word, making it ideal for headlines or titles.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Does it limit text length?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>There are no strict length limits; you can convert as much text as your browser can handle.</p>
-            </div>
-          </div>
+          <FaqSection items={getToolFaqItems('text-case-converter')} />
         </section>
 
         <RelatedTools currentPath="/text-case-converter" />

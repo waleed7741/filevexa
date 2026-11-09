@@ -2,10 +2,10 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
-export default defineConfig(({ command, isSsrBuild }) => ({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react()],
   build: {
-    chunkSizeWarningLimit: 800,
+    chunkSizeWarningLimit: 1400,
     rollupOptions: {
       output: {
         // Separate heic2any into its own chunk so the homepage bundle stays small

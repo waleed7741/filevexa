@@ -35,6 +35,11 @@ export function imageToJpegBlob(img, quality = 0.92, bgColor = '#ffffff') {
     canvas.height = img.naturalHeight
     const ctx = canvas.getContext('2d')
 
+    if (!ctx) {
+      reject(new Error('Your browser could not create an image canvas.'))
+      return
+    }
+
     // Fill background first to handle transparency
     ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, canvas.width, canvas.height)
@@ -43,7 +48,8 @@ export function imageToJpegBlob(img, quality = 0.92, bgColor = '#ffffff') {
     canvas.toBlob(
       (blob) => {
         if (blob) {
-          resolve(blob)
+          if (blob.type === 'image/jpeg') resolve(blob)
+          else reject(new Error('JPEG export is not supported by this browser.'))
         } else {
           reject(new Error('Something went wrong while converting the image. Please try again.'))
         }
@@ -66,17 +72,51 @@ export function imageToPngBlob(img) {
     canvas.height = img.naturalHeight
     const ctx = canvas.getContext('2d')
 
+    if (!ctx) {
+      reject(new Error('Your browser could not create an image canvas.'))
+      return
+    }
+
     ctx.drawImage(img, 0, 0)
 
     canvas.toBlob(
       (blob) => {
         if (blob) {
-          resolve(blob)
+          if (blob.type === 'image/png') resolve(blob)
+          else reject(new Error('PNG export is not supported by this browser.'))
         } else {
           reject(new Error('Something went wrong while converting the image. Please try again.'))
         }
       },
       'image/png'
+    )
+  })
+}
+
+export function imageToWebpBlob(img, quality = 0.92) {
+  return new Promise((resolve, reject) => {
+    const canvas = document.createElement('canvas')
+    canvas.width = img.naturalWidth
+    canvas.height = img.naturalHeight
+    const ctx = canvas.getContext('2d')
+
+    if (!ctx) {
+      reject(new Error('Your browser could not create an image canvas.'))
+      return
+    }
+
+    ctx.drawImage(img, 0, 0)
+    canvas.toBlob(
+      (blob) => {
+        if (blob) {
+          if (blob.type === 'image/webp') resolve(blob)
+          else reject(new Error('WebP export is not supported by this browser.'))
+        } else {
+          reject(new Error('WebP export is not supported by this browser.'))
+        }
+      },
+      'image/webp',
+      quality
     )
   })
 }
@@ -96,4 +136,9 @@ export async function fileToJpegBlob(file, quality = 0.92) {
 export async function fileToPngBlob(file) {
   const img = await loadImage(file)
   return imageToPngBlob(img)
+}
+
+export async function fileToWebpBlob(file, quality = 0.92) {
+  const img = await loadImage(file)
+  return imageToWebpBlob(img, quality)
 }

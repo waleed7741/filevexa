@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
 import RelatedTools from '../components/RelatedTools';
+import FaqSection from '../components/FaqSection';
+import ToolPageLayout from '../components/ToolPageLayout';
+import { getToolFaqItems } from '../config/toolsSEOData';
 
 export default function AgeCalculator() {
   const [dob, setDob] = useState('1990-01-01');
@@ -65,7 +68,7 @@ export default function AgeCalculator() {
         </nav>
 
         <header className="tool-page-header">
-          <h1>Age Calculator</h1>
+          <h1>Free Online Age Calculator</h1>
           <p>Find out exactly how old you are in years, months, and days.</p>
         </header>
 
@@ -100,29 +103,11 @@ export default function AgeCalculator() {
           )}
         </div>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>How does the Age Calculator work?</h2>
-          <p style={{ marginTop: '12px', lineHeight: '1.6' }}>
-            Simply input your birth date and the date you want to measure against (it defaults to today). The tool instantly calculates the exact time difference, accounting for leap years and the varying lengths of months.
-          </p>
-        </section>
+        <ToolPageLayout toolId="age-calculator" sections={['steps']} containerClassName="tool-seo-content" includeSEO={false} />
 
         <section>
           <h2>Frequently Asked Questions</h2>
-          <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Is it accurate for leap years?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>Yes, the calculator uses native browser date mathematics which perfectly account for leap years and daylight saving time anomalies.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Can I calculate historical ages?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>Absolutely. You can change the "Calculate age at the date of" field to a date in the past to see how old someone was on a specific historical day.</p>
-            </div>
-            <div style={{ padding: '16px', background: 'var(--color-bg-subtle)', borderRadius: 'var(--radius-md)' }}>
-              <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>Is my birth date recorded?</h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>No, all calculations are performed locally inside your device. Your date of birth is never sent over the internet.</p>
-            </div>
-          </div>
+          <FaqSection items={getToolFaqItems('age-calculator')} />
         </section>
 
         <RelatedTools currentPath="/age-calculator" />
