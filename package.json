@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "googleapis": "^189.0.0",
     "heic2any": "^0.0.4",
     "jszip": "^3.10.2",
     "pdf-lib": "^1.17.1",
