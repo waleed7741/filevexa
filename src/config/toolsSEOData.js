@@ -47,10 +47,11 @@ function normalizeTool(slug, source) {
     slug,
     url: `${SITE_URL}/${slug}`,
     name,
-    title: `Free Online ${name} (100% Private, No Upload) - FileVexa`,
+    title: source.metaTitle || `Free Online ${name} (100% Private, No Upload) - FileVexa`,
     h1: `Free Online ${name}`,
-    description: getDescription(action, dataType),
-    targetKeywords: {
+    description: source.metaDescription || getDescription(action, dataType),
+    keywords: source.keywords,
+    targetKeywords: source.targetKeywords || {
       primary: `${action} online`,
       longTail: [
         `free ${action} online`,

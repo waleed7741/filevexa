@@ -145,6 +145,7 @@ export default function Header() {
         <Link to="/webp-to-png" onClick={closeMenu}>WebP to PNG</Link>
         <Link to="/heic-to-png" onClick={closeMenu}>HEIC to PNG</Link>
         <Link to="/avif-to-jpg" onClick={closeMenu}>AVIF to JPG</Link>
+        <Link to="/compress-image-to-kb" onClick={closeMenu}>Compress Image to KB</Link>
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)', marginTop: '8px' }}>PDF Tools</div>
         <Link to="/pdf-to-png" onClick={closeMenu}>PDF to PNG</Link>
         <Link to="/remove-pdf-pages" onClick={closeMenu}>Remove PDF Pages</Link>

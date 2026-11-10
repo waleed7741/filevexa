@@ -5,6 +5,57 @@
  */
 
 export const TOOL_SEO_DATA = {
+  'compress-image-to-kb': {
+    title: 'Compress Image to KB',
+    metaTitle: 'Compress Image to Specific Size (20KB, 50KB, 100KB) Free - FileVexa',
+    metaDescription: 'Compress images to exact target size in KB online for free (20KB, 50KB, 100KB or custom). 100% private client-side processing with zero server uploads.',
+    keywords: 'compress image to 20kb, compress image to 50kb, compress image to 100kb, image KB reducer, resize image size in kb online, free photo compressor',
+    href: '/compress-image-to-kb',
+    icon: '📉',
+    category: { name: 'Image Tools', href: '/image-tools' },
+    howTo: {
+      heading: 'How to Compress an Image to a Specific Size in KB',
+      intro: 'FileVexa compresses JPEG, PNG, WebP, and HEIC photos to a target size such as 20 KB, 50 KB, or 100 KB. Choose a preset or enter a custom size, then let the browser find the highest JPEG quality that fits. Resolution is reduced only when quality compression reaches its minimum. Image processing stays on your device; no photo is uploaded to a server.',
+      steps: [
+        {
+          title: 'Choose an image',
+          description: 'Select or drag in a JPEG, PNG, WebP, or HEIC photo. The image is decoded locally in your browser.',
+        },
+        {
+          title: 'Set the target size',
+          description: 'Choose a 20 KB, 50 KB, 100 KB, 200 KB, or 500 KB preset, or enter any custom target size in kilobytes.',
+        },
+        {
+          title: 'Compress and download',
+          description: 'The tool searches for the best image quality under your size limit, then downloads the compressed JPEG directly to your device.',
+        },
+      ],
+      tips: 'For job applications and online forms, follow the exact maximum file size listed by the destination. If quality alone cannot meet a small target, this tool reduces image dimensions while preserving as much quality as possible.',
+    },
+    faqs: [
+      {
+        question: 'How to compress image to 20KB for online job applications?',
+        answer: 'Choose the image from your device, select the 20 KB preset, and press Compress. FileVexa adjusts JPEG quality first and reduces image dimensions only if needed. Download the result and check that it meets the job application’s listed format and size requirements.',
+      },
+      {
+        question: 'Are my photos uploaded to any server?',
+        answer: 'No. Your photo is decoded, compressed, previewed, and downloaded entirely in your browser. FileVexa does not upload the image to a server.',
+      },
+      {
+        question: 'Can I compress an image to a custom KB size?',
+        answer: 'Yes. Enter any positive target size in the custom KB field, or choose one of the 20 KB, 50 KB, 100 KB, 200 KB, and 500 KB presets.',
+      },
+      {
+        question: 'Which image formats can I compress?',
+        answer: 'You can select JPEG, PNG, WebP, or HEIC images. The compressed download is a JPEG file, which is widely accepted by online forms. Transparent areas in PNG and WebP images are filled with white because JPEG does not support transparency.',
+      },
+    ],
+    related: [
+      { label: 'HEIC to JPG', href: '/heic-to-jpg', emoji: '🖼️' },
+      { label: 'WebP to JPG', href: '/webp-to-jpg', emoji: '🔄' },
+      { label: 'PNG to JPG', href: '/convert-png-to-jpg', emoji: '📷' },
+    ],
+  },
   'heic-to-jpg': {
     title: 'HEIC to JPG Converter',
     href: '/heic-to-jpg',

@@ -6,6 +6,13 @@ import SEO from '../components/SEO'
 
 const IMAGE_TOOLS = [
   {
+    title: 'Compress Image to KB',
+    desc: 'Compress image files (JPEG, PNG, WEBP, HEIC) to target size in KB (20KB, 50KB, 100KB or custom) with 100% private browser processing.',
+    href: '/compress-image-to-kb',
+    icon: '📉',
+    type: 'image',
+  },
+  {
     title: 'HEIC to JPG',
     desc: 'Convert Apple HEIC/HEIF images to JPG — works directly in your browser.',
     href: '/heic-to-jpg',

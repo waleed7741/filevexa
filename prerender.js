@@ -89,7 +89,7 @@ function setToolHead(html, tool) {
     priceCurrency: 'USD',
   })
   const faqSchema = createFaqPageSchema(tool.faqs)
-  const keywords = [
+  const keywords = tool.keywords || [
     tool.targetKeywords.primary,
     ...tool.targetKeywords.longTail,
   ].join(', ')
@@ -203,3 +203,21 @@ const sitemap = [
 fs.writeFileSync(toAbsolute('dist/sitemap.xml'), `${sitemap}\n`)
 fs.writeFileSync(toAbsolute('public/sitemap.xml'), `${sitemap}\n`)
 console.log('Generated dist/sitemap.xml and public/sitemap.xml from the configured routes.')
+
+const llmsRouteLine = '- [Compress Image to KB](/compress-image-to-kb): Compress Image to 20KB, 50KB, 100KB - 100% Client-Side Private Tool'
+const publicLlmsPath = toAbsolute('public/llms.txt')
+const publicLlms = fs.readFileSync(publicLlmsPath, 'utf-8')
+let updatedLlms
+if (/^- \[[^\]]+\]\(\/compress-image-to-kb\):.*$/m.test(publicLlms)) {
+  updatedLlms = publicLlms.replace(
+    /^- \[[^\]]+\]\(\/compress-image-to-kb\):.*$/m,
+    llmsRouteLine
+  )
+} else if (/## Image tools[^\r\n]*\r?\n/i.test(publicLlms)) {
+  updatedLlms = publicLlms.replace(/(## Image tools[^\r\n]*\r?\n)/i, `$1${llmsRouteLine}\n`)
+} else {
+  updatedLlms = `${publicLlms.trimEnd()}\n\n## Image tools\n${llmsRouteLine}\n`
+}
+fs.writeFileSync(publicLlmsPath, updatedLlms)
+fs.writeFileSync(toAbsolute('dist/llms.txt'), updatedLlms)
+console.log('Updated public/llms.txt and generated dist/llms.txt.')

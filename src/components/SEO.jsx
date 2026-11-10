@@ -16,9 +16,9 @@ export default function SEO({
   const pageTitle = tool?.title || title;
   const pageDescription = tool?.description || description;
   const pageCanonical = tool?.url || canonical || `${TOOL_SITE_URL}${routePath}`;
-  const pageKeywords = tool
+  const pageKeywords = tool?.keywords || (tool
     ? [tool.targetKeywords.primary, ...tool.targetKeywords.longTail].join(', ')
-    : keywords;
+    : keywords);
   return (
     <Helmet>
       {/* Standard SEO */}

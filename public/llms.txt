@@ -10,6 +10,7 @@ This file is a concise guide for AI assistants and other readers. See the privac
 
 ## Image tools
 
+- [Compress Image to KB](/compress-image-to-kb): Compress Image to 20KB, 50KB, 100KB - 100% Client-Side Private Tool
 - [HEIC to JPG](/heic-to-jpg): Convert HEIC images to JPG in the browser.
 - [HEIC to PNG](/heic-to-png): Convert HEIC images to PNG in the browser.
 - [WebP to JPG](/webp-to-jpg): Convert WebP images to JPG in the browser.
