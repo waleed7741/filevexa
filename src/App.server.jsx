@@ -19,6 +19,7 @@ import HeicToPng from './pages/HeicToPng'
 import AvifToJpg from './pages/AvifToJpg'
 import CompressImageToKB from './components/tools/CompressImageToKB'
 import PdfToPng from './pages/PdfToPng'
+import PngToPdf from './pages/PngToPdf'
 import RemovePdfPages from './pages/RemovePdfPages'
 import ExtractPdfPages from './pages/ExtractPdfPages'
 import PdfToText from './pages/PdfToText'
@@ -57,6 +58,7 @@ export default function AppServer() {
           <Route path="/convert-png-to-webp" element={<ProgrammaticToolPage />} />
           <Route path="/compress-pdf-to-200kb" element={<ProgrammaticToolPage />} />
           <Route path="/pdf-to-png" element={<PdfToPng />} />
+          <Route path="/png-to-pdf" element={<PngToPdf />} />
           <Route path="/remove-pdf-pages" element={<RemovePdfPages />} />
           <Route path="/extract-pdf-pages" element={<ExtractPdfPages />} />
           <Route path="/pdf-to-text" element={<PdfToText />} />

@@ -23,6 +23,7 @@ FileVexa is a privacy-focused collection of free image, PDF, text, and everyday 
 
 | Tool | Live URL | Key intent keywords |
 |---|---|---|
+| **PNG to PDF Converter** | [png-to-pdf](https://filevexa.pages.dev/png-to-pdf) | convert PNG to PDF, combine PNG images into PDF, private image to PDF converter |
 | **PDF to PNG Converter** | [pdf-to-png](https://filevexa.pages.dev/pdf-to-png) | convert PDF pages to PNG, PDF page images |
 | **Remove PDF Pages** | [remove-pdf-pages](https://filevexa.pages.dev/remove-pdf-pages) | delete pages from PDF, remove PDF pages online |
 | **Extract PDF Pages** | [extract-pdf-pages](https://filevexa.pages.dev/extract-pdf-pages) | extract PDF pages, split selected pages from PDF |

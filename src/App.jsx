@@ -15,6 +15,7 @@ const HeicToPng = lazy(() => import('./pages/HeicToPng'))
 const AvifToJpg = lazy(() => import('./pages/AvifToJpg'))
 const CompressImageToKB = lazy(() => import('./components/tools/CompressImageToKB'))
 const PdfToPng = lazy(() => import('./pages/PdfToPng'))
+const PngToPdf = lazy(() => import('./pages/PngToPdf'))
 const RemovePdfPages = lazy(() => import('./pages/RemovePdfPages'))
 const ExtractPdfPages = lazy(() => import('./pages/ExtractPdfPages'))
 const PdfToText = lazy(() => import('./pages/PdfToText'))
@@ -64,6 +65,7 @@ export default function App() {
               <Route path="/convert-png-to-webp" element={<ProgrammaticToolPage />} />
               <Route path="/compress-pdf-to-200kb" element={<ProgrammaticToolPage />} />
               <Route path="/pdf-to-png" element={<PdfToPng />} />
+              <Route path="/png-to-pdf" element={<PngToPdf />} />
               <Route path="/remove-pdf-pages" element={<RemovePdfPages />} />
               <Route path="/extract-pdf-pages" element={<ExtractPdfPages />} />
               <Route path="/pdf-to-text" element={<PdfToText />} />

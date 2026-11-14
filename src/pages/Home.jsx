@@ -51,6 +51,13 @@ const IMAGE_TOOLS = [
 
 const PDF_TOOLS = [
   {
+    title: 'PNG to PDF Converter',
+    desc: 'Combine, reorder, and convert PNG images into one PDF. Process files privately in your browser.',
+    href: '/png-to-pdf',
+    icon: '📑',
+    type: 'pdf',
+  },
+  {
     title: 'PDF to PNG',
     desc: 'Convert PDF pages to PNG images. Download pages individually or as a ZIP.',
     href: '/pdf-to-png',

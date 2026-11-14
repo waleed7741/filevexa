@@ -26,6 +26,7 @@ const urls = [
   'https://filevexa.pages.dev/convert-png-to-webp',
 
   // PDF Tools
+  'https://filevexa.pages.dev/png-to-pdf',
   'https://filevexa.pages.dev/pdf-to-png',
   'https://filevexa.pages.dev/remove-pdf-pages',
   'https://filevexa.pages.dev/extract-pdf-pages',

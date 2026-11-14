@@ -2,15 +2,77 @@ import { useState, useRef, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useRecentTools } from '../hooks/useRecentTools'
 
+const CATEGORY_MENUS = [
+  {
+    label: 'Image Tools',
+    href: '/image-tools',
+    items: [
+      { label: 'All Image Tools', href: '/image-tools' },
+      { label: 'Compress Image to KB', href: '/compress-image-to-kb' },
+      { label: 'HEIC to JPG', href: '/heic-to-jpg' },
+      { label: 'HEIC to PNG', href: '/heic-to-png' },
+      { label: 'WebP to JPG', href: '/webp-to-jpg' },
+      { label: 'WebP to PNG', href: '/webp-to-png' },
+      { label: 'AVIF to JPG', href: '/avif-to-jpg' },
+      { label: 'Convert PNG to JPG', href: '/convert-png-to-jpg' },
+      { label: 'Convert PNG to WebP', href: '/convert-png-to-webp' },
+    ],
+  },
+  {
+    label: 'PDF Tools',
+    href: '/pdf-tools',
+    items: [
+      { label: 'All PDF Tools', href: '/pdf-tools' },
+      { label: 'PNG to PDF Converter', href: '/png-to-pdf' },
+      { label: 'PDF to PNG', href: '/pdf-to-png' },
+      { label: 'Remove PDF Pages', href: '/remove-pdf-pages' },
+      { label: 'Extract PDF Pages', href: '/extract-pdf-pages' },
+      { label: 'PDF to Text', href: '/pdf-to-text' },
+      { label: 'PDF to Markdown', href: '/pdf-to-markdown' },
+    ],
+  },
+  {
+    label: 'Daily Utilities',
+    href: '/daily-utilities',
+    items: [
+      { label: 'All Daily Utilities', href: '/daily-utilities' },
+      { label: 'QR Code Generator', href: '/qr-code-generator' },
+      { label: 'Password Generator', href: '/password-generator' },
+    ],
+  },
+  {
+    label: 'Text Tools',
+    href: '/text-tools',
+    items: [
+      { label: 'All Text Tools', href: '/text-tools' },
+      { label: 'Text Case Converter', href: '/text-case-converter' },
+      { label: 'Lorem Ipsum Generator', href: '/lorem-ipsum-generator' },
+      { label: 'Word & Character Counter', href: '/word-counter' },
+    ],
+  },
+  {
+    label: 'Calculators',
+    href: '/calculators',
+    items: [
+      { label: 'All Calculators', href: '/calculators' },
+      { label: 'Age Calculator', href: '/age-calculator' },
+      { label: 'Percentage & Discount Calculator', href: '/percentage-calculator' },
+    ],
+  },
+]
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [recentOpen, setRecentOpen] = useState(false)
+  const [openCategory, setOpenCategory] = useState(null)
   const recentRef = useRef(null)
+  const siteNavRef = useRef(null)
   const { recentTools, clearRecentTools } = useRecentTools()
 
   const closeMenu = () => {
     setMenuOpen(false)
     setRecentOpen(false)
+    setOpenCategory(null)
   }
 
   // Close recent dropdown when clicking outside
@@ -18,6 +80,9 @@ export default function Header() {
     function handleClickOutside(e) {
       if (recentRef.current && !recentRef.current.contains(e.target)) {
         setRecentOpen(false)
+      }
+      if (siteNavRef.current && !siteNavRef.current.contains(e.target)) {
+        setOpenCategory(null)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -33,13 +98,42 @@ export default function Header() {
             <span className="logo-text">File<span>Vexa</span></span>
           </Link>
 
-          <nav className="site-nav" aria-label="Main navigation">
+          <nav className="site-nav" aria-label="Main navigation" ref={siteNavRef}>
             <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
-            <NavLink to="/image-tools" className={({ isActive }) => isActive ? 'active' : ''}>Image Tools</NavLink>
-            <NavLink to="/pdf-tools" className={({ isActive }) => isActive ? 'active' : ''}>PDF Tools</NavLink>
-            <NavLink to="/daily-utilities" className={({ isActive }) => isActive ? 'active' : ''}>Daily Utilities</NavLink>
-            <NavLink to="/text-tools" className={({ isActive }) => isActive ? 'active' : ''}>Text Tools</NavLink>
-            <NavLink to="/calculators" className={({ isActive }) => isActive ? 'active' : ''}>Calculators</NavLink>
+            {CATEGORY_MENUS.map((category) => (
+              <div className="category-nav-item" key={category.href}>
+                <NavLink to={category.href} className={({ isActive }) => isActive ? 'active' : ''}>
+                  {category.label}
+                </NavLink>
+                <button
+                  type="button"
+                  className={`category-menu-toggle ${openCategory === category.href ? 'open' : ''}`}
+                  onClick={() => setOpenCategory((current) => current === category.href ? null : category.href)}
+                  aria-expanded={openCategory === category.href}
+                  aria-label={`Open ${category.label} menu`}
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="m2.5 4.5 3.5 3 3.5-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                {openCategory === category.href && (
+                  <div className="category-tools-dropdown" role="menu" aria-label={category.label}>
+                    {category.items.map((item) => (
+                      <Link key={item.href} to={item.href} onClick={closeMenu} role="menuitem">
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
 
             {/* Recent Tools Shortcuts Dropdown (Desktop) */}
             {recentTools.length > 0 && (
@@ -140,28 +234,36 @@ export default function Header() {
 
         <Link to="/" onClick={closeMenu}>Home</Link>
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)' }}>Image Tools</div>
+        <Link to="/image-tools" onClick={closeMenu}>All Image Tools</Link>
+        <Link to="/compress-image-to-kb" onClick={closeMenu}>Compress Image to KB</Link>
         <Link to="/heic-to-jpg" onClick={closeMenu}>HEIC to JPG</Link>
+        <Link to="/heic-to-png" onClick={closeMenu}>HEIC to PNG</Link>
         <Link to="/webp-to-jpg" onClick={closeMenu}>WebP to JPG</Link>
         <Link to="/webp-to-png" onClick={closeMenu}>WebP to PNG</Link>
-        <Link to="/heic-to-png" onClick={closeMenu}>HEIC to PNG</Link>
         <Link to="/avif-to-jpg" onClick={closeMenu}>AVIF to JPG</Link>
-        <Link to="/compress-image-to-kb" onClick={closeMenu}>Compress Image to KB</Link>
+        <Link to="/convert-png-to-jpg" onClick={closeMenu}>Convert PNG to JPG</Link>
+        <Link to="/convert-png-to-webp" onClick={closeMenu}>Convert PNG to WebP</Link>
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)', marginTop: '8px' }}>PDF Tools</div>
+        <Link to="/pdf-tools" onClick={closeMenu}>All PDF Tools</Link>
+        <Link to="/png-to-pdf" onClick={closeMenu}>PNG to PDF Converter</Link>
         <Link to="/pdf-to-png" onClick={closeMenu}>PDF to PNG</Link>
         <Link to="/remove-pdf-pages" onClick={closeMenu}>Remove PDF Pages</Link>
         <Link to="/extract-pdf-pages" onClick={closeMenu}>Extract PDF Pages</Link>
         <Link to="/pdf-to-text" onClick={closeMenu}>PDF to Text</Link>
         <Link to="/pdf-to-markdown" onClick={closeMenu}>PDF to Markdown</Link>
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)', marginTop: '8px' }}>Daily Utilities</div>
+        <Link to="/daily-utilities" onClick={closeMenu}>All Daily Utilities</Link>
         <Link to="/qr-code-generator" onClick={closeMenu}>QR Code Generator</Link>
-        <Link to="/word-counter" onClick={closeMenu}>Word Counter</Link>
         <Link to="/password-generator" onClick={closeMenu}>Password Generator</Link>
         
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)', marginTop: '8px' }}>Text Tools</div>
+        <Link to="/text-tools" onClick={closeMenu}>All Text Tools</Link>
         <Link to="/text-case-converter" onClick={closeMenu}>Text Case Converter</Link>
         <Link to="/lorem-ipsum-generator" onClick={closeMenu}>Lorem Ipsum Generator</Link>
+        <Link to="/word-counter" onClick={closeMenu}>Word &amp; Character Counter</Link>
         
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)', marginTop: '8px' }}>Calculators</div>
+        <Link to="/calculators" onClick={closeMenu}>All Calculators</Link>
         <Link to="/age-calculator" onClick={closeMenu}>Age Calculator</Link>
         <Link to="/percentage-calculator" onClick={closeMenu}>Percentage Calculator</Link>
       </nav>

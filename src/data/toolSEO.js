@@ -404,6 +404,62 @@ export const TOOL_SEO_DATA = {
       { label: 'PDF to Text', href: '/pdf-to-text', emoji: '📝' },
     ],
   },
+  'png-to-pdf': {
+    title: 'PNG to PDF Converter',
+    metaTitle: 'PNG to PDF Converter - Free Online & Private | FileVexa',
+    metaDescription: 'Convert one or multiple PNG images into a single PDF online for free. Choose page size and order; your files stay private in your browser.',
+    keywords: 'PNG to PDF, convert PNG to PDF, PNG images to PDF, combine PNG into PDF, online PNG PDF converter, private PNG to PDF',
+    href: '/png-to-pdf',
+    icon: '📑',
+    category: { name: 'PDF Tools', href: '/pdf-tools' },
+    howTo: {
+      heading: 'How to Convert PNG to PDF Online',
+      intro:
+        'Combine one PNG image or a collection of PNG files into a single PDF document with this free browser-based converter. Add images by selecting multiple files or dragging them onto the page, then arrange the page order, choose Fit to Image, A4, or Letter, and set the orientation. Fit to Image preserves each PNG’s original dimensions, while A4 and Letter place the image proportionally on a standard page. FileVexa uses pdf-lib to create the PDF entirely in your browser, so your images are not uploaded to a conversion server.',
+      steps: [
+        {
+          title: 'Select or drop PNG images',
+          description: 'Choose one or more .png files from your device, or drag and drop them into the upload area. The previews appear in the order they will become PDF pages.',
+        },
+        {
+          title: 'Arrange pages and choose layout',
+          description: 'Use the up and down controls to reorder images, remove any image you do not need, and select Fit to Image, A4, or Letter with Auto, Portrait, or Landscape orientation.',
+        },
+        {
+          title: 'Create and download your PDF',
+          description: 'Select Convert to PDF. The pages are assembled locally in your browser and the finished .pdf file downloads directly to your device.',
+        },
+      ],
+      tips: 'Use Auto orientation to match each standard-size PDF page to its image. Fit to Image keeps the image proportions and creates a page sized to the PNG, while A4 and Letter scale images to fit without cropping.',
+    },
+    faqs: [
+      {
+        question: 'Are my PNG images uploaded when I convert them to PDF?',
+        answer: 'No. Your PNG images are read and combined locally in your browser with pdf-lib. They are not uploaded to FileVexa or a conversion server.',
+      },
+      {
+        question: 'Can I combine multiple PNG images into one PDF?',
+        answer: 'Yes. Select multiple PNG files or add them in batches. Each image becomes one PDF page, in the order shown in the preview list.',
+      },
+      {
+        question: 'Can I change the order of PNG pages before converting?',
+        answer: 'Yes. Use the Move up and Move down controls on each image to arrange the PDF page order. You can also remove individual images before creating the PDF.',
+      },
+      {
+        question: 'What do Fit to Image, A4, and Letter page sizes do?',
+        answer: 'Fit to Image creates each PDF page at the image dimensions. A4 and Letter use standard paper dimensions and scale the image proportionally to fit inside the page without cropping it.',
+      },
+      {
+        question: 'Does the converter support portrait and landscape PNG images?',
+        answer: 'Yes. Choose Auto to match page orientation to each image, or select Portrait or Landscape for standard A4 or Letter pages. Fit to Image always preserves the image shape.',
+      },
+    ],
+    related: [
+      { label: 'PDF to PNG', href: '/pdf-to-png', emoji: '📄' },
+      { label: 'Extract PDF Pages', href: '/extract-pdf-pages', emoji: '✂️' },
+      { label: 'Remove PDF Pages', href: '/remove-pdf-pages', emoji: '🗑️' },
+    ],
+  },
 
   'remove-pdf-pages': {
     title: 'Remove PDF Pages',

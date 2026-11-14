@@ -22,6 +22,7 @@ This file is a concise guide for AI assistants and other readers. See the privac
 
 ## PDF tools
 
+- [PNG to PDF Converter](/png-to-pdf): Combine and reorder PNG images into a PDF in your browser without uploading files.
 - [PDF to PNG](/pdf-to-png): Render PDF pages to PNG images in the browser.
 - [Remove PDF Pages](/remove-pdf-pages): Remove selected pages from a PDF in the browser.
 - [Extract PDF Pages](/extract-pdf-pages): Extract selected pages from a PDF in the browser.
