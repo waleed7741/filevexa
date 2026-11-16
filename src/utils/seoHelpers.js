@@ -2,8 +2,17 @@
  * seoHelpers.js
  * Utility to update document metadata on client-side route mount.
  */
+import { TOOL_SITE_URL } from '../config/toolsSEOData.js'
 
 export function setPageMeta({ title, description, keywords, canonical }) {
+  const canonicalUrl = canonical ? new URL(canonical, `${TOOL_SITE_URL}/`) : null
+  const canonicalPath = canonicalUrl
+    ? canonicalUrl.pathname.replace(/\/+$/, '') || '/'
+    : undefined
+  const pageCanonical = canonicalPath
+    ? `${TOOL_SITE_URL}${canonicalPath}`
+    : undefined
+
   // Title
   document.title = title
 
@@ -35,7 +44,7 @@ export function setPageMeta({ title, description, keywords, canonical }) {
   let ogDesc = document.querySelector('meta[property="og:description"]')
   if (ogDesc) ogDesc.setAttribute('content', description)
 
-  setMeta('property', 'og:url', canonical)
+  setMeta('property', 'og:url', pageCanonical)
   setMeta('property', 'og:type', 'website')
 
   // Twitter title
@@ -45,18 +54,18 @@ export function setPageMeta({ title, description, keywords, canonical }) {
   // Twitter description
   let twDesc = document.querySelector('meta[name="twitter:description"]')
   if (twDesc) twDesc.setAttribute('content', description)
-  setMeta('name', 'twitter:url', canonical)
+  setMeta('name', 'twitter:url', pageCanonical)
   setMeta('name', 'twitter:card', 'summary_large_image')
 
   // Canonical link
-  if (canonical) {
+  if (pageCanonical) {
     let canonEl = document.querySelector('link[rel="canonical"]')
     if (!canonEl) {
       canonEl = document.createElement('link')
       canonEl.setAttribute('rel', 'canonical')
       document.head.appendChild(canonEl)
     }
-    canonEl.setAttribute('href', canonical)
+    canonEl.setAttribute('href', pageCanonical)
   }
 
 }

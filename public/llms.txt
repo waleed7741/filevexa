@@ -8,6 +8,10 @@ FileVexa provides image and PDF converters, text utilities, and calculators. Fil
 
 This file is a concise guide for AI assistants and other readers. See the privacy policy and individual tool pages for current details. Access to public pages does not imply any particular crawler policy beyond the site's robots.txt.
 
+## FileVexa
+
+- [FileVexa Home](/): Browse browser-based image, PDF, text, and utility tools.
+
 ## Image tools
 
 - [Compress Image to KB](/compress-image-to-kb): Compress Image to 20KB, 50KB, 100KB - 100% Client-Side Private Tool
@@ -48,4 +52,5 @@ This file is a concise guide for AI assistants and other readers. See the privac
 
 - [Privacy Policy](/privacy): Details on local file processing.
 - [Terms of Use](/terms): Service terms.
+- [Contact](/contact): Contact FileVexa.
 - [Sitemap](/sitemap.xml): Public route index.

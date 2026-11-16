@@ -64,9 +64,10 @@ FileVexa is a privacy-focused collection of free image, PDF, text, and everyday 
 - **Image processing:** HTML Canvas is used for browser-native image conversion and JPEG quality-based size reduction. HEIC decoding uses the `heic2any` package.
 - **PDF processing:** PDF.js and `pdf-lib` support browser-side PDF rendering and document operations.
 - **Browser utilities:** The password generator uses the Web Crypto API; text tools and calculators run locally in the page.
-- **Static generation:** Vite builds the client and server-rendered bundles; `npm run build:ssg` prerenders configured routes into static HTML.
-- **Search metadata:** Tool pages receive canonical URLs, page-specific titles and descriptions, and Schema.org WebApplication and FAQPage JSON-LD where FAQs are configured.
-- **Discovery:** The prerender pipeline generates `sitemap.xml` and updates the site's `llms.txt` index.
+- **Static generation:** Vite builds the client and server-rendered bundles; `npm run build:ssg` writes the homepage to `dist/index.html` and each other route to a flat `dist/<route>.html` file.
+- **URL normalization:** Cloudflare Pages middleware permanently redirects GET and HEAD requests with trailing slashes to the slash-free URL while preserving query parameters.
+- **Search metadata:** Every prerendered route has a self-referencing canonical URL; tool pages also receive page-specific titles, descriptions, and Schema.org WebApplication and FAQPage JSON-LD where FAQs are configured.
+- **Discovery:** The prerender pipeline generates `sitemap.xml` and updates the site's `llms.txt`; `index-urls.js` uses the same configured tool routes for indexing notifications.
 
 ## Development
 

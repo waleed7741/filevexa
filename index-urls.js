@@ -1,5 +1,6 @@
 import { google } from 'googleapis';
 import fs from 'fs';
+import { TOOLS_SEO_DATA } from './src/config/toolsSEOData.js';
 
 const key = JSON.parse(fs.readFileSync('./service_account.json'));
 
@@ -9,47 +10,21 @@ const jwtClient = new google.auth.JWT({
   scopes: ['https://www.googleapis.com/auth/indexing'],
 });
 
-// ALL LIVE FILEVEXA ROUTES & ENDPOINTS
-const urls = [
-  // Homepage & Meta/AI Bots
-  'https://filevexa.pages.dev/',
-  'https://filevexa.pages.dev/llms.txt',
-
-  // Image Tools
-  'https://filevexa.pages.dev/compress-image-to-kb',
-  'https://filevexa.pages.dev/heic-to-jpg',
-  'https://filevexa.pages.dev/webp-to-jpg',
-  'https://filevexa.pages.dev/webp-to-png',
-  'https://filevexa.pages.dev/heic-to-png',
-  'https://filevexa.pages.dev/avif-to-jpg',
-  'https://filevexa.pages.dev/convert-png-to-jpg',
-  'https://filevexa.pages.dev/convert-png-to-webp',
-
-  // PDF Tools
-  'https://filevexa.pages.dev/png-to-pdf',
-  'https://filevexa.pages.dev/pdf-to-png',
-  'https://filevexa.pages.dev/remove-pdf-pages',
-  'https://filevexa.pages.dev/extract-pdf-pages',
-  'https://filevexa.pages.dev/pdf-to-text',
-  'https://filevexa.pages.dev/pdf-to-markdown',
-  'https://filevexa.pages.dev/compress-pdf-200kb',
-
-  // Text Tools
-  'https://filevexa.pages.dev/text-case-converter',
-  'https://filevexa.pages.dev/lorem-ipsum-generator',
-  'https://filevexa.pages.dev/word-counter',
-
-  // Utilities & Calculators
-  'https://filevexa.pages.dev/qr-code-generator',
-  'https://filevexa.pages.dev/password-generator',
-  'https://filevexa.pages.dev/age-calculator',
-  'https://filevexa.pages.dev/percentage-calculator',
-
-  // Company Pages
-  'https://filevexa.pages.dev/privacy',
-  'https://filevexa.pages.dev/terms',
-  'https://filevexa.pages.dev/contact'
+const staticRoutes = [
+  '/',
+  '/privacy',
+  '/terms',
+  '/contact',
+  '/image-tools',
+  '/pdf-tools',
+  '/daily-utilities',
+  '/text-tools',
+  '/calculators',
 ];
+const urls = [...new Set([
+  ...staticRoutes,
+  ...Object.keys(TOOLS_SEO_DATA).map((slug) => `/${slug}`),
+])].map((route) => `https://filevexa.pages.dev${route}`);
 
 async function publishURLs() {
   await jwtClient.authorize();

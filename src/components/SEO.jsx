@@ -6,16 +6,13 @@ export default function SEO({
   title,
   description,
   keywords,
-  canonical,
 }) {
   const location = useLocation();
-  const routePath = location.pathname === '/'
-    ? '/'
-    : location.pathname.replace(/\/+$/, '');
+  const routePath = location.pathname.replace(/\/+$/, '') || '/';
   const tool = TOOLS_SEO_DATA[routePath.replace(/^\//, '')];
   const pageTitle = tool?.title || title;
   const pageDescription = tool?.description || description;
-  const pageCanonical = tool?.url || canonical || `${TOOL_SITE_URL}${routePath}`;
+  const pageCanonical = `${TOOL_SITE_URL}${routePath}`;
   const pageKeywords = tool?.keywords || (tool
     ? [tool.targetKeywords.primary, ...tool.targetKeywords.longTail].join(', ')
     : keywords);

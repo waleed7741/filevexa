@@ -8,7 +8,7 @@
  *  1. Builds the SSR bundle (entry-server.jsx) with `vite build --ssr`
  *  2. Renders each route to a string using React's renderToString
  *  3. Injects the Helmet head tags into the <head> and the rendered HTML into <div id="root">
- *  4. Writes each result to dist/<route>/index.html (Cloudflare Pages / most static hosts expect this)
+ *  4. Writes non-root routes to flat dist/<route>.html files for clean URLs
  * 
  * Usage:  node prerender.js
  * Or via npm script: "prerender": "node prerender.js"
@@ -17,7 +17,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { TOOLS_SEO_DATA } from './src/config/toolsSEOData.js'
+import { TOOLS_SEO_DATA, TOOL_SITE_URL } from './src/config/toolsSEOData.js'
 import {
   createFaqPageSchema,
   createWebApplicationSchema,
@@ -40,9 +40,32 @@ const staticRoutes = [
   '/calculators',
 ]
 const routes = [
-  ...staticRoutes,
-  ...Object.keys(TOOLS_SEO_DATA).map((slug) => `/${slug}`),
+  ...new Set([
+    ...staticRoutes,
+    ...Object.keys(TOOLS_SEO_DATA).map((slug) => `/${slug}`),
+  ]),
 ]
+
+function setRouteCanonical(html, route) {
+  const headMatch = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)
+  if (!headMatch) {
+    throw new Error(`Cannot prerender ${route}: HTML template has no <head>.`)
+  }
+
+  const routePath = route === '/' ? '/' : route.replace(/\/+$/, '')
+  const canonical = `${TOOL_SITE_URL}${routePath}`
+  const head = headMatch[1]
+    .replace(/<link\b[^>]*\brel=["']canonical["'][^>]*\/?>/gi, '')
+    .replace(/<meta\b[^>]*\bproperty=["']og:url["'][^>]*\/?>/gi, '')
+    .replace(/<meta\b[^>]*\bname=["']twitter:url["'][^>]*\/?>/gi, '')
+  const canonicalTags = [
+    `<link rel="canonical" href="${escapeHtml(canonical)}" />`,
+    `<meta property="og:url" content="${escapeHtml(canonical)}" />`,
+    `<meta name="twitter:url" content="${escapeHtml(canonical)}" />`,
+  ].join('\n    ')
+
+  return html.replace(headMatch[0], `<head>${head.trim()}\n    ${canonicalTags}\n  </head>`)
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -161,26 +184,34 @@ for (const route of routes) {
   // Inject the rendered HTML body into the root div
   output = output.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
 
-  // Determine output file path
-  // "/" → dist/index.html
-  // "/pdf-to-png" → dist/pdf-to-png/index.html  (works with Cloudflare Pages)
-  const outDir = route === '/'
-    ? toAbsolute('dist')
-    : toAbsolute(`dist${route}`)
-
-  fs.mkdirSync(outDir, { recursive: true })
   const tool = TOOLS_SEO_DATA[route.replace(/^\//, '')]
   if (tool) output = setToolHead(output, tool)
-  fs.writeFileSync(path.join(outDir, 'index.html'), output)
-  console.log(`  ✓  Written → ${path.join(outDir, 'index.html')}`)
+  output = setRouteCanonical(output, route)
+
+  // Keep the root entry point, but use flat files for all other clean URLs.
+  const outFile = route === '/'
+    ? toAbsolute('dist/index.html')
+    : toAbsolute(`dist${route}.html`)
+  const cleanOutput = output
+    .replace(/[ \t]+(?=\r?$)/gm, '')
+    .replace(/\r\n?/g, '\n')
+    .replace(/\n/g, '\r\n')
+  fs.writeFileSync(outFile, cleanOutput)
+  console.log(`  ✓  Written → ${outFile}`)
 }
 
 console.log('\n✅  Pre-rendering complete.')
 
 const sitemapRoutes = [
   { route: '/', priority: '1.0' },
-  ...['image-tools', 'pdf-tools', 'daily-utilities', 'text-tools', 'calculators']
-    .map((slug) => ({ route: `/${slug}`, priority: '0.9' })),
+  ...staticRoutes
+    .filter((route) => route !== '/')
+    .map((route) => ({
+      route,
+      priority: ['/image-tools', '/pdf-tools', '/daily-utilities', '/text-tools', '/calculators'].includes(route)
+        ? '0.9'
+        : '0.6',
+    })),
   ...Object.keys(TOOLS_SEO_DATA).map((slug) => ({
     route: `/${slug}`,
     priority: slug === 'compress-pdf-to-200kb' ? '0.6' : '0.8',
