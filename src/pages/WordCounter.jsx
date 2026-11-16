@@ -17,7 +17,7 @@ export default function WordCounter() {
     <div className="tool-page">
       <SEO
         title="Free Online Word & Character Counter | FileVexa"
-        description="Accurate online tool to count words, characters, sentences, and paragraphs in your text instantly. 100% private."
+        description="Count whitespace-separated words, characters, and paragraphs in your browser. Text is not sent to FileVexa for processing."
         canonical="https://filevexa.pages.dev/word-counter"
       />
 

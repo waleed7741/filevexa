@@ -1,29 +1,8 @@
 import SEO from '../components/SEO';
 import ToolCard from '../components/ToolCard';
+import { getToolCards } from '../config/toolsSEOData'
 
-const UTILITY_TOOLS = [
-  {
-    title: 'QR Code Generator',
-    desc: 'Create free, permanent QR codes online instantly. No signup required.',
-    href: '/qr-code-generator',
-    icon: '📱',
-    type: 'utility',
-  },
-  {
-    title: 'Word Counter',
-    desc: 'Accurate online tool to count words, characters, sentences, and paragraphs.',
-    href: '/word-counter',
-    icon: '🔤',
-    type: 'utility',
-  },
-  {
-    title: 'Password Generator',
-    desc: 'Generate strong, secure, random passwords directly in your browser.',
-    href: '/password-generator',
-    icon: '🔐',
-    type: 'utility',
-  },
-];
+const UTILITY_TOOLS = getToolCards('Daily Utilities')
 
 export default function DailyUtilitiesCategory() {
   return (
@@ -43,7 +22,9 @@ export default function DailyUtilitiesCategory() {
 
         <header className="tool-page-header" style={{ textAlign: 'center', marginBottom: '48px' }}>
           <h1>Daily Utility Tools</h1>
-          <p style={{ margin: '0 auto' }}>Fast, reliable everyday web utilities running safely in your browser.</p>
+          <p style={{ margin: '0 auto' }}>
+            Create a QR code from text, generate a password, or inspect a word and character count. Each utility runs in the page without an account.
+          </p>
         </header>
 
         <div className="tools-grid">

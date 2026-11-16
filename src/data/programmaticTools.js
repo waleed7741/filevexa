@@ -37,7 +37,7 @@ export const PROGRAMMATIC_TOOLS = {
   },
   'compress-pdf-to-200kb': {
     title: 'Compress PDF to 200KB — Free Online PDF Guide | FileVexa',
-    description: 'Learn how to reduce PDF size toward 200KB while protecting your privacy. FileVexa processes supported files locally in your browser.',
+    description: 'Learn what affects PDF size and find available browser-based PDF tools. FileVexa does not currently offer a PDF compressor.',
     heading: 'How to Reduce a PDF Toward 200KB',
     intro: 'A PDF’s final size depends on its page count, embedded images, and fonts. FileVexa does not currently offer a PDF compressor, so we will not claim to produce a 200KB file. This guide explains what affects PDF size and links to the PDF tools that are available in your browser.',
     kind: 'guide',

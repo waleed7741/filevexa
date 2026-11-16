@@ -4,7 +4,7 @@ import { TOOLS_SEO_DATA } from '../config/toolsSEOData'
 
 export default function ToolRouteFaq() {
   const { pathname } = useLocation()
-  const slug = pathname.replace(/^\//, '')
+  const slug = pathname.replace(/^\/+|\/+$/g, '')
   const tool = TOOLS_SEO_DATA[slug]
 
   if (!tool || tool.layoutRendered) return null
@@ -12,7 +12,7 @@ export default function ToolRouteFaq() {
   return (
     <ToolPageLayout
       toolId={slug}
-      sections={['summary', 'features']}
+      sections={['summary', 'details', 'features']}
       includeSEO={false}
     />
   )

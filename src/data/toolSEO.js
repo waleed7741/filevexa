@@ -1,21 +1,21 @@
 /**
  * src/data/toolSEO.js
  * Comprehensive SEO guides, step-by-step instructions, and FAQs for all FileVexa tools.
- * Provides 250-300 word semantic guides and 3 expandable FAQs per tool for search visibility.
+ * Provides route-specific usage guides, practical details, and FAQs for each tool.
  */
 
 export const TOOL_SEO_DATA = {
   'compress-image-to-kb': {
     title: 'Compress Image to KB',
     metaTitle: 'Compress Image to Specific Size (20KB, 50KB, 100KB) Free - FileVexa',
-    metaDescription: 'Compress images to exact target size in KB online for free (20KB, 50KB, 100KB or custom). 100% private client-side processing with zero server uploads.',
+    metaDescription: 'Reduce a JPEG, PNG, WebP, or HEIC image toward a chosen KB target. Output is a local JPEG; exact size depends on the image.',
     keywords: 'compress image to 20kb, compress image to 50kb, compress image to 100kb, image KB reducer, resize image size in kb online, free photo compressor',
     href: '/compress-image-to-kb',
     icon: '📉',
     category: { name: 'Image Tools', href: '/image-tools' },
     howTo: {
       heading: 'How to Compress an Image to a Specific Size in KB',
-      intro: 'FileVexa compresses JPEG, PNG, WebP, and HEIC photos to a target size such as 20 KB, 50 KB, or 100 KB. Choose a preset or enter a custom size, then let the browser find the highest JPEG quality that fits. Resolution is reduced only when quality compression reaches its minimum. Image processing stays on your device; no photo is uploaded to a server.',
+      intro: 'FileVexa helps reduce JPEG, PNG, WebP, and HEIC photos toward a target size such as 20 KB, 50 KB, or 100 KB. Choose a preset or enter a custom size, then the browser adjusts JPEG quality and, if needed, image dimensions. Some images cannot reach a very small target without substantial quality loss. Processing happens on your device; the selected photo is not uploaded to a FileVexa processing service.',
       steps: [
         {
           title: 'Choose an image',
@@ -27,7 +27,7 @@ export const TOOL_SEO_DATA = {
         },
         {
           title: 'Compress and download',
-          description: 'The tool searches for the best image quality under your size limit, then downloads the compressed JPEG directly to your device.',
+          description: 'The tool adjusts image quality and, if needed, dimensions toward your target, then downloads a JPEG. Review the file size and image quality; a very small target may not be achievable.',
         },
       ],
       tips: 'For job applications and online forms, follow the exact maximum file size listed by the destination. If quality alone cannot meet a small target, this tool reduces image dimensions while preserving as much quality as possible.',
@@ -64,7 +64,7 @@ export const TOOL_SEO_DATA = {
     howTo: {
       heading: 'How to Convert HEIC Images to JPG Online for Free',
       intro:
-        'HEIC (High Efficiency Image Container) is Apple’s proprietary image compression format introduced with iOS 11. While it preserves photo detail at half the file size of traditional JPEG images, many Windows computers, Android phones, email clients, and legacy image editors cannot open HEIC files natively. FileVexa solves this compatibility bottleneck by converting HEIC and HEIF photos directly to universally supported JPG format without uploading your files to remote cloud servers. Our client-side conversion engine leverages your browser’s WebAssembly memory to decode the high-efficiency image container and render high-resolution JPEG files locally, guaranteeing complete privacy and instantaneous performance.',
+        'iPhones commonly save photos as HEIC/HEIF, a compact format that some Windows apps, Android devices, email services, and older editors may not open without extra support. Converting a copy to JPG can make a photo easier to share or use in those apps. FileVexa accepts HEIC and HEIF images up to 50 MB and converts them in your browser, so the selected photo is not uploaded to a FileVexa processing service. Conversion time and output size depend on the image and your device.',
       steps: [
         {
           title: 'Select Your HEIC Photos',
@@ -79,7 +79,7 @@ export const TOOL_SEO_DATA = {
         {
           title: 'Execute Browser Conversion',
           description:
-            'Click the Convert button. JavaScript processes the binary image stream entirely within your device memory without transmitting data over the internet.',
+            'Click Convert to process the selected image in your browser. The image is not sent to a FileVexa image-processing service.',
         },
         {
           title: 'Download Converted JPG',
@@ -94,7 +94,7 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Are my private photos uploaded to a third-party server?',
         answer:
-          'No. FileVexa operates strictly client-side. Your HEIC files are decoded and re-encoded locally inside your web browser using JavaScript. No photos are ever uploaded, saved, or logged onto any external server.',
+          'The converter reads and converts the selected image in your browser; it does not send the image to a FileVexa file-processing server. This describes the file conversion flow, not general website requests or analytics described in the Privacy Policy.',
       },
       {
         question: 'Why does the converted JPG file sometimes have a larger size than the original HEIC?',
@@ -123,7 +123,7 @@ export const TOOL_SEO_DATA = {
     howTo: {
       heading: 'How to Convert WebP Graphics to JPG in Your Browser',
       intro:
-        'WebP is Google’s modern web graphics format designed to speed up page load times on internet browsers. However, when downloading images from the web for print projects, social media schedulers, Microsoft Office documents, or graphic design software, WebP files frequently encounter import errors. FileVexa’s WebP to JPG converter bridges this gap by decoding WebP frames and baking transparent channels into a crisp white background. Because processing runs entirely through your browser’s HTML5 Canvas engine, conversions execute instantaneously without queues, subscriptions, or remote server file storage.',
+        'WebP is a common web image format, but some editing, office, or publishing applications may not accept it. Converting a selected WebP image to JPG can help with compatibility; transparent areas are rendered against a background because JPG does not support transparency. Processing happens in your browser, without sending the selected image to a FileVexa image-processing service. Conversion time and appearance depend on the image and browser.',
       steps: [
         {
           title: 'Import WebP File',
@@ -181,7 +181,7 @@ export const TOOL_SEO_DATA = {
     howTo: {
       heading: 'How to Convert WebP to Transparent PNG Losslessly',
       intro:
-        'WebP is widely used across modern web platforms for logos, UI graphics, and photography. However, when importing web assets into video editors, presentation slides, or digital asset management platforms, PNG remains the gold standard for lossless fidelity and reliable alpha channel transparency. FileVexa WebP to PNG Converter ensures your transparent badges, icons, and cutouts transition flawlessly into the PNG format without pixelation, color distortion, or metadata loss. Built on client-side web APIs, your files never travel across the internet, ensuring ultra-fast processing and total privacy.',
+        'WebP is used for web graphics and photography, while PNG is supported by many editors and presentation tools. Converting a WebP to PNG can help when an application does not accept WebP. The browser decodes and re-encodes the image locally; PNG encoding is lossless for the rendered pixels and can retain transparency, though color handling or metadata may differ from the original. The selected file is not sent to a FileVexa processing service.',
       steps: [
         {
           title: 'Upload WebP Image',
@@ -191,7 +191,7 @@ export const TOOL_SEO_DATA = {
         {
           title: 'Automatic Lossless Encoding',
           description:
-            'The converter uses the browser Canvas API to render each pixel into a 32-bit RGBA bitstream without compression artifacts.',
+            'The browser decodes the WebP image and encodes the rendered result as PNG. PNG encoding is lossless for the rendered pixels, but color handling or metadata may differ from the source.',
         },
         {
           title: 'Inspect & Verify',
@@ -211,7 +211,7 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Will alpha transparency be retained in the converted PNG?',
         answer:
-          'Yes! Full 8-bit alpha transparency is strictly maintained. Any transparent pixels in your source WebP image remain completely transparent in the output PNG.',
+          'PNG supports transparency, and transparent areas can be retained when they are present in the decoded WebP. Review the output if transparency is important to your workflow.',
       },
       {
         question: 'Can I use this tool on mobile browsers like Safari or Chrome on iOS/Android?',
@@ -239,7 +239,7 @@ export const TOOL_SEO_DATA = {
     howTo: {
       heading: 'How to Convert Apple HEIC Photos to Lossless PNG Format',
       intro:
-        'When capturing portraits, product photography, or graphic assets on modern iPhones, iOS stores imagery in high-efficiency HEIC format. If you need to edit these photos in software like Figma, Canva, or older Adobe packages, converting to PNG is the ideal route. PNG offers lossless compression, ensuring that no fine details, color depth, or edge sharpness are degraded by secondary compression passes. FileVexa performs full HEIC to PNG translation directly in your browser. Utilizing efficient client-side decoders, your sensitive personal photos remain on your device at all times with zero security risks.',
+        'iPhones commonly save photos as HEIC/HEIF, which may not be accepted by some image editors or publishing workflows. Converting a selected photo to PNG can make it easier to import into software that supports PNG but not HEIC. FileVexa decodes and converts the image in your browser, without uploading it to a FileVexa processing service. PNG encoding does not add lossy compression to the decoded pixels, but cannot restore information already lost in the source and may not preserve every color characteristic or metadata field.',
       steps: [
         {
           title: 'Select HEIC File',
@@ -249,12 +249,12 @@ export const TOOL_SEO_DATA = {
         {
           title: 'Local Client Decoding',
           description:
-            'Our embedded WebAssembly decoder unbundles the HEVC container and extracts the full dynamic range pixel array.',
+            'The browser decodes the selected HEIC/HEIF file locally. Supported files and available memory depend on your device and browser.',
         },
         {
           title: 'Lossless PNG Compilation',
           description:
-            'The pixel stream is converted into standard PNG format without lossy compression artifacts or color shifting.',
+            'The decoded image is encoded as PNG. Review the output if exact color appearance or metadata is important.',
         },
         {
           title: 'Export Converted File',
@@ -263,23 +263,23 @@ export const TOOL_SEO_DATA = {
         },
       ],
       tips:
-        'Pro Tip: Because PNG is an uncompressed, lossless format, the generated file will typically be larger in megabytes than the original HEIC. If you are preparing images for casual email sharing, HEIC to JPG may be more bandwidth-friendly.',
+        'PNG uses lossless compression for the decoded pixels and is often larger than HEIC. If the goal is a broadly compatible photo, HEIC to JPG may be a more compact option, though JPG is lossy.',
     },
     faqs: [
       {
         question: 'Does this converter support high-resolution iPhone ProRAW or 48MP HEIC photos?',
         answer:
-          'Yes! The converter processes high-resolution HEIC files directly using your browser’s available RAM, preserving the full dimensions and crispness of your original capture.',
+          'The converter accepts HEIC/HEIF files up to 50 MB. Whether a high-resolution image can be processed depends on browser support and available device memory; check the output dimensions and appearance.',
       },
       {
         question: 'Why choose PNG instead of JPG for converting HEIC?',
         answer:
-          'PNG uses lossless compression (DEFLATE algorithm), meaning it introduces zero compression noise or blocky artifacts. It is the preferred format for graphic designers, digital artists, and archival storage.',
+          'PNG is useful when an application requires PNG or when transparency is needed. It avoids additional lossy encoding after decoding, but can create larger files and cannot reverse compression already present in the HEIC source.',
       },
       {
         question: 'Is my photo library protected from data scraping?',
         answer:
-          'Completely. Because no backend API or cloud processing pipeline exists, your photos never touch a network socket. All bytes remain strictly on your local machine.',
+          'The tool only reads the HEIC/HEIF image you select and converts it locally in your browser. It does not access your photo library or upload that selected file to a FileVexa processing service.',
       },
     ],
     related: [
@@ -297,12 +297,12 @@ export const TOOL_SEO_DATA = {
     howTo: {
       heading: 'How to Convert Next-Gen AVIF Images to Standard JPG',
       intro:
-        'AVIF (AV1 Image File Format) is an open, royalty-free image specification derived from the AV1 video codec. It provides exceptional compression ratios, often exceeding both JPEG and WebP by 50% or more. However, broad application support remains limited; many legacy browsers, content management systems, and desktop viewers fail to open AVIF files. FileVexa’s AVIF to JPG converter bridges this technological divide, converting AVIF files into universal JPG images on the fly. By taking advantage of native browser media engines, conversion is completed in milliseconds with zero uploads.',
+        'AVIF can produce compact images, but some older apps or workflows may not accept the format. Converting an AVIF copy to JPG can improve compatibility where JPG is supported. The browser must be able to decode AVIF, and JPG does not preserve transparency; inspect the result for color or detail changes. The selected image is processed in your browser rather than uploaded to a FileVexa image-processing service.',
       steps: [
         {
           title: 'Import AVIF Image',
           description:
-            'Drag and drop your .avif image or select it from your device folder. The tool verifies browser compatibility instantly.',
+            'Choose an .avif image from your device. Decoding depends on AVIF support in your browser.',
         },
         {
           title: 'Adjust Output Quality',
@@ -312,12 +312,12 @@ export const TOOL_SEO_DATA = {
         {
           title: 'Instant Canvas Transformation',
           description:
-            'The browser renders the AV1 bitstream and serializes it into a standard JPEG format buffer right inside client memory.',
+            'The browser decodes and renders the image, then encodes a JPEG copy. Processing time and output appearance depend on the browser and source image.',
         },
         {
           title: 'Save Your JPG',
           description:
-            'Download the converted JPG image, compatible with every device, email client, and social media platform worldwide.',
+            'Download the JPG copy and check that it opens correctly in the app or service where you plan to use it.',
         },
       ],
       tips:
@@ -332,12 +332,12 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Are color profiles and HDR information preserved?',
         answer:
-          'Standard JPG converts the color space to standard sRGB, ensuring consistent and predictable color reproduction across all monitors and digital displays.',
+          'The converter exports a browser-encoded JPEG. Color profiles and HDR characteristics may not be retained exactly, so compare the result with the original if color accuracy matters.',
       },
       {
         question: 'How fast is the conversion process?',
         answer:
-          'Because decoding takes place on your local CPU without network transmission delays, single image conversions typically complete in under 500 milliseconds.',
+          'Conversion speed varies with image dimensions, browser support, and device performance. Larger images can take longer and use more memory because processing happens on your device.',
       },
     ],
     related: [
@@ -469,7 +469,7 @@ export const TOOL_SEO_DATA = {
     howTo: {
       heading: 'How to Delete Unwanted Pages from PDF Files Securely',
       intro:
-        'Many PDF documents contain blank sheets, redundant cover pages, outdated appendixes, or sensitive pages that you need to discard before sharing. FileVexa Remove PDF Pages allows you to visually inspect your document and strip out unwanted pages in seconds. Unlike traditional online PDF services that require you to upload proprietary contracts, financial statements, or medical forms to mysterious cloud servers, our tool runs PDF-Lib entirely inside your web browser. The modified PDF is assembled locally, keeping your confidential information 100% private and protected.',
+        'Many PDF documents contain blank sheets, redundant cover pages, or outdated appendixes that you may want to remove before sharing. FileVexa Remove PDF Pages lets you select pages and build a new PDF in your browser. The document is not uploaded to a FileVexa PDF-processing service. This does not replace careful review of the document or the site’s Privacy Policy.',
       steps: [
         {
           title: 'Load PDF File',
@@ -489,7 +489,7 @@ export const TOOL_SEO_DATA = {
         {
           title: 'Download Modified Document',
           description:
-            'Click Download Clean PDF to save your updated document with all links, bookmarks, and remaining pages intact.',
+            'Click Download Clean PDF to save a new document containing the pages you kept. Review the output if it contains forms, links, or bookmarks you need.',
         },
       ],
       tips:
@@ -499,7 +499,7 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Does deleting pages harm the text formatting or quality of remaining pages?',
         answer:
-          'Not at all. The internal vector streams, fonts, and images of remaining pages are copied directly without re-compression, preserving 100% of the original quality.',
+          'The selected pages are copied into a new PDF rather than converted to images. Review the downloaded file if it contains forms, links, bookmarks, or other document features that matter to you.',
       },
       {
         question: 'Can I remove multiple non-consecutive pages at once?',
@@ -509,7 +509,7 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Are there file size or page count limitations?',
         answer:
-          'You can comfortably process documents up to 100MB with dozens of pages, bounded only by your browser’s available memory.',
+          'The tool accepts PDF files up to 100 MB. Practical page capacity depends on the document and available browser memory; very large documents may be slow or fail.',
       },
     ],
     related: [
@@ -560,9 +560,9 @@ export const TOOL_SEO_DATA = {
           'Extract PDF Pages lets you select the specific pages you want to keep and saves them as a new file. Remove PDF Pages lets you select unwanted pages to delete from the original document.',
       },
       {
-        question: 'Will hyperlinks and forms in the extracted pages remain clickable?',
+        question: 'Are links, forms, and bookmarks preserved in extracted pages?',
         answer:
-          'Yes, our lossless PDF stream extraction maintains original embedded fonts, vector graphics, form fields, and hyperlinks on all extracted pages.',
+          'The tool extracts selected pages into a new PDF. Preservation of interactive elements such as form fields, links, or bookmarks is not guaranteed; inspect the result before relying on them.',
       },
       {
         question: 'Can I extract pages on a mobile smartphone?',
@@ -683,7 +683,7 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Can I import the generated .md file directly into Obsidian or Notion?',
         answer:
-          'Yes! The output is 100% compliant with CommonMark and GitHub Flavored Markdown (GFM) standards, making it instantly compatible with Notion, Obsidian, GitHub, and static site generators.',
+          'The output uses common Markdown conventions and can be copied into Markdown editors such as Obsidian or GitHub. Formatting may need review, especially for tables, columns, and complex layouts.',
       },
     ],
     related: [
@@ -699,9 +699,9 @@ export const TOOL_SEO_DATA = {
     icon: '📱',
     category: { name: 'Daily Utilities', href: '/daily-utilities' },
     howTo: {
-      heading: 'How to Generate Custom, Permanent QR Codes Online for Free',
+      heading: 'How to Generate a QR Code from Text or a URL',
       intro:
-        'Quick Response (QR) codes offer a seamless bridge between physical media and digital destinations. Whether you need a scannable barcode for your restaurant menu, business cards, Wi-Fi network credentials, website landing page, or event promotional poster, FileVexa’s QR Code Generator creates high-resolution, permanent QR codes in real time. Unlike predatory services that generate temporary redirect links that expire or demand paid subscriptions after a few scans, FileVexa encodes your raw URL or data directly into the QR matrix. Your codes will work forever, with zero tracking, zero expirations, and complete privacy.',
+        'A QR code can put a URL or short piece of text within easy reach on a flyer, menu, label, or screen. FileVexa encodes the text you enter directly into a downloadable PNG; it does not create a redirect link or track scans through the code. A code has no built-in expiry, but a URL can stop working if its destination changes or goes offline. Preview the code and scan it with a phone before printing.',
       steps: [
         {
           title: 'Input Your Content',
@@ -731,17 +731,17 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Do these QR codes expire or have a scan limit?',
         answer:
-          'No! These are static QR codes. Your raw URL or text is embedded directly into the visual pattern itself. Because there is no middleman redirect server, your QR codes will function permanently with unlimited scans.',
+          'The generated code embeds your text or URL directly and does not add a FileVexa redirect or scan counter. The code itself has no expiry, but a website or other destination encoded in it can change or become unavailable.',
       },
       {
-        question: 'Can I use the generated QR codes for commercial print projects?',
+        question: 'How can I check that a printed QR code will scan?',
         answer:
-          'Yes. All generated QR codes are 100% free for personal and commercial use without attribution. The high-resolution PNG output is crisp and suitable for business cards, flyers, and billboards.',
+          'Download the PNG and scan it with a phone camera at the size and distance you expect people to use. Keep the code clear against its background and test the final printed copy before distributing it.',
       },
       {
         question: 'Is my data or destination link logged on your servers?',
         answer:
-          'Never. The QR code is drawn dynamically in your browser via client-side JavaScript. We do not track, log, or store what you encode.',
+          'The text you enter is used by the browser to render the code; it is not sent to a FileVexa QR-processing server. Website analytics requests are separate from the QR contents and are described in the Privacy Policy.',
       },
     ],
     related: [
@@ -759,7 +759,7 @@ export const TOOL_SEO_DATA = {
     howTo: {
       heading: 'How to Count Words, Characters, and Paragraphs in Real Time',
       intro:
-        'Meeting strict length requirements is essential for essays, academic papers, SEO blog posts, social media captions, and email newsletters. FileVexa Word Counter gives you immediate, real-time feedback on your writing volume. Simply type or paste your draft into the editor to view live counts for total words, characters with and without spaces, sentences, paragraphs, and estimated reading time. Everything processes client-side in real time without sending your drafts or proprietary writing to remote servers.',
+        'Word, character, and paragraph limits matter in forms, captions, essays, and drafts. Paste or type text into the editor to see live totals for whitespace-separated words, all characters, non-whitespace characters, and paragraphs separated by line breaks. The text is counted in the page and is not sent to a FileVexa text-processing server. The word count is a simple whitespace-based measure, not a language-specific grammar analysis.',
       steps: [
         {
           title: 'Enter or Paste Text',
@@ -772,14 +772,14 @@ export const TOOL_SEO_DATA = {
             'Watch the live counter cards update instantaneously for word count, character totals, space-excluded counts, and paragraph counts.',
         },
         {
-          title: 'Estimate Reading Time',
+          title: 'Review the live counts',
           description:
-            'Check reading duration calculated at an average comprehension pace of 200 words per minute to plan reader engagement.',
+            'Use the word, character, and paragraph totals to compare your draft with the requirements of the form or platform where you plan to use it.',
         },
         {
-          title: 'Copy or Edit On the Fly',
+          title: 'Edit to meet a limit',
           description:
-            'Tweak and edit your text until you hit your exact target limits (e.g. 280 characters for Twitter, 160 for meta descriptions).',
+            'Revise the text in the editor and watch the counts update. Check the destination’s current length rules before publishing.',
         },
       ],
       tips:
@@ -789,7 +789,7 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Is my text private and secure while using this counter?',
         answer:
-          'Yes, 100%. Your text is evaluated strictly in your browser’s local memory. No keystrokes, text content, or drafts are transmitted over the network or stored on any database.',
+          'The counter processes the text in the page and does not send it to a FileVexa text-processing server. For website analytics and other site requests, see the Privacy Policy.',
       },
       {
         question: 'How are hyphenated words and special characters counted?',
@@ -799,7 +799,7 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Is there a word or character limit in the text box?',
         answer:
-          'There is no artificial limit. You can paste entire book chapters or 50,000-word manuscripts without experiencing slowdowns.',
+          'The page does not specify a fixed character limit. Very large text can affect responsiveness depending on your device and browser.',
       },
     ],
     related: [
@@ -852,12 +852,12 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Are generated passwords ever transmitted over the internet?',
         answer:
-          'Never. The code executes 100% locally in your browser. No network requests are made, ensuring your generated passwords are completely private.',
+          'The password is generated in your browser and is not sent to a FileVexa password-processing service. Do not copy or share passwords on a device you do not trust; website requests and analytics are described in the Privacy Policy.',
       },
       {
         question: 'What password length is considered safe against modern GPU cracking?',
         answer:
-          'A random password of 16 characters combining uppercase, lowercase, numbers, and symbols provides over 95 bits of entropy, requiring billions of years to crack with current supercomputers.',
+          'A randomly generated 16-character password using all selected character groups can have substantial entropy. Actual strength depends on the selected groups and how the password is stored; use a unique password and keep it in a trusted password manager.',
       },
     ],
     related: [
@@ -905,17 +905,17 @@ export const TOOL_SEO_DATA = {
       {
         question: 'What is the difference between Title Case and Sentence case?',
         answer:
-          'Title Case capitalizes the first letter of every major word (e.g., "The Quick Brown Fox"), while Sentence case only capitalizes the first letter of each sentence and proper nouns (e.g., "The quick brown fox").',
+          'Title Case capitalizes the first character after each space, while Sentence case capitalizes the first character at the start of the text and after sentence punctuation. These simple transformations do not identify proper nouns or title-style minor words, so review the result.',
       },
       {
         question: 'Does this tool work with non-English alphabets and accents?',
         answer:
-          'Yes, modern JavaScript Unicode normalization accurately handles accented characters, umlauts, and international alphabets such as Spanish, French, and German.',
+          'The tool uses the browser’s built-in JavaScript case conversion. Results depend on the language and characters; review accents, names, and scripts that have language-specific casing rules.',
       },
       {
         question: 'Is my text transmitted or saved anywhere?',
         answer:
-          'No. All string manipulations execute in local browser memory. Your text remains private and confidential.',
+          'The converter changes the text in your browser and does not send it to a FileVexa text-processing service. Website requests and analytics are described in the Privacy Policy.',
       },
     ],
     related: [
@@ -948,7 +948,7 @@ export const TOOL_SEO_DATA = {
         {
           title: 'Generate Custom Blocks',
           description:
-            'Click Generate to instantly assemble natural-looking Latin sentences with varied word lengths and punctuation.',
+            'Click Generate to assemble placeholder paragraphs from a fixed list of Latin words. The output is dummy text, not natural-language copy.',
         },
         {
           title: 'Copy to Clipboard',
@@ -973,7 +973,7 @@ export const TOOL_SEO_DATA = {
       {
         question: 'Is the generated text royalty-free?',
         answer:
-          'Yes, Lorem Ipsum is completely public domain and can be freely used in any personal or commercial design project.',
+          'Lorem Ipsum is placeholder text commonly used in design mockups. Check the rights and terms for any particular text or asset you use in a commercial project.',
       },
     ],
     related: [

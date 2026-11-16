@@ -1,88 +1,40 @@
-import { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
 import SEO from '../components/SEO'
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false)
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    // UI-only form (no backend) – show a friendly confirmation message
-    setSubmitted(true)
-  }
-
   return (
     <div className="container">
       <SEO
-        title="Contact | FileVexa"
-        description="Get in touch with the FileVexa team. Send us a message with your questions or feedback."
+        title="Contact FileVexa: Tool Questions and Feedback"
+        description="Email FileVexa about tool behavior, supported formats, accessibility, or site feedback. Your local files are not available to our team."
         canonical="https://filevexa.pages.dev/contact"
       />
       <div className="static-page">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
         <h1>Contact Us</h1>
-        <p className="page-meta">Have a question, suggestion, or found a bug? We'd love to hear from you.</p>
+        <p className="page-meta">
+          Have a question about a tool, found a problem, or want to suggest an improvement? Email{' '}
+          <a href="mailto:hello@filevexa.com">hello@filevexa.com</a>.
+        </p>
 
-        {submitted ? (
-          <div className="result-card" style={{ maxWidth: '560px' }}>
-            <div className="result-icon" aria-hidden="true">✓</div>
-            <div className="result-info">
-              <h3>Message received!</h3>
-              <p>Thanks for reaching out. We'll get back to you as soon as possible.</p>
-            </div>
-          </div>
-        ) : (
-          <form className="contact-form" onSubmit={handleSubmit} noValidate>
-            <div className="form-group">
-              <label className="form-label" htmlFor="contact-name">Your name</label>
-              <input
-                id="contact-name"
-                type="text"
-                className="form-input"
-                placeholder="Jane Smith"
-                autoComplete="name"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="contact-email">Email address</label>
-              <input
-                id="contact-email"
-                type="email"
-                className="form-input"
-                placeholder="jane@example.com"
-                autoComplete="email"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="contact-subject">Subject</label>
-              <input
-                id="contact-subject"
-                type="text"
-                className="form-input"
-                placeholder="Question about a tool"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="contact-message">Message</label>
-              <textarea
-                id="contact-message"
-                className="form-textarea"
-                placeholder="Describe your question or feedback…"
-                required
-              ></textarea>
-            </div>
-            <button id="contact-submit" type="submit" className="btn btn-primary btn-lg">
-              Send Message
-            </button>
-            <p className="text-muted mt-4">
-              Note: This form is a UI demonstration. To contact us directly, email{' '}
-              <a href="mailto:hello@filevexa.com">hello@filevexa.com</a>.
-            </p>
-          </form>
-        )}
+        <h2>What to include</h2>
+        <p>
+          Tell us which tool and browser you were using, what you expected, and what happened. For a conversion problem,
+          include the input format and approximate file size, but do not email private documents unless you are
+          comfortable sharing them with your email provider and the recipient.
+        </p>
+        <h2>About local processing</h2>
+        <p>
+          FileVexa tools process selected files in your browser. Our team cannot view or retrieve a file from a
+          conversion session, and support requests do not create an upload channel. Please describe the issue rather
+          than sending sensitive content.
+        </p>
+        <h2>Tool limits and compatibility</h2>
+        <p>
+          Supported input formats and size limits vary by tool, and performance depends on your browser and device.
+          Check the tool's format and limit information first. For policy questions, see our <a href="/privacy">Privacy Policy</a>{' '}
+          and <a href="/terms">Terms of Use</a>.
+        </p>
       </div>
     </div>
   )

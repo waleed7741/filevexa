@@ -1,21 +1,7 @@
 import ToolCard from './ToolCard';
+import { getToolCards } from '../config/toolsSEOData'
 
-const TEXT_TOOLS = [
-  {
-    title: 'Text Case Converter',
-    desc: 'Easily convert text to UPPERCASE, lowercase, Title Case, or Sentence case.',
-    href: '/text-case-converter',
-    icon: 'Aa',
-    type: 'text',
-  },
-  {
-    title: 'Lorem Ipsum Generator',
-    desc: 'Generate customized Lorem Ipsum placeholder text instantly.',
-    href: '/lorem-ipsum-generator',
-    icon: '¶',
-    type: 'text',
-  }
-];
+const TEXT_TOOLS = getToolCards('Text Tools')
 
 export default function TextToolsSection() {
   return (

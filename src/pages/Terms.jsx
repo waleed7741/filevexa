@@ -5,14 +5,14 @@ export default function Terms() {
   return (
     <div className="container">
       <SEO
-        title="Terms of Use | FileVexa"
-        description="FileVexa Terms of Use. Read our terms before using our free file conversion tools."
+        title="FileVexa Terms of Use: Browser-Based File Tools"
+        description="Review the terms for using FileVexa's browser-based converters and utilities, including local processing, compatibility, and output limitations."
         canonical="https://filevexa.pages.dev/terms"
       />
       <div className="static-page">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Terms of Use' }]} />
         <h1>Terms of Use</h1>
-        <p className="page-meta">Last updated: September 2026</p>
+        <p className="page-meta">Last updated: November 2026</p>
 
         <h2>Acceptance of Terms</h2>
         <p>
@@ -22,8 +22,23 @@ export default function Terms() {
 
         <h2>Description of Service</h2>
         <p>
-          FileVexa provides online file tools. File processing runs locally in your browser; file contents are not
-          uploaded to an external processing service.
+          FileVexa provides image converters, PDF utilities, text tools, and calculators. The file tools process
+          selected file contents in your browser rather than uploading them to a FileVexa file-processing service.
+          The site itself must load over the network, and separate website analytics may run as described in the{' '}
+          <a href="/privacy">Privacy Policy</a>.
+        </p>
+
+        <h2>Files, results, and compatibility</h2>
+        <p>
+          You are responsible for keeping a copy of your source files and checking each output before relying on or
+          distributing it. Conversion quality, formatting, supported formats, and practical file size depend on the
+          particular tool, browser, device memory, and source document. Scanned PDFs require OCR for text recognition;
+          FileVexa's PDF text tools do not provide OCR. The service is not a substitute for professional, legal, or
+          financial review.
+        </p>
+        <p>
+          Do not use the tools to process files you do not have permission to use. FileVexa does not provide server
+          storage, backups, or recovery of local files and generated results.
         </p>
 
         <h2>Permitted Use</h2>
@@ -42,8 +57,9 @@ export default function Terms() {
 
         <h2>Disclaimer of Warranties</h2>
         <p>
-          FileVexa is provided "as is" without any warranties, expressed or implied. We do not guarantee that the
-          service will be error-free, uninterrupted, or produce perfectly accurate conversions in all cases.
+          FileVexa is provided "as is" to the extent permitted by applicable law. We do not guarantee continuous
+          availability, compatibility with every browser or file, or that a conversion will preserve every element of
+          the source. Check important results independently before use.
         </p>
 
         <h2>Limitation of Liability</h2>
@@ -54,8 +70,8 @@ export default function Terms() {
 
         <h2>Changes to Terms</h2>
         <p>
-          We may update these Terms of Use from time to time. Continued use of the service after changes constitutes
-          acceptance of the revised terms.
+          We may update these terms as the service changes. The latest revision date appears at the top of this page.
+          Your use of FileVexa is subject to the version currently published.
         </p>
 
         <h2>Contact</h2>

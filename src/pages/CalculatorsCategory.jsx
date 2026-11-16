@@ -1,22 +1,8 @@
 import SEO from '../components/SEO';
 import ToolCard from '../components/ToolCard';
+import { getToolCards } from '../config/toolsSEOData'
 
-const CALC_TOOLS = [
-  {
-    title: 'Age Calculator',
-    desc: 'Calculate your exact age in years, months, and days.',
-    href: '/age-calculator',
-    icon: '🎂',
-    type: 'calc',
-  },
-  {
-    title: 'Percentage Calculator',
-    desc: 'Quickly calculate percentages, discounts, increases, and decreases.',
-    href: '/percentage-calculator',
-    icon: '%',
-    type: 'calc',
-  }
-];
+const CALC_TOOLS = getToolCards('Calculators')
 
 export default function CalculatorsCategory() {
   return (
@@ -36,7 +22,9 @@ export default function CalculatorsCategory() {
 
         <header className="tool-page-header" style={{ textAlign: 'center', marginBottom: '48px' }}>
           <h1>Everyday Calculators</h1>
-          <p style={{ margin: '0 auto' }}>Quick and private calculators for everyday problems.</p>
+          <p style={{ margin: '0 auto' }}>
+            Calculate an age from dates or work with percentage, change, and discount values. Check the inputs and assumptions before relying on a result.
+          </p>
         </header>
 
         <div className="tools-grid">

@@ -1,65 +1,44 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useRecentTools } from '../hooks/useRecentTools'
+import { getToolCards } from '../config/toolsSEOData'
 
 const CATEGORY_MENUS = [
   {
     label: 'Image Tools',
     href: '/image-tools',
-    items: [
-      { label: 'All Image Tools', href: '/image-tools' },
-      { label: 'Compress Image to KB', href: '/compress-image-to-kb' },
-      { label: 'HEIC to JPG', href: '/heic-to-jpg' },
-      { label: 'HEIC to PNG', href: '/heic-to-png' },
-      { label: 'WebP to JPG', href: '/webp-to-jpg' },
-      { label: 'WebP to PNG', href: '/webp-to-png' },
-      { label: 'AVIF to JPG', href: '/avif-to-jpg' },
-      { label: 'Convert PNG to JPG', href: '/convert-png-to-jpg' },
-      { label: 'Convert PNG to WebP', href: '/convert-png-to-webp' },
-    ],
+    category: 'Image Tools',
   },
   {
     label: 'PDF Tools',
     href: '/pdf-tools',
-    items: [
-      { label: 'All PDF Tools', href: '/pdf-tools' },
-      { label: 'PNG to PDF Converter', href: '/png-to-pdf' },
-      { label: 'PDF to PNG', href: '/pdf-to-png' },
-      { label: 'Remove PDF Pages', href: '/remove-pdf-pages' },
-      { label: 'Extract PDF Pages', href: '/extract-pdf-pages' },
-      { label: 'PDF to Text', href: '/pdf-to-text' },
-      { label: 'PDF to Markdown', href: '/pdf-to-markdown' },
-    ],
+    category: 'PDF Tools',
   },
   {
     label: 'Daily Utilities',
     href: '/daily-utilities',
-    items: [
-      { label: 'All Daily Utilities', href: '/daily-utilities' },
-      { label: 'QR Code Generator', href: '/qr-code-generator' },
-      { label: 'Password Generator', href: '/password-generator' },
-    ],
+    category: 'Daily Utilities',
   },
   {
     label: 'Text Tools',
     href: '/text-tools',
-    items: [
-      { label: 'All Text Tools', href: '/text-tools' },
-      { label: 'Text Case Converter', href: '/text-case-converter' },
-      { label: 'Lorem Ipsum Generator', href: '/lorem-ipsum-generator' },
-      { label: 'Word & Character Counter', href: '/word-counter' },
-    ],
+    category: 'Text Tools',
   },
   {
     label: 'Calculators',
     href: '/calculators',
-    items: [
-      { label: 'All Calculators', href: '/calculators' },
-      { label: 'Age Calculator', href: '/age-calculator' },
-      { label: 'Percentage & Discount Calculator', href: '/percentage-calculator' },
-    ],
+    category: 'Calculators',
   },
-]
+].map((category) => ({
+  ...category,
+  items: [
+    { label: `All ${category.label}`, href: category.href },
+    ...getToolCards(category.category).map((tool) => ({
+      label: tool.title,
+      href: tool.href,
+    })),
+  ],
+}))
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)

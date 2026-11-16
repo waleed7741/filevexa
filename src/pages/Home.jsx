@@ -3,96 +3,10 @@ import DailyUtilitiesSection from '../components/DailyUtilitiesSection'
 import TextToolsSection from '../components/TextToolsSection'
 import CalculatorsSection from '../components/CalculatorsSection'
 import SEO from '../components/SEO'
+import { getToolCards } from '../config/toolsSEOData'
 
-const IMAGE_TOOLS = [
-  {
-    title: 'Compress Image to KB',
-    desc: 'Compress image files (JPEG, PNG, WEBP, HEIC) to target size in KB (20KB, 50KB, 100KB or custom) with 100% private browser processing.',
-    href: '/compress-image-to-kb',
-    icon: '📉',
-    type: 'image',
-  },
-  {
-    title: 'HEIC to JPG',
-    desc: 'Convert Apple HEIC/HEIF images to JPG — works directly in your browser.',
-    href: '/heic-to-jpg',
-    icon: '🖼️',
-    type: 'image',
-  },
-  {
-    title: 'WebP to JPG',
-    desc: 'Convert WebP images to JPG format. Transparent areas are given a white background.',
-    href: '/webp-to-jpg',
-    icon: '🔄',
-    type: 'image',
-  },
-  {
-    title: 'WebP to PNG',
-    desc: 'Convert WebP images to PNG, preserving transparency where possible.',
-    href: '/webp-to-png',
-    icon: '🏞️',
-    type: 'image',
-  },
-  {
-    title: 'HEIC to PNG',
-    desc: 'Convert HEIC/HEIF images from iPhone or Mac to PNG format.',
-    href: '/heic-to-png',
-    icon: '📸',
-    type: 'image',
-  },
-  {
-    title: 'AVIF to JPG',
-    desc: 'Convert AVIF images to JPG using your browser\'s native image support.',
-    href: '/avif-to-jpg',
-    icon: '🎨',
-    type: 'image',
-  },
-]
-
-const PDF_TOOLS = [
-  {
-    title: 'PNG to PDF Converter',
-    desc: 'Combine, reorder, and convert PNG images into one PDF. Process files privately in your browser.',
-    href: '/png-to-pdf',
-    icon: '📑',
-    type: 'pdf',
-  },
-  {
-    title: 'PDF to PNG',
-    desc: 'Convert PDF pages to PNG images. Download pages individually or as a ZIP.',
-    href: '/pdf-to-png',
-    icon: '📄',
-    type: 'pdf',
-  },
-  {
-    title: 'Remove PDF Pages',
-    desc: 'Upload a PDF, select which pages to remove, and download a clean copy.',
-    href: '/remove-pdf-pages',
-    icon: '🗑️',
-    type: 'pdf',
-  },
-  {
-    title: 'Extract PDF Pages',
-    desc: 'Pull out specific pages from a PDF and save them as a new document.',
-    href: '/extract-pdf-pages',
-    icon: '✂️',
-    type: 'pdf',
-  },
-  {
-    title: 'PDF to Text',
-    desc: 'Extract plain text from text-based PDF files. Copy or download the result.',
-    href: '/pdf-to-text',
-    icon: '📝',
-    type: 'pdf',
-  },
-  {
-    title: 'PDF to Markdown',
-    desc: 'Convert text-based PDFs to Markdown format for easier editing.',
-    href: '/pdf-to-markdown',
-    icon: '⬇️',
-    type: 'pdf',
-  },
-]
+const IMAGE_TOOLS = getToolCards('Image Tools')
+const PDF_TOOLS = getToolCards('PDF Tools')
 
 export default function Home() {
   return (
@@ -109,7 +23,7 @@ export default function Home() {
             <span>🛠️</span> Free tools · No signup
           </div>
           <h1>Free Online File Tools</h1>
-          <p>Convert and manage your files quickly, with clear information about how each tool processes them.</p>
+          <p>Convert images and work with PDFs, text, and everyday tasks using browser-based tools with clear input, output, and privacy details.</p>
 
           <div className="hero-features" role="list">
             {[
@@ -165,6 +79,24 @@ export default function Home() {
 
       {/* Calculators */}
       <CalculatorsSection />
+
+      <section className="section" aria-labelledby="directories-heading">
+        <div className="container">
+          <h2 className="section-title" id="directories-heading">Browse every tool collection</h2>
+          <p>Choose a directory to see the available tools and what each one does.</p>
+          <div className="related-tools">
+            {[
+              ['Image tools', '/image-tools'],
+              ['PDF tools', '/pdf-tools'],
+              ['Daily utilities', '/daily-utilities'],
+              ['Text tools', '/text-tools'],
+              ['Calculators', '/calculators'],
+            ].map(([label, href]) => (
+              <a className="related-tool-link" href={href} key={href}>{label}</a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Privacy callout */}
       <section className="section" aria-labelledby="privacy-heading">

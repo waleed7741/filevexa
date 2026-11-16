@@ -1,28 +1,7 @@
 import ToolCard from './ToolCard';
+import { getToolCards } from '../config/toolsSEOData'
 
-const UTILITY_TOOLS = [
-  {
-    title: 'QR Code Generator',
-    desc: 'Create free, permanent QR codes online instantly. No signup required.',
-    href: '/qr-code-generator',
-    icon: '📱',
-    type: 'utility',
-  },
-  {
-    title: 'Word Counter',
-    desc: 'Accurate online tool to count words, characters, sentences, and paragraphs.',
-    href: '/word-counter',
-    icon: '🔤',
-    type: 'utility',
-  },
-  {
-    title: 'Password Generator',
-    desc: 'Generate strong, secure, random passwords directly in your browser.',
-    href: '/password-generator',
-    icon: '🔐',
-    type: 'utility',
-  },
-];
+const UTILITY_TOOLS = getToolCards('Daily Utilities')
 
 export default function DailyUtilitiesSection() {
   return (

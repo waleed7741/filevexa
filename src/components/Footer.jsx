@@ -1,24 +1,10 @@
 import { Link } from 'react-router-dom'
-import { TOOL_SEO_DATA } from '../data/toolSEO'
-import { PROGRAMMATIC_TOOLS } from '../data/programmaticTools'
-
-const DIRECTORY_TOOLS = [
-  ...Object.values(TOOL_SEO_DATA).map((tool) => ({
-    title: tool.title,
-    href: tool.href,
-    category: tool.category?.name,
-  })),
-  ...Object.entries(PROGRAMMATIC_TOOLS).map(([slug, tool]) => ({
-    title: slug === 'compress-pdf-to-200kb' ? 'PDF Size Guide' : tool.heading,
-    href: `/${slug}`,
-    category: tool.kind === 'image' ? 'Image Tools' : 'PDF Tools',
-  })),
-]
+import { getToolCards } from '../config/toolsSEOData'
 
 const DIRECTORY_GROUPS = [
-  { title: 'Image Tools', categories: ['Image Tools'] },
-  { title: 'PDF Tools', categories: ['PDF Tools'] },
-  { title: 'Text Tools', categories: ['Text Tools'] },
+  { title: 'Image Tools', category: 'Image Tools' },
+  { title: 'PDF Tools', category: 'PDF Tools' },
+  { title: 'Text Tools', category: 'Text Tools' },
   { title: 'Utilities & Calcs', categories: ['Daily Utilities', 'Calculators'] },
 ]
 
@@ -26,7 +12,9 @@ export default function Footer() {
   const year = new Date().getFullYear()
   const toolGroups = DIRECTORY_GROUPS.map((group) => ({
     ...group,
-    tools: DIRECTORY_TOOLS.filter((tool) => group.categories.includes(tool.category)),
+    tools: group.categories
+      ? group.categories.flatMap((category) => getToolCards(category))
+      : getToolCards(group.category),
   }))
 
   return (

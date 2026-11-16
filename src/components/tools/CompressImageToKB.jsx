@@ -241,7 +241,7 @@ export default function CompressImageToKB() {
   return (
     <ToolPageLayout
       toolId="compress-image-to-kb"
-      sections={['summary', 'steps', 'features', 'related']}
+      sections={['summary', 'steps', 'details', 'features', 'related']}
     >
       <div className="tool-page">
         <div className="container">

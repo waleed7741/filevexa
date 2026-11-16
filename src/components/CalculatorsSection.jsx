@@ -1,21 +1,7 @@
 import ToolCard from './ToolCard';
+import { getToolCards } from '../config/toolsSEOData'
 
-const CALC_TOOLS = [
-  {
-    title: 'Age Calculator',
-    desc: 'Calculate your exact age in years, months, and days.',
-    href: '/age-calculator',
-    icon: '🎂',
-    type: 'calc',
-  },
-  {
-    title: 'Percentage Calculator',
-    desc: 'Quickly calculate percentages, discounts, increases, and decreases.',
-    href: '/percentage-calculator',
-    icon: '%',
-    type: 'calc',
-  }
-];
+const CALC_TOOLS = getToolCards('Calculators')
 
 export default function CalculatorsSection() {
   return (

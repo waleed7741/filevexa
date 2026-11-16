@@ -5,52 +5,67 @@ export default function Privacy() {
   return (
     <div className="container">
       <SEO
-        title="Privacy Policy | FileVexa"
-        description="FileVexa privacy policy. Learn how we handle your files and data."
+        title="FileVexa Privacy Policy: Local File Processing & Data"
+        description="Learn what FileVexa processes in your browser, what the site analytics script may collect, and how to protect files on shared devices."
         canonical="https://filevexa.pages.dev/privacy"
       />
       <div className="static-page">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]} />
         <h1>Privacy Policy</h1>
-        <p className="page-meta">Last updated: September 2026</p>
+        <p className="page-meta">Last updated: November 2026</p>
 
         <h2>Overview</h2>
         <p>
-          FileVexa is a browser-based file conversion service. We are committed to protecting your privacy. This page
-          explains how FileVexa handles files and data.
+          FileVexa provides image, PDF, text, and utility tools. File contents selected for conversion or editing are
+          processed by the tool in your browser; FileVexa does not send those file contents to a FileVexa file-processing
+          server or store uploaded copies.
         </p>
 
-        <h2>File Processing</h2>
-        <p>FileVexa's image and PDF tools process selected files entirely in your browser. File contents are not uploaded to a processing service.</p>
+        <h2>Files and local processing</h2>
+        <p>
+          Image and PDF tools read the file you select using browser capabilities and create the result in the page.
+          Text utilities and calculators work with information entered into their controls. Temporary previews and
+          results may remain in the open page while you use a tool; close the page when finished and keep your own
+          original file. The site does not provide cloud backup or account storage.
+        </p>
+        <p>
+          File handling depends on your browser and device. Large or complex files can use substantial memory, and
+          unsupported or damaged files may fail. Use an up-to-date browser, review each tool's stated formats and
+          limits, and check the downloaded result before sharing it.
+        </p>
 
-        <h2>Data Handling</h2>
+        <h2>Website requests and analytics</h2>
         <ul>
-          <li>FileVexa does not ask for personal information or require an account.</li>
-          <li>Browser-based tools keep file contents in your device's browser while processing.</li>
+          <li>You can use the tools without creating a FileVexa account.</li>
+          <li>The site loads Cloudflare Web Analytics. A page analytics request is separate from the local file-processing flow; consult Cloudflare's privacy information for its handling of analytics requests.</li>
+          <li>Contacting us by email sends the message and any details you include through your email provider. Do not attach confidential files unless you are comfortable sending them by email.</li>
         </ul>
 
-        <h2>Analytics and Cookies</h2>
+        <h2>Browser storage and your device</h2>
         <p>
-          FileVexa does not currently use any analytics services or tracking cookies. If this changes in the future, this
-          policy will be updated to reflect it.
+          FileVexa registers a service worker to cache site resources and support offline loading. This cache is for
+          the site experience, not a destination for your selected documents. Browser extensions, shared-device access,
+          malware, and the settings of your device or browser are outside FileVexa's control.
         </p>
 
-        <h2>Third-Party Libraries</h2>
+        <h2>Libraries and external services</h2>
         <p>
-          FileVexa uses open-source JavaScript libraries to power browser-based tools. File contents are processed
-          locally and are not sent to library maintainers.
+          The tools use JavaScript libraries delivered as part of the site to read and transform files in your browser.
+          Loading the website requires network requests for site resources, and analytics is described above. The
+          selected file contents are not sent to those library maintainers by FileVexa's tool workflow.
         </p>
 
-        <h2>Children's Privacy</h2>
+        <h2>Children's privacy</h2>
         <p>
-          FileVexa does not knowingly collect personal information from children under 13. If you are under 13, please
-          do not use this service without parental guidance.
+          FileVexa is a general-purpose utility site and is not designed to collect personal information from children.
+          If you have a question about information sent to us by email, contact us using the details on the{' '}
+          <a href="/contact">Contact page</a>.
         </p>
 
-        <h2>Changes to This Policy</h2>
+        <h2>Changes to this policy</h2>
         <p>
-          We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an
-          updated date.
+          We may revise this policy when the site or its data practices change. The latest revision date appears at the
+          top of this page.
         </p>
 
         <h2>Contact</h2>

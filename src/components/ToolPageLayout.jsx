@@ -6,7 +6,7 @@ import { TOOLS_SEO_DATA } from '../config/toolsSEOData'
 export default function ToolPageLayout({
   toolId,
   children,
-  sections = ['summary', 'steps', 'features', 'faqs', 'related'],
+  sections = ['summary', 'steps', 'details', 'features', 'faqs', 'related'],
   containerClassName = 'container tool-seo-content',
   includeSEO = true,
 }) {
@@ -53,9 +53,28 @@ export default function ToolPageLayout({
           </section>
         )}
 
+        {includes('details') && tool.details && (
+          <section className="info-section" aria-labelledby={`${tool.id}-details-heading`}>
+            <h2 id={`${tool.id}-details-heading`}>Formats, limits, and practical notes</h2>
+            <dl>
+              <dt><strong>Input</strong></dt>
+              <dd>{tool.details.inputs}</dd>
+              <dt><strong>Output</strong></dt>
+              <dd>{tool.details.outputs}</dd>
+              <dt><strong>Limits</strong></dt>
+              <dd>{tool.details.limits}</dd>
+            </dl>
+            <p>{tool.details.notes}</p>
+            <p>
+              Processing runs in your browser. Performance and file capacity depend on the browser and device;
+              keep your original file until you have checked the downloaded result.
+            </p>
+          </section>
+        )}
+
         {includes('features') && (
           <section className="info-section" aria-labelledby={`${tool.id}-features-heading`}>
-            <h2 id={`${tool.id}-features-heading`}>Why Use FileVexa Client-Side {tool.name}?</h2>
+            <h2 id={`${tool.id}-features-heading`}>What {tool.name} provides</h2>
             <ul className="tool-feature-grid">
               {tool.features.map((feature) => <li key={feature}>{feature}</li>)}
             </ul>
