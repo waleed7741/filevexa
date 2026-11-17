@@ -28,6 +28,8 @@ This file is a concise guide for AI assistants and other readers. See the privac
 - [Image Tools Directory](/image-tools): Browse image converters and utilities.
 
 ## PDF tools
+- [Merge PDF](/merge-pdf): Merge and reorder unencrypted PDF documents locally in your browser.
+- [JPG to PDF](/jpg-to-pdf): Convert and arrange JPG, JPEG, or PNG images into a PDF in your browser.
 
 - [PNG to PDF Converter](/png-to-pdf): Combine and reorder PNG images into a PDF in your browser without uploading files.
 - [PDF to PNG](/pdf-to-png): Render PDF pages to PNG images in the browser.

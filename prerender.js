@@ -247,10 +247,14 @@ const llmsRouteLines = [
   '- [Compress Image to 50KB](/compress-image-to-50kb): Compress photos for university and job portal applications with a 50KB target.',
   '- [Compress Image to 100KB](/compress-image-to-100kb): Compress ID card, resume, and web upload images with a 100KB target.',
 ]
+const pdfToolRouteLines = [
+  '- [Merge PDF](/merge-pdf): Merge and reorder unencrypted PDF documents locally in your browser.',
+  '- [JPG to PDF](/jpg-to-pdf): Convert and arrange JPG, JPEG, or PNG images into a PDF in your browser.',
+]
 const publicLlmsPath = toAbsolute('public/llms.txt')
 const publicLlms = fs.readFileSync(publicLlmsPath, 'utf-8')
 let updatedLlms = publicLlms.replace(
-  /^- \[[^\]]+\]\(\/compress-image-to-(?:kb|20kb|50kb|100kb)\):.*(?:\r?\n|$)/gm,
+  /^- \[[^\]]+\]\(\/(?:compress-image-to-(?:kb|20kb|50kb|100kb)|merge-pdf|jpg-to-pdf)\):.*(?:\r?\n|$)/gm,
   ''
 )
 if (/## Image tools[^\r\n]*\r?\n/i.test(updatedLlms)) {
@@ -261,6 +265,10 @@ if (/## Image tools[^\r\n]*\r?\n/i.test(updatedLlms)) {
 } else {
   updatedLlms = `${updatedLlms.trimEnd()}\n\n## Image tools\n${llmsRouteLines.join('\n')}\n`
 }
+updatedLlms = updatedLlms.replace(
+  /(## PDF tools[^\r\n]*\r?\n)/i,
+  `$1${pdfToolRouteLines.join('\n')}\n`
+)
 fs.writeFileSync(publicLlmsPath, updatedLlms)
 fs.writeFileSync(toAbsolute('dist/llms.txt'), updatedLlms)
 console.log('Updated public/llms.txt and generated dist/llms.txt.')

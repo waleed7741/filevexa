@@ -103,6 +103,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filevexa.pages.dev/merge-pdf</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filevexa.pages.dev/jpg-to-pdf</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filevexa.pages.dev/remove-pdf-pages</loc>
     <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>

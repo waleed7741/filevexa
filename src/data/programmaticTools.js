@@ -51,6 +51,8 @@ export const PROGRAMMATIC_TOOLS = {
     related: [
       { label: 'Extract text from PDF', href: '/pdf-to-text', emoji: '📝' },
       { label: 'Convert PDF pages to PNG', href: '/pdf-to-png', emoji: '📄' },
+      { label: 'Merge PDF', href: '/merge-pdf', emoji: '📚' },
+      { label: 'JPG to PDF', href: '/jpg-to-pdf', emoji: '🖼️' },
       { label: 'Browse PDF tools', href: '/pdf-tools', emoji: '📚' },
     ],
   },

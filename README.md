@@ -23,6 +23,8 @@ FileVexa is a privacy-focused collection of free image, PDF, text, and everyday 
 
 | Tool | Live URL | Key intent keywords |
 |---|---|---|
+| **Merge PDF** — merge and reorder unencrypted PDF files in the browser, with file and page-count previews. | [merge-pdf](https://filevexa.pages.dev/merge-pdf) | merge PDF files, combine PDF online, reorder PDF documents |
+| **JPG to PDF Converter** — combine JPG, JPEG, or PNG images with page size, orientation, and margin options. | [jpg-to-pdf](https://filevexa.pages.dev/jpg-to-pdf) | JPG to PDF, JPEG to PDF, convert images to PDF |
 | **PNG to PDF Converter** | [png-to-pdf](https://filevexa.pages.dev/png-to-pdf) | convert PNG to PDF, combine PNG images into PDF, private image to PDF converter |
 | **PDF to PNG Converter** | [pdf-to-png](https://filevexa.pages.dev/pdf-to-png) | convert PDF pages to PNG, PDF page images |
 | **Remove PDF Pages** | [remove-pdf-pages](https://filevexa.pages.dev/remove-pdf-pages) | delete pages from PDF, remove PDF pages online |

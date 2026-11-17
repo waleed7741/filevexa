@@ -16,6 +16,8 @@ const AvifToJpg = lazy(() => import('./pages/AvifToJpg'))
 const CompressImageToKB = lazy(() => import('./components/tools/CompressImageToKB'))
 const PdfToPng = lazy(() => import('./pages/PdfToPng'))
 const PngToPdf = lazy(() => import('./pages/PngToPdf'))
+const MergePdf = lazy(() => import('./pages/MergePdf'))
+const JpgToPdf = lazy(() => import('./pages/JpgToPdf'))
 const RemovePdfPages = lazy(() => import('./pages/RemovePdfPages'))
 const ExtractPdfPages = lazy(() => import('./pages/ExtractPdfPages'))
 const PdfToText = lazy(() => import('./pages/PdfToText'))
@@ -69,6 +71,8 @@ export default function App() {
               <Route path="/compress-pdf-to-200kb" element={<ProgrammaticToolPage />} />
               <Route path="/pdf-to-png" element={<PdfToPng />} />
               <Route path="/png-to-pdf" element={<PngToPdf />} />
+              <Route path="/merge-pdf" element={<MergePdf />} />
+              <Route path="/jpg-to-pdf" element={<JpgToPdf />} />
               <Route path="/remove-pdf-pages" element={<RemovePdfPages />} />
               <Route path="/extract-pdf-pages" element={<ExtractPdfPages />} />
               <Route path="/pdf-to-text" element={<PdfToText />} />

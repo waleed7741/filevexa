@@ -12,6 +12,8 @@ import { formatBytes } from '../utils/fileHelpers'
 
 const FAQ = getToolFaqItems('png-to-pdf')
 const RELATED = [
+  { label: 'Merge PDF', href: '/merge-pdf', emoji: '📚' },
+  { label: 'JPG to PDF', href: '/jpg-to-pdf', emoji: '🖼️' },
   { label: 'PDF to PNG', href: '/pdf-to-png', emoji: '📄' },
   { label: 'Extract PDF Pages', href: '/extract-pdf-pages', emoji: '✂️' },
   { label: 'Remove PDF Pages', href: '/remove-pdf-pages', emoji: '🗑️' },
