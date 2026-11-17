@@ -57,3 +57,33 @@ export function createFaqPageSchema(faqs = []) {
     })),
   }
 }
+
+export function createBreadcrumbListSchema(tool) {
+  const categoryPaths = {
+    'Image Tools': '/image-tools',
+    'PDF Tools': '/pdf-tools',
+    'Daily Utilities': '/daily-utilities',
+    'Text Tools': '/text-tools',
+    Calculators: '/calculators',
+  }
+  const categoryPath = tool.category?.href || categoryPaths[tool.category?.name]
+  const breadcrumbs = [
+    { name: 'Home', url: `${tool.url.replace(/\/[^/]+$/, '')}/` },
+    ...(categoryPath ? [{
+      name: tool.category.name,
+      url: `${tool.url.replace(/\/[^/]+$/, '')}${categoryPath}`,
+    }] : []),
+    { name: tool.name, url: tool.url },
+  ]
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map(({ name, url }, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name,
+      item: url,
+    })),
+  }
+}

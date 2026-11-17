@@ -19,6 +19,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { TOOLS_SEO_DATA, TOOL_SITE_URL } from './src/config/toolsSEOData.js'
 import {
+  createBreadcrumbListSchema,
   createFaqPageSchema,
   createWebApplicationSchema,
 } from './src/utils/schemaGenerator.js'
@@ -112,6 +113,10 @@ function setToolHead(html, tool) {
     priceCurrency: 'USD',
   })
   const faqSchema = createFaqPageSchema(tool.faqs)
+  if (!faqSchema) {
+    throw new Error(`Cannot prerender ${tool.slug}: tool page has no FAQ data for its FAQPage schema.`)
+  }
+  const breadcrumbSchema = createBreadcrumbListSchema(tool)
   const keywords = tool.keywords || [
     tool.targetKeywords.primary,
     ...tool.targetKeywords.longTail,
@@ -132,6 +137,7 @@ function setToolHead(html, tool) {
     `<meta name="twitter:description" content="${escapeHtml(tool.description)}" />`,
     `<script type="application/ld+json" id="tool-schema-jsonld">${serializeJsonLd(applicationSchema)}</script>`,
     `<script type="application/ld+json" id="tool-faq-schema-jsonld">${serializeJsonLd(faqSchema)}</script>`,
+    `<script type="application/ld+json" id="tool-breadcrumb-schema-jsonld">${serializeJsonLd(breadcrumbSchema)}</script>`,
   ].join('\n    ')
   const updatedHead = `${head.trim()}\n    ${routeTags}\n  `
   const updatedHtml = html.replace(headMatch[0], `<head>${updatedHead}</head>`)
@@ -235,19 +241,25 @@ fs.writeFileSync(toAbsolute('dist/sitemap.xml'), `${sitemap}\n`)
 fs.writeFileSync(toAbsolute('public/sitemap.xml'), `${sitemap}\n`)
 console.log('Generated dist/sitemap.xml and public/sitemap.xml from the configured routes.')
 
-const llmsRouteLine = '- [Compress Image to KB](/compress-image-to-kb): Compress Image to 20KB, 50KB, 100KB - 100% Client-Side Private Tool'
+const llmsRouteLines = [
+  '- [Compress Image to KB](/compress-image-to-kb): Set a custom target or use 20KB, 50KB, and 100KB presets in a private browser-based image compressor.',
+  '- [Compress Image to 20KB](/compress-image-to-20kb): Compress photos for PPSC, exam, passport, and government forms with a 20KB target.',
+  '- [Compress Image to 50KB](/compress-image-to-50kb): Compress photos for university and job portal applications with a 50KB target.',
+  '- [Compress Image to 100KB](/compress-image-to-100kb): Compress ID card, resume, and web upload images with a 100KB target.',
+]
 const publicLlmsPath = toAbsolute('public/llms.txt')
 const publicLlms = fs.readFileSync(publicLlmsPath, 'utf-8')
-let updatedLlms
-if (/^- \[[^\]]+\]\(\/compress-image-to-kb\):.*$/m.test(publicLlms)) {
-  updatedLlms = publicLlms.replace(
-    /^- \[[^\]]+\]\(\/compress-image-to-kb\):.*$/m,
-    llmsRouteLine
+let updatedLlms = publicLlms.replace(
+  /^- \[[^\]]+\]\(\/compress-image-to-(?:kb|20kb|50kb|100kb)\):.*(?:\r?\n|$)/gm,
+  ''
+)
+if (/## Image tools[^\r\n]*\r?\n/i.test(updatedLlms)) {
+  updatedLlms = updatedLlms.replace(
+    /(## Image tools[^\r\n]*\r?\n)/i,
+    `$1${llmsRouteLines.join('\n')}\n`
   )
-} else if (/## Image tools[^\r\n]*\r?\n/i.test(publicLlms)) {
-  updatedLlms = publicLlms.replace(/(## Image tools[^\r\n]*\r?\n)/i, `$1${llmsRouteLine}\n`)
 } else {
-  updatedLlms = `${publicLlms.trimEnd()}\n\n## Image tools\n${llmsRouteLine}\n`
+  updatedLlms = `${updatedLlms.trimEnd()}\n\n## Image tools\n${llmsRouteLines.join('\n')}\n`
 }
 fs.writeFileSync(publicLlmsPath, updatedLlms)
 fs.writeFileSync(toAbsolute('dist/llms.txt'), updatedLlms)

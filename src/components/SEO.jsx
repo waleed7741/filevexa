@@ -16,6 +16,12 @@ export default function SEO({
   const pageKeywords = tool?.keywords || (tool
     ? [tool.targetKeywords.primary, ...tool.targetKeywords.longTail].join(', ')
     : keywords);
+  const websiteSchema = routePath === '/' ? {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'FileVexa',
+    url: `${TOOL_SITE_URL}/`,
+  } : null
   return (
     <Helmet>
       {/* Standard SEO */}
@@ -36,6 +42,9 @@ export default function SEO({
       <meta name="twitter:url" content={pageCanonical} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
+      {websiteSchema && (
+        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+      )}
 
     </Helmet>
   );

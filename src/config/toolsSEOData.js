@@ -138,6 +138,99 @@ const TOOL_DETAILS = {
   },
 }
 
+const TARGET_SIZE_PAGES = {
+  'compress-image-to-20kb': {
+    name: 'Image Compressor to 20KB',
+    title: 'Compress Image to 20KB Online Free | FileVexa',
+    description: 'Compress a JPEG, PNG, WebP, or HEIC photo to 20 KB for PPSC, exam, passport, and government forms. Free, private, and processed in your browser.',
+    h1: 'Compress Image to 20KB for Forms',
+    intro: 'Set a 20 KB target for passport photos, PPSC submissions, exams, and government forms. Choose a JPEG, PNG, WebP, or HEIC image; the result downloads as a JPEG.',
+    faqIntro: 'To compress a photo for a passport, PPSC, exam, or government form, select the image and keep the 20 KB target. The browser adjusts quality first and resizes only if needed. Check the destination’s size, dimensions, and format rules before submitting.',
+    entitySummary: 'Reduce a JPEG, PNG, WebP, or HEIC photo to a 20 KB target for application forms. The browser adjusts JPEG quality and, if needed, dimensions; very small targets may affect image clarity.',
+    howToAction: 'compress an image to 20 KB',
+    presetKB: 20,
+    keywords: 'compress image to 20KB, photo compressor 20KB, passport photo 20KB, PPSC photo size, government form photo compressor',
+    targetKeywords: {
+      primary: 'compress image to 20KB',
+      longTail: ['passport photo 20KB online', 'PPSC photo size 20KB', 'compress image for government form'],
+    },
+    details: {
+      inputs: 'JPEG, PNG, WebP, HEIC, and HEIF images',
+      outputs: 'JPEG image at or below 20 KB when achievable',
+      limits: 'Input images must be 50 MB or smaller. The 20 KB target is a maximum; complex images may not reach it without substantial resizing.',
+      notes: 'The browser lowers JPEG quality first, then reduces dimensions if needed. PNG/WebP transparency is rendered on white. Check the destination form’s image dimensions and format rules.',
+    },
+    faqs: [
+      { q: 'How do I compress a passport photo to 20 KB?', a: 'Select your photo, keep the 20 KB preset, and choose Compress. FileVexa adjusts JPEG quality first and resizes only if needed. Download and check the photo against the application’s required dimensions, format, and size.' },
+      { q: 'Can I use a 20 KB image for PPSC or government forms?', a: 'The 20 KB preset is useful when a form sets a 20 KB maximum, including some exam and government submissions. Requirements vary, so confirm the specific form’s size, dimensions, and format rules before uploading.' },
+      { q: 'Will the result always be exactly 20 KB?', a: 'No. The target is a maximum, so a successful result is at or below 20 KB. If the image cannot reach the target at the smallest supported dimensions, the tool shows the smallest result it could create.' },
+      { q: 'Are my photo and ID details uploaded?', a: 'No. The selected image is decoded and compressed in your browser and is not uploaded to FileVexa for processing. Avoid sharing the downloaded image unless the destination form requires it.' },
+      { q: 'Which image formats can I compress to 20 KB?', a: 'You can select JPEG, PNG, WebP, HEIC, or HEIF images up to 50 MB. The compressed download is a JPEG, and transparent areas are filled with white.' },
+    ],
+    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-50kb', 'compress-image-to-100kb'],
+  },
+  'compress-image-to-50kb': {
+    name: 'Image Compressor to 50KB',
+    title: 'Compress Image to 50KB Online Free | FileVexa',
+    description: 'Reduce a JPEG, PNG, WebP, or HEIC image to 50 KB for university and job applications. Free browser-based compression with no account or file upload.',
+    h1: 'Compress Image to 50KB for Applications',
+    intro: 'Prepare a photo for university admissions, job portals, and online applications with a 50 KB target. Select a JPEG, PNG, WebP, or HEIC image; the downloaded result is a JPEG.',
+    faqIntro: 'For a university or job portal application, select your photo and keep the 50 KB target. FileVexa adjusts image quality first and reduces dimensions only if necessary. Check the portal’s size, dimensions, and format rules before submitting.',
+    entitySummary: 'Compress a JPEG, PNG, WebP, or HEIC photo toward a 50 KB maximum for university admissions and job portal applications. Quality is adjusted before image dimensions are reduced.',
+    howToAction: 'compress an image to 50 KB',
+    presetKB: 50,
+    keywords: 'compress image to 50KB, university application photo 50KB, job portal photo compressor, reduce image size to 50KB',
+    targetKeywords: {
+      primary: 'compress image to 50KB',
+      longTail: ['university application photo 50KB', 'job portal image size 50KB', 'reduce photo size to 50KB online'],
+    },
+    details: {
+      inputs: 'JPEG, PNG, WebP, HEIC, and HEIF images',
+      outputs: 'JPEG image at or below 50 KB when achievable',
+      limits: 'Input images must be 50 MB or smaller. The 50 KB target is a maximum; image content and dimensions affect the result.',
+      notes: 'The browser lowers JPEG quality first, then reduces dimensions if needed. PNG/WebP transparency is rendered on white. Check the application’s image dimensions and format requirements.',
+    },
+    faqs: [
+      { q: 'How can I resize a photo to 50 KB for a university application?', a: 'Choose your photo and use the 50 KB preset. FileVexa adjusts quality first and reduces dimensions only if necessary, then downloads a JPEG. Verify the university portal’s image dimensions and accepted formats as well as its file-size limit.' },
+      { q: 'Can I compress a job application photo to 50 KB?', a: 'Yes. Select the image, leave the target at 50 KB, and compress it in your browser. The result is a JPEG at or below the target when achievable; check that it remains clear and meets the employer portal’s rules.' },
+      { q: 'Does the compressor guarantee an exact 50 KB file?', a: 'No. The 50 KB setting is a maximum target, not a promise of an exact byte count. FileVexa aims for the best JPEG quality that fits; difficult images may need resizing or may not reach the target.' },
+      { q: 'Does FileVexa upload application photos?', a: 'No. Your selected photo is processed locally in your browser and is not uploaded to FileVexa for compression. The website does not require an account to use this tool.' },
+      { q: 'What formats are supported for 50 KB compression?', a: 'The tool accepts JPEG, PNG, WebP, HEIC, and HEIF images up to 50 MB and creates a JPEG download. Transparent pixels in PNG or WebP inputs are filled with white.' },
+    ],
+    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-20kb', 'compress-image-to-100kb'],
+  },
+  'compress-image-to-100kb': {
+    name: 'Image Compressor to 100KB',
+    title: 'Compress Image to 100KB Online Free | FileVexa',
+    description: 'Compress a JPEG, PNG, WebP, or HEIC image to 100 KB for ID cards, resumes, and web uploads. Free local processing in your browser.',
+    h1: 'Compress Image to 100KB for ID Cards and Resumes',
+    intro: 'Make an image fit a 100 KB file-size limit for ID cards, resumes, profiles, and web uploads. Select a JPEG, PNG, WebP, or HEIC image and download the compressed JPEG.',
+    faqIntro: 'For an ID card, resume, profile, or web upload with a 100 KB limit, select your image and keep the 100 KB target. FileVexa adjusts quality first and resizes only when necessary. Check the destination’s dimensions and format rules before uploading.',
+    entitySummary: 'Reduce a JPEG, PNG, WebP, or HEIC image toward a 100 KB maximum for ID-card forms, resumes, profiles, and web uploads. The tool tunes JPEG quality and resizes only when necessary.',
+    howToAction: 'compress an image to 100 KB',
+    presetKB: 100,
+    keywords: 'compress image to 100KB, ID card photo 100KB, resume image compressor, reduce image to 100KB online',
+    targetKeywords: {
+      primary: 'compress image to 100KB',
+      longTail: ['ID card photo 100KB', 'resume photo size 100KB', 'compress image for web upload'],
+    },
+    details: {
+      inputs: 'JPEG, PNG, WebP, HEIC, and HEIF images',
+      outputs: 'JPEG image at or below 100 KB when achievable',
+      limits: 'Input images must be 50 MB or smaller. The 100 KB target is a maximum; the final dimensions and file size depend on the source image.',
+      notes: 'The browser lowers JPEG quality first, then reduces dimensions if needed. PNG/WebP transparency is rendered on white. Check the destination’s image dimensions and file type requirements.',
+    },
+    faqs: [
+      { q: 'How do I make an ID card photo 100 KB?', a: 'Select the photo, use the 100 KB preset, and start compression. The browser adjusts JPEG quality and resizes only if needed. Check the ID application’s photo dimensions, background, and file-format rules before submitting.' },
+      { q: 'Can I reduce a resume photo or image to 100 KB?', a: 'Yes. Choose the 100 KB target, select your image, and download the JPEG result. Review the image quality and confirm the resume site’s maximum size and accepted dimensions.' },
+      { q: 'Is the compressed image exactly 100 KB?', a: 'The 100 KB setting is a maximum, not an exact size guarantee. The result is at or below that target when achievable; the tool reports when an image cannot be reduced enough.' },
+      { q: 'Is my image sent to a server during compression?', a: 'No. FileVexa processes the selected image locally in your browser, without uploading it to a FileVexa processing server. No account or payment is required.' },
+      { q: 'Can I compress PNG or HEIC files to 100 KB?', a: 'Yes. JPEG, PNG, WebP, HEIC, and HEIF inputs up to 50 MB are supported. The output is JPEG; transparent areas in PNG and WebP files are filled with white.' },
+    ],
+    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-20kb', 'compress-image-to-50kb'],
+  },
+}
+
 const ADDITIONAL_TOOL_FAQS = {
   'heic-to-jpg': [{
     question: 'Will converting an iPhone HEIC photo make it open on Windows or Android?',
@@ -337,6 +430,7 @@ function normalizeTool(slug, source) {
     relatedTools: source.related || [],
     applicationCategory: 'UtilityApplication',
     howToIntro: source.howTo.intro,
+    quickAnswer: `FileVexa's ${name} is a free browser-based tool. It handles supported inputs on your device; file tools process files locally without uploading them for conversion. No account or payment is required. Processing time and limits depend on your input, browser, and device. Check format requirements and review results before downloading or sharing.`,
     icon: source.icon,
     category: source.category,
     layoutRendered: slug === 'compress-image-to-kb',
@@ -403,6 +497,7 @@ function normalizeProgrammaticTool(slug, source) {
     relatedTools: source.related || [],
     applicationCategory: 'UtilityApplication',
     howToIntro: source.intro,
+    quickAnswer: `FileVexa's ${name} is a free browser-based tool. It handles supported inputs on your device; file tools process files locally without uploading them for conversion. No account or payment is required. Processing time and limits depend on your input, browser, and device. Check format requirements and review results before downloading or sharing.`,
     format: source.format,
     outputLabel: source.outputLabel,
     icon: source.kind === 'image' ? '🖼️' : '📄',
@@ -421,11 +516,43 @@ export const TOOLS_SEO_DATA = Object.fromEntries([
   ...programmaticEntries,
 ])
 
+const baseCompressor = TOOLS_SEO_DATA['compress-image-to-kb']
+for (const [slug, page] of Object.entries(TARGET_SIZE_PAGES)) {
+  TOOLS_SEO_DATA[slug] = {
+    ...baseCompressor,
+    ...page,
+    id: slug,
+    slug,
+    url: `${SITE_URL}/${slug}`,
+    quickAnswer: `FileVexa's ${page.name} is a free browser-based tool. It handles supported inputs on your device; file tools process files locally without uploading them for conversion. No account or payment is required. Processing time and limits depend on your input, browser, and device. Check format requirements and review results before downloading or sharing.`,
+    shortDescription: page.entitySummary,
+    processingLocation: baseCompressor.processingLocation,
+    howToIntro: page.intro,
+    howToSteps: [
+      `Select a JPEG, PNG, WebP, HEIC, or HEIF image up to 50 MB.`,
+      `Use the ${page.presetKB} KB preset; FileVexa adjusts JPEG quality and resizes only if needed.`,
+      'Review the output size and image quality, then download the JPEG.',
+    ],
+    howToTips: 'Follow the destination form’s exact size, dimensions, and format requirements. Keep your original image and review the compressed result before submitting.',
+    features: [
+      page.entitySummary,
+      `Input: ${page.details.inputs}.`,
+      `Output: ${page.details.outputs}.`,
+    ],
+    layoutRendered: true,
+  }
+}
+
 for (const [slug, tool] of Object.entries(TOOLS_SEO_DATA)) {
-  const relatedSlugs = [
-    ...(tool.relatedToolIds || []),
-    ...(RELATED_BY_CATEGORY[tool.category?.name] || []),
-  ]
+  const targetSizeSlugs = Object.keys(TARGET_SIZE_PAGES)
+  const relatedSlugs = slug === 'compress-image-to-kb'
+    ? [...targetSizeSlugs, ...(tool.relatedToolIds || [])]
+    : targetSizeSlugs.includes(slug)
+      ? [...(tool.relatedToolIds || []), 'compress-image-to-kb', ...targetSizeSlugs]
+      : [
+          ...(tool.relatedToolIds || []),
+          ...(RELATED_BY_CATEGORY[tool.category?.name] || []),
+        ]
   const uniqueRelatedSlugs = [...new Set(relatedSlugs)]
     .filter((relatedSlug) => relatedSlug !== slug && TOOLS_SEO_DATA[relatedSlug])
     .slice(0, 5)

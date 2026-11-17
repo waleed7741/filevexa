@@ -27,6 +27,49 @@ export default function ToolPageLayout({
       )}
       {children}
       <div className={containerClassName}>
+        <section className="quick-answer" aria-labelledby={`${tool.id}-quick-answer-heading`}>
+          <h2 id={`${tool.id}-quick-answer-heading`}>Quick Answer</h2>
+          <p>{tool.quickAnswer}</p>
+        </section>
+
+        <section className="info-section" aria-labelledby={`${tool.id}-comparison-heading`}>
+          <h2 id={`${tool.id}-comparison-heading`}>Local Browser vs. Cloud Upload Tools</h2>
+          <div className="tool-comparison-table-wrapper">
+            <table className="tool-comparison-table">
+              <caption>How FileVexa’s browser-based tools compare with typical cloud upload services</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Factor</th>
+                  <th scope="col">FileVexa in your browser</th>
+                  <th scope="col">Cloud upload tools</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Privacy / file upload</th>
+                  <td>Supported file processing stays on your device; files are not uploaded for conversion.</td>
+                  <td>Files are uploaded to the provider for remote processing.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Speed</th>
+                  <td>Runs locally; processing speed depends on your device and file.</td>
+                  <td>Depends on upload speed, network, and provider processing.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Account requirement</th>
+                  <td>No account required.</td>
+                  <td>Varies by provider.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Cost</th>
+                  <td>Free to use.</td>
+                  <td>Varies by provider and plan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         {includes('summary') && (
           <section className="tool-summary" aria-labelledby={`${tool.id}-summary-heading`}>
             <h2 id={`${tool.id}-summary-heading`}>Tool Summary &amp; Specifications</h2>

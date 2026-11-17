@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import Breadcrumb from '../Breadcrumb'
 import ErrorMessage from '../ErrorMessage'
 import FaqSection from '../FaqSection'
 import FileUploader from '../FileUploader'
 import LoadingState from '../LoadingState'
 import ToolPageLayout from '../ToolPageLayout'
-import { getToolFaqItems } from '../../config/toolsSEOData'
+import { getToolFaqItems, TOOLS_SEO_DATA } from '../../config/toolsSEOData'
 import { createObjectUrl, formatBytes, replaceExtension } from '../../utils/fileHelpers'
 
 const PRESETS = [20, 50, 100, 200, 500]
@@ -122,10 +123,14 @@ function formatKilobytes(bytes) {
 }
 
 export default function CompressImageToKB() {
+  const { pathname } = useLocation()
+  const toolId = pathname.replace(/^\/+|\/+$/g, '') || 'compress-image-to-kb'
+  const tool = TOOLS_SEO_DATA[toolId] || TOOLS_SEO_DATA['compress-image-to-kb']
+  const presetKB = tool.presetKB || 100
   const [file, setFile] = useState(null)
   const [image, setImage] = useState(null)
   const [originalPreview, setOriginalPreview] = useState('')
-  const [targetKB, setTargetKB] = useState('100')
+  const [targetKB, setTargetKB] = useState(String(presetKB))
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
   const [warning, setWarning] = useState('')
@@ -236,20 +241,20 @@ export default function CompressImageToKB() {
     setUploadKey((key) => key + 1)
   }
 
-  const faqItems = getToolFaqItems('compress-image-to-kb')
+  const faqItems = getToolFaqItems(toolId)
 
   return (
     <ToolPageLayout
-      toolId="compress-image-to-kb"
+      toolId={toolId}
       sections={['summary', 'steps', 'details', 'features', 'related']}
     >
       <div className="tool-page">
         <div className="container">
-          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Image Tools', href: '/image-tools' }, { label: 'Compress Image to KB' }]} />
+          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Image Tools', href: '/image-tools' }, { label: tool.name }]} />
 
           <header className="tool-page-header">
-            <h1>Compress Image to a Specific Size in KB</h1>
-            <p>Reduce JPEG, PNG, WebP, or HEIC photos to 20 KB, 50 KB, 100 KB, or your own target size.</p>
+            <h1>{tool.h1 || 'Compress Image to a Specific Size in KB'}</h1>
+            <p>{tool.intro || 'Reduce JPEG, PNG, WebP, or HEIC photos to 20 KB, 50 KB, 100 KB, or your own target size.'}</p>
             <p className="privacy-notice">
               <span aria-hidden="true">🔒</span>
               Your images are processed privately in this browser and are never uploaded.
@@ -257,12 +262,19 @@ export default function CompressImageToKB() {
           </header>
 
           {!file && (
-            <FileUploader
-              key={uploadKey}
-              accept=".jpg,.jpeg,.png,.webp,.heic,.heif,image/jpeg,image/png,image/webp,image/heic,image/heif"
-              acceptLabel=".jpg, .png, .webp, .heic"
-              onFile={handleFile}
-            />
+            <>
+              {tool.presetKB && (
+                <p className="compress-image-preset-notice">
+                  Target preset: <strong>{presetKB} KB</strong>. Select an image to compress it toward this maximum.
+                </p>
+              )}
+              <FileUploader
+                key={uploadKey}
+                accept=".jpg,.jpeg,.png,.webp,.heic,.heif,image/jpeg,image/png,image/webp,image/heic,image/heif"
+                acceptLabel=".jpg, .png, .webp, .heic"
+                onFile={handleFile}
+              />
+            </>
           )}
 
           {file && (
@@ -279,7 +291,7 @@ export default function CompressImageToKB() {
               </div>
 
               <div className="compress-image-controls">
-                <h2>Choose target size</h2>
+                <h2>{tool.presetKB ? `Target size: ${tool.presetKB} KB` : 'Choose target size'}</h2>
                 <p>Pick a preset or enter any custom target in KB.</p>
                 <div className="compress-image-presets" aria-label="Target size presets">
                   {PRESETS.map((preset) => (
@@ -288,6 +300,7 @@ export default function CompressImageToKB() {
                       key={preset}
                       className={`btn ${Number(targetKB) === preset ? 'btn-primary' : 'btn-secondary'}`}
                       onClick={() => setTargetKB(String(preset))}
+                      aria-pressed={Number(targetKB) === preset}
                     >
                       {preset} KB
                     </button>
@@ -347,10 +360,8 @@ export default function CompressImageToKB() {
           )}
 
           <section className="info-section compress-image-faq" aria-labelledby="compress-image-faq-heading">
-            <h2 id="compress-image-faq-heading">Image size compression questions</h2>
-            <p>
-              To compress an image for a job application, choose 20 KB, 50 KB, or 100 KB (or enter the limit shown by the application), select your photo, and download the result. The image is resized only when quality adjustment alone cannot meet your requested size. FileVexa processes your photo locally, so it is not uploaded or shared.
-            </p>
+            <h2 id="compress-image-faq-heading">{tool.presetKB ? `Questions about compressing an image to ${tool.presetKB} KB` : 'Image size compression questions'}</h2>
+            <p>{tool.faqIntro || 'To compress an image for a job application, choose 20 KB, 50 KB, 100 KB, or enter the limit shown by the application. FileVexa adjusts quality before resizing and processes your photo locally.'}</p>
             <FaqSection items={faqItems} />
           </section>
         </div>

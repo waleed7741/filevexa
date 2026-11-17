@@ -53,7 +53,10 @@ export default function AppServer() {
           <Route path="/webp-to-png" element={<WebpToPng />} />
           <Route path="/heic-to-png" element={<HeicToPng />} />
           <Route path="/avif-to-jpg" element={<AvifToJpg />} />
-          <Route path="/compress-image-to-kb" element={<CompressImageToKB />} />
+          <Route path="/compress-image-to-kb" element={<CompressImageToKB key="compress-image-to-kb" />} />
+          <Route path="/compress-image-to-20kb" element={<CompressImageToKB key="compress-image-to-20kb" />} />
+          <Route path="/compress-image-to-50kb" element={<CompressImageToKB key="compress-image-to-50kb" />} />
+          <Route path="/compress-image-to-100kb" element={<CompressImageToKB key="compress-image-to-100kb" />} />
           <Route path="/convert-png-to-jpg" element={<ProgrammaticToolPage />} />
           <Route path="/convert-png-to-webp" element={<ProgrammaticToolPage />} />
           <Route path="/compress-pdf-to-200kb" element={<ProgrammaticToolPage />} />

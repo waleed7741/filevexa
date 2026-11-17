@@ -13,8 +13,11 @@ This file is a concise guide for AI assistants and other readers. See the privac
 - [FileVexa Home](/): Browse browser-based image, PDF, text, and utility tools.
 
 ## Image tools
+- [Compress Image to KB](/compress-image-to-kb): Set a custom target or use 20KB, 50KB, and 100KB presets in a private browser-based image compressor.
+- [Compress Image to 20KB](/compress-image-to-20kb): Compress photos for PPSC, exam, passport, and government forms with a 20KB target.
+- [Compress Image to 50KB](/compress-image-to-50kb): Compress photos for university and job portal applications with a 50KB target.
+- [Compress Image to 100KB](/compress-image-to-100kb): Compress ID card, resume, and web upload images with a 100KB target.
 
-- [Compress Image to KB](/compress-image-to-kb): Compress Image to 20KB, 50KB, 100KB - 100% Client-Side Private Tool
 - [HEIC to JPG](/heic-to-jpg): Convert HEIC images to JPG in the browser.
 - [HEIC to PNG](/heic-to-png): Convert HEIC images to PNG in the browser.
 - [WebP to JPG](/webp-to-jpg): Convert WebP images to JPG in the browser.
