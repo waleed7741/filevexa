@@ -5,7 +5,9 @@ import CalculatorsSection from '../components/CalculatorsSection'
 import SEO from '../components/SEO'
 import { getToolCards } from '../config/toolsSEOData'
 
-const IMAGE_TOOLS = getToolCards('Image Tools')
+const IMAGE_TOOLS = getToolCards('Image Tools').filter(
+  (tool) => !['/compress-image-to-20kb', '/compress-image-to-50kb', '/compress-image-to-100kb'].includes(tool.href)
+)
 const PDF_TOOLS = getToolCards('PDF Tools')
 
 export default function Home() {

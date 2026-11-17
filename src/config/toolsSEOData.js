@@ -351,6 +351,36 @@ const RELATED_BY_CATEGORY = {
   ],
 }
 
+const TOOL_CARD_DESCRIPTIONS = {
+  'compress-image-to-kb': 'Compress JPEG, PNG, WebP, or HEIC images to a chosen KB size.',
+  'heic-to-jpg': 'Convert HEIC and HEIF photos to widely supported JPG files.',
+  'webp-to-jpg': 'Convert WebP images to JPG for broader app compatibility.',
+  'webp-to-png': 'Convert WebP images to PNG while preserving transparency.',
+  'heic-to-png': 'Convert HEIC and HEIF photos to PNG images.',
+  'avif-to-jpg': 'Convert AVIF images to JPG in your browser.',
+  'pdf-to-png': 'Render PDF pages as PNG images for viewing or sharing.',
+  'png-to-pdf': 'Combine and order PNG images into a single PDF.',
+  'merge-pdf': 'Combine and reorder PDF files into one document.',
+  'jpg-to-pdf': 'Turn JPG, JPEG, or PNG images into a paginated PDF.',
+  'remove-pdf-pages': 'Remove selected pages and save a new PDF.',
+  'extract-pdf-pages': 'Select PDF pages and save them in a separate file.',
+  'pdf-to-text': 'Extract selectable text from PDF documents.',
+  'pdf-to-markdown': 'Extract PDF text and format it as Markdown.',
+  'qr-code-generator': 'Create a downloadable QR code from text or a link.',
+  'word-counter': 'Count words, characters, and paragraphs as you type.',
+  'password-generator': 'Generate a password with your chosen length and characters.',
+  'text-case-converter': 'Convert text to uppercase, lowercase, title, or sentence case.',
+  'lorem-ipsum-generator': 'Generate placeholder paragraphs for designs and mockups.',
+  'age-calculator': 'Calculate age in years, months, and days between dates.',
+  'percentage-calculator': 'Calculate percentages, discounts, and percentage changes.',
+  'convert-png-to-jpg': 'Convert PNG images to JPG directly in your browser.',
+  'convert-png-to-webp': 'Convert PNG images to compact WebP files.',
+  'compress-pdf-to-200kb': 'Explore PDF size factors and browser-based PDF tools.',
+  'compress-image-to-20kb': 'Compress photos to a 20 KB target for online forms.',
+  'compress-image-to-50kb': 'Compress photos to a 50 KB target for applications.',
+  'compress-image-to-100kb': 'Compress images to a 100 KB target for uploads.',
+}
+
 function routeToId(href) {
   return href.replace(/^\//, '')
 }
@@ -587,7 +617,7 @@ export function getToolCards(category) {
     .filter((tool) => tool.category?.name === category)
     .map((tool) => ({
       title: tool.name,
-      desc: tool.description,
+      cardDescription: TOOL_CARD_DESCRIPTIONS[tool.slug],
       href: `/${tool.slug}`,
       icon: tool.icon,
       type: category === 'Image Tools'
