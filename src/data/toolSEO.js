@@ -54,6 +54,7 @@ export const TOOL_SEO_DATA = {
       { label: 'HEIC to JPG', href: '/heic-to-jpg', emoji: '🖼️' },
       { label: 'WebP to JPG', href: '/webp-to-jpg', emoji: '🔄' },
       { label: 'PNG to JPG', href: '/convert-png-to-jpg', emoji: '📷' },
+      { label: 'Exam Photo & Signature Resizer', href: '/exam-photo-signature-resizer', emoji: '🪪' },
     ],
   },
   'heic-to-jpg': {
@@ -491,6 +492,7 @@ export const TOOL_SEO_DATA = {
     ],
     related: [
       { label: 'JPG to PDF', href: '/jpg-to-pdf', emoji: '🖼️' },
+      { label: 'Redact PDF or Image', href: '/redact-pdf-image', emoji: '🖍️' },
       { label: 'PNG to PDF', href: '/png-to-pdf', emoji: '📑' },
       { label: 'Remove PDF Pages', href: '/remove-pdf-pages', emoji: '🗑️' },
       { label: 'Extract PDF Pages', href: '/extract-pdf-pages', emoji: '✂️' },
@@ -590,6 +592,7 @@ export const TOOL_SEO_DATA = {
       { label: 'PDF to Markdown', href: '/pdf-to-markdown', emoji: '⬇️' },
       { label: 'Merge PDF', href: '/merge-pdf', emoji: '📚' },
       { label: 'JPG to PDF', href: '/jpg-to-pdf', emoji: '🖼️' },
+      { label: 'Redact PDF or Image', href: '/redact-pdf-image', emoji: '🖍️' },
     ],
   },
 
@@ -1185,6 +1188,74 @@ export const TOOL_SEO_DATA = {
       { label: 'Age Calculator', href: '/age-calculator', emoji: '🎂' },
       { label: 'Word Counter', href: '/word-counter', emoji: '🔤' },
       { label: 'QR Code Generator', href: '/qr-code-generator', emoji: '📱' },
+    ],
+  },
+
+  'exam-photo-signature-resizer': {
+    title: 'Exam Photo & Signature Resizer',
+    metaTitle: 'Exam Photo & Signature Resizer | FileVexa',
+    metaDescription: 'Resize application photos and signatures to exact pixels, with KB targets and local previews. Free browser-based processing; no upload.',
+    keywords: 'exam photo resizer, passport photo size, signature resizer, visa photo resize, photo size for online form',
+    href: '/exam-photo-signature-resizer',
+    icon: '🪪',
+    category: { name: 'Image Tools', href: '/image-tools' },
+    quickAnswer: 'Resize an applicant photo and signature to exact pixel dimensions in your browser. Choose passport, exam form, signature strip, or custom settings, then review the preview and actual file size. Files stay on your device; no upload or account is required. Target sizes are best-effort, so verify your application’s specifications before submitting.',
+    howTo: {
+      heading: 'How to Resize Exam Photos and Signatures',
+      intro: 'Prepare applicant photos and signatures for passport, visa, exam, and job forms. Choose a preset or enter pixel dimensions and a target file size; each image is processed locally and can be downloaded separately.',
+      steps: [
+        { title: 'Choose a photo or signature', description: 'Select a JPG, JPEG, PNG, or WebP image up to 50 MB. The image is decoded on your device.' },
+        { title: 'Set dimensions and file size', description: 'Use a passport, exam-form, signature-strip, or custom preset. Choose a target from 10 KB to 200 KB.' },
+        { title: 'Review and download', description: 'Resize the image, confirm exact output pixels and actual file size, then download the result.' },
+      ],
+      tips: 'Application requirements vary. The tool keeps the chosen pixel dimensions and adjusts JPEG quality toward the selected size; very small targets may not be achievable without reducing quality.',
+    },
+    faqs: [
+      { question: 'Does the passport preset use 35 × 45 mm proportions?', answer: 'Yes. The passport and visa preset uses a 35:45 aspect ratio, represented as 413 × 531 pixels at approximately 300 dpi. Always verify the destination’s required pixel dimensions and background rules.' },
+      { question: 'Can I resize a photo to 200 × 230 pixels?', answer: 'Yes. Select the exam or job form preset for 200 × 230 pixels, then set a 20 KB or 50 KB target. Custom width and height are also available.' },
+      { question: 'What signature dimensions are available?', answer: 'Choose a 140 × 60 or 300 × 100 pixel signature strip, or enter custom dimensions. For a transparent PNG signature, turn off the white background option.' },
+      { question: 'Will the output always meet the target KB size?', answer: 'The tool searches for JPEG quality settings that approach your selected maximum while keeping the exact dimensions. Some images cannot fit the target at those dimensions; the actual output size is always displayed.' },
+      { question: 'Are my photos uploaded or stored?', answer: 'No. The selected image is decoded, resized, previewed, and encoded locally in your browser. FileVexa does not upload the image to a processing server.' },
+    ],
+    related: [
+      { label: 'Compress Image to KB', href: '/compress-image-to-kb', emoji: '📉' },
+      { label: 'Compress Image to 20KB', href: '/compress-image-to-20kb', emoji: '📉' },
+      { label: 'Compress Image to 50KB', href: '/compress-image-to-50kb', emoji: '📉' },
+      { label: 'Compress Image to 100KB', href: '/compress-image-to-100kb', emoji: '📉' },
+    ],
+  },
+
+  'redact-pdf-image': {
+    title: 'Sensitive Document & Image Redactor',
+    metaTitle: 'Redact PDF or Image Online Privately | FileVexa',
+    metaDescription: 'Permanently cover sensitive details in images or PDFs with local blackout or pixelation. Export flattened files without uploading documents.',
+    keywords: 'redact PDF online, blur image text, redact sensitive information, black out PDF, redact document locally',
+    href: '/redact-pdf-image',
+    icon: '🖍️',
+    category: { name: 'PDF Tools', href: '/pdf-tools' },
+    quickAnswer: 'Cover sensitive text in a JPG, PNG, WebP, or PDF by drawing blackout or pixelation boxes over it. FileVexa processes files locally and exports rasterized images or a flattened multi-page PDF, so covered text is not retained underneath. Review every page carefully; this tool does not upload files.',
+    howTo: {
+      heading: 'How to Permanently Redact Sensitive Files',
+      intro: 'Open an image or PDF in your browser, draw rectangular areas over sensitive details, and export a flattened copy. PDF pages are rasterized before being assembled into a new document.',
+      steps: [
+        { title: 'Open an image or PDF', description: 'Choose a JPG, PNG, WebP, or unencrypted PDF up to 50 MB. PDFs are limited to 20 pages.' },
+        { title: 'Mark sensitive areas', description: 'Drag rectangles over each detail to hide. Switch between solid black and heavy pixelation, undo a box, or clear the current page.' },
+        { title: 'Export a flattened copy', description: 'Download a redacted image or a new rasterized multi-page PDF. Review every page and confirm the hidden information is unreadable.' },
+      ],
+      tips: 'Redaction is permanent in the exported rasterized copy. Keep the original unchanged, inspect the exported file at full size, and do not rely on a redaction that leaves any characters visible.',
+    },
+    faqs: [
+      { question: 'Can hidden text be uncovered in the exported PDF?', answer: 'Exported PDF pages are rendered to pixels and assembled into a new PDF. The original searchable text layer is not retained, but you should inspect the output at full size to confirm every sensitive area is obscured.' },
+      { question: 'Which redaction modes are available?', answer: 'Use solid black rectangles or heavy pixelation. Both modes are applied to the rasterized export; pixelation can leave shapes recognizable, so use solid blackout for highly sensitive content.' },
+      { question: 'Can I redact more than one PDF page?', answer: 'Yes. Navigate through up to 20 pages, mark each page independently, and export a flattened PDF containing the full document.' },
+      { question: 'Are encrypted or damaged PDFs supported?', answer: 'No. The tool rejects encrypted/password-protected PDFs and reports files it cannot parse or render. Try an unencrypted copy and keep input files under the 50 MB limit.' },
+      { question: 'Are my documents uploaded or stored?', answer: 'No. Images and PDFs are opened, rendered, edited, and exported locally in your browser. FileVexa does not upload them to a document-processing service.' },
+    ],
+    related: [
+      { label: 'Merge PDF', href: '/merge-pdf', emoji: '📚' },
+      { label: 'Remove PDF Pages', href: '/remove-pdf-pages', emoji: '🗑️' },
+      { label: 'Extract PDF Pages', href: '/extract-pdf-pages', emoji: '✂️' },
+      { label: 'PDF to Text', href: '/pdf-to-text', emoji: '📝' },
     ],
   },
 };

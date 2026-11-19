@@ -14,6 +14,8 @@ const WebpToPng = lazy(() => import('./pages/WebpToPng'))
 const HeicToPng = lazy(() => import('./pages/HeicToPng'))
 const AvifToJpg = lazy(() => import('./pages/AvifToJpg'))
 const CompressImageToKB = lazy(() => import('./components/tools/CompressImageToKB'))
+const ExamPhotoSignatureResizer = lazy(() => import('./pages/ExamPhotoSignatureResizer'))
+const RedactPdfImage = lazy(() => import('./pages/RedactPdfImage'))
 const PdfToPng = lazy(() => import('./pages/PdfToPng'))
 const PngToPdf = lazy(() => import('./pages/PngToPdf'))
 const MergePdf = lazy(() => import('./pages/MergePdf'))
@@ -66,6 +68,8 @@ export default function App() {
               <Route path="/compress-image-to-20kb" element={<CompressImageToKB key="compress-image-to-20kb" />} />
               <Route path="/compress-image-to-50kb" element={<CompressImageToKB key="compress-image-to-50kb" />} />
               <Route path="/compress-image-to-100kb" element={<CompressImageToKB key="compress-image-to-100kb" />} />
+              <Route path="/exam-photo-signature-resizer" element={<ExamPhotoSignatureResizer />} />
+              <Route path="/redact-pdf-image" element={<RedactPdfImage />} />
               <Route path="/convert-png-to-jpg" element={<ProgrammaticToolPage />} />
               <Route path="/convert-png-to-webp" element={<ProgrammaticToolPage />} />
               <Route path="/compress-pdf-to-200kb" element={<ProgrammaticToolPage />} />

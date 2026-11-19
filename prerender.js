@@ -246,15 +246,17 @@ const llmsRouteLines = [
   '- [Compress Image to 20KB](/compress-image-to-20kb): Compress photos for PPSC, exam, passport, and government forms with a 20KB target.',
   '- [Compress Image to 50KB](/compress-image-to-50kb): Compress photos for university and job portal applications with a 50KB target.',
   '- [Compress Image to 100KB](/compress-image-to-100kb): Compress ID card, resume, and web upload images with a 100KB target.',
+  '- [Exam Photo & Signature Resizer](/exam-photo-signature-resizer): Resize application photos and signatures to exact pixels in your browser.',
 ]
 const pdfToolRouteLines = [
   '- [Merge PDF](/merge-pdf): Merge and reorder unencrypted PDF documents locally in your browser.',
   '- [JPG to PDF](/jpg-to-pdf): Convert and arrange JPG, JPEG, or PNG images into a PDF in your browser.',
+  '- [Redact PDF or Image](/redact-pdf-image): Cover sensitive details locally and export a flattened image or multi-page PDF.',
 ]
 const publicLlmsPath = toAbsolute('public/llms.txt')
 const publicLlms = fs.readFileSync(publicLlmsPath, 'utf-8')
 let updatedLlms = publicLlms.replace(
-  /^- \[[^\]]+\]\(\/(?:compress-image-to-(?:kb|20kb|50kb|100kb)|merge-pdf|jpg-to-pdf)\):.*(?:\r?\n|$)/gm,
+  /^- \[[^\]]+\]\(\/(?:compress-image-to-(?:kb|20kb|50kb|100kb)|exam-photo-signature-resizer|merge-pdf|jpg-to-pdf|redact-pdf-image)\):.*(?:\r?\n|$)/gm,
   ''
 )
 if (/## Image tools[^\r\n]*\r?\n/i.test(updatedLlms)) {

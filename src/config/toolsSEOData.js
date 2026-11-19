@@ -4,6 +4,18 @@ import { PROGRAMMATIC_TOOLS } from '../data/programmaticTools.js'
 const SITE_URL = 'https://filevexa.pages.dev'
 
 const TOOL_DETAILS = {
+  'exam-photo-signature-resizer': {
+    inputs: 'JPG, JPEG, PNG, and WebP images',
+    outputs: 'JPEG images; signatures may retain transparency in PNG format',
+    limits: 'Input images must be 50 MB or smaller. Custom dimensions are limited to 6,000 pixels per side and 24 megapixels; target sizes range from 10 KB to 200 KB.',
+    notes: 'The tool preserves exact selected pixel dimensions and adjusts JPEG quality toward the requested maximum. Target sizes may not be achievable for every image.',
+  },
+  'redact-pdf-image': {
+    inputs: 'JPG, JPEG, PNG, WebP images, and unencrypted PDF documents',
+    outputs: 'Redacted PNG or JPEG images, or a flattened rasterized PDF',
+    limits: 'Files must be 50 MB or smaller. PDFs are limited to 20 pages and each rendered page to 4 megapixels.',
+    notes: 'PDF exports contain rasterized page images rather than the original searchable text layer. Password-protected and corrupt PDFs are not supported.',
+  },
   'compress-image-to-kb': {
     inputs: 'JPEG, PNG, WebP, HEIC, and HEIF images',
     outputs: 'JPEG image',
@@ -179,7 +191,7 @@ const TARGET_SIZE_PAGES = {
       { q: 'Are my photo and ID details uploaded?', a: 'No. The selected image is decoded and compressed in your browser and is not uploaded to FileVexa for processing. Avoid sharing the downloaded image unless the destination form requires it.' },
       { q: 'Which image formats can I compress to 20 KB?', a: 'You can select JPEG, PNG, WebP, HEIC, or HEIF images up to 50 MB. The compressed download is a JPEG, and transparent areas are filled with white.' },
     ],
-    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-50kb', 'compress-image-to-100kb'],
+    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-50kb', 'compress-image-to-100kb', 'exam-photo-signature-resizer'],
   },
   'compress-image-to-50kb': {
     name: 'Image Compressor to 50KB',
@@ -209,7 +221,7 @@ const TARGET_SIZE_PAGES = {
       { q: 'Does FileVexa upload application photos?', a: 'No. Your selected photo is processed locally in your browser and is not uploaded to FileVexa for compression. The website does not require an account to use this tool.' },
       { q: 'What formats are supported for 50 KB compression?', a: 'The tool accepts JPEG, PNG, WebP, HEIC, and HEIF images up to 50 MB and creates a JPEG download. Transparent pixels in PNG or WebP inputs are filled with white.' },
     ],
-    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-20kb', 'compress-image-to-100kb'],
+    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-20kb', 'compress-image-to-100kb', 'exam-photo-signature-resizer'],
   },
   'compress-image-to-100kb': {
     name: 'Image Compressor to 100KB',
@@ -239,7 +251,7 @@ const TARGET_SIZE_PAGES = {
       { q: 'Is my image sent to a server during compression?', a: 'No. FileVexa processes the selected image locally in your browser, without uploading it to a FileVexa processing server. No account or payment is required.' },
       { q: 'Can I compress PNG or HEIC files to 100 KB?', a: 'Yes. JPEG, PNG, WebP, HEIC, and HEIF inputs up to 50 MB are supported. The output is JPEG; transparent areas in PNG and WebP files are filled with white.' },
     ],
-    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-20kb', 'compress-image-to-50kb'],
+    relatedToolIds: ['compress-image-to-kb', 'compress-image-to-20kb', 'compress-image-to-50kb', 'exam-photo-signature-resizer'],
   },
 }
 
@@ -363,12 +375,12 @@ const PROGRAMMATIC_SEO_OVERRIDES = {
 const RELATED_BY_CATEGORY = {
   'Image Tools': [
     'heic-to-jpg', 'heic-to-png', 'webp-to-jpg', 'webp-to-png',
-    'avif-to-jpg', 'compress-image-to-kb', 'convert-png-to-jpg',
+    'avif-to-jpg', 'compress-image-to-kb', 'exam-photo-signature-resizer', 'convert-png-to-jpg',
     'convert-png-to-webp', 'png-to-pdf',
   ],
   'PDF Tools': [
     'png-to-pdf', 'pdf-to-png', 'remove-pdf-pages', 'extract-pdf-pages',
-    'pdf-to-text', 'pdf-to-markdown', 'compress-pdf-to-200kb',
+    'pdf-to-text', 'pdf-to-markdown', 'redact-pdf-image', 'compress-pdf-to-200kb',
   ],
   'Daily Utilities': [
     'qr-code-generator', 'password-generator', 'word-counter',
@@ -387,6 +399,8 @@ const RELATED_BY_CATEGORY = {
 
 const TOOL_CARD_DESCRIPTIONS = {
   'compress-image-to-kb': 'Compress JPEG, PNG, WebP, or HEIC images to a chosen KB size.',
+  'exam-photo-signature-resizer': 'Resize application photos and signatures to exact pixels in your browser.',
+  'redact-pdf-image': 'Permanently redact image or PDF content with local rasterized exports.',
   'heic-to-jpg': 'Convert HEIC and HEIF photos to widely supported JPG files.',
   'webp-to-jpg': 'Convert WebP images to JPG for broader app compatibility.',
   'webp-to-png': 'Convert WebP images to PNG while preserving transparency.',
@@ -509,7 +523,7 @@ function normalizeTool(slug, source) {
     quickAnswer: source.quickAnswer || `FileVexa's ${name} is a free browser-based tool. It handles supported inputs on your device; file tools process files locally without uploading them for conversion. No account or payment is required. Processing time and limits depend on your input, browser, and device. Check format requirements and review results before downloading or sharing.`,
     icon: source.icon,
     category: source.category,
-    layoutRendered: slug === 'compress-image-to-kb',
+    layoutRendered: ['compress-image-to-kb', 'exam-photo-signature-resizer', 'redact-pdf-image'].includes(slug),
   }
 }
 

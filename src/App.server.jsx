@@ -18,6 +18,8 @@ import WebpToPng from './pages/WebpToPng'
 import HeicToPng from './pages/HeicToPng'
 import AvifToJpg from './pages/AvifToJpg'
 import CompressImageToKB from './components/tools/CompressImageToKB'
+import ExamPhotoSignatureResizer from './pages/ExamPhotoSignatureResizer'
+import RedactPdfImage from './pages/RedactPdfImage'
 import PdfToPng from './pages/PdfToPng'
 import PngToPdf from './pages/PngToPdf'
 import MergePdf from './pages/MergePdf'
@@ -59,6 +61,8 @@ export default function AppServer() {
           <Route path="/compress-image-to-20kb" element={<CompressImageToKB key="compress-image-to-20kb" />} />
           <Route path="/compress-image-to-50kb" element={<CompressImageToKB key="compress-image-to-50kb" />} />
           <Route path="/compress-image-to-100kb" element={<CompressImageToKB key="compress-image-to-100kb" />} />
+          <Route path="/exam-photo-signature-resizer" element={<ExamPhotoSignatureResizer />} />
+          <Route path="/redact-pdf-image" element={<RedactPdfImage />} />
           <Route path="/convert-png-to-jpg" element={<ProgrammaticToolPage />} />
           <Route path="/convert-png-to-webp" element={<ProgrammaticToolPage />} />
           <Route path="/compress-pdf-to-200kb" element={<ProgrammaticToolPage />} />

@@ -29,6 +29,7 @@ const FAQ = [
 const RELATED = [
   { label: 'PDF to Markdown', href: '/pdf-to-markdown', emoji: '⬇️' },
   { label: 'PDF to PNG', href: '/pdf-to-png', emoji: '📄' },
+  { label: 'Redact PDF or Image', href: '/redact-pdf-image', emoji: '🖍️' },
 ]
 
 export default function PdfToText() {

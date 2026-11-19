@@ -215,6 +215,7 @@ export default function Header() {
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)' }}>Image Tools</div>
         <Link to="/image-tools" onClick={closeMenu}>All Image Tools</Link>
         <Link to="/compress-image-to-kb" onClick={closeMenu}>Compress Image to KB</Link>
+        <Link to="/exam-photo-signature-resizer" onClick={closeMenu}>Exam Photo &amp; Signature Resizer</Link>
         <Link to="/heic-to-jpg" onClick={closeMenu}>HEIC to JPG</Link>
         <Link to="/heic-to-png" onClick={closeMenu}>HEIC to PNG</Link>
         <Link to="/webp-to-jpg" onClick={closeMenu}>WebP to JPG</Link>
@@ -224,6 +225,7 @@ export default function Header() {
         <Link to="/convert-png-to-webp" onClick={closeMenu}>Convert PNG to WebP</Link>
         <div style={{ padding: '4px 14px', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-text-muted)', marginTop: '8px' }}>PDF Tools</div>
         <Link to="/pdf-tools" onClick={closeMenu}>All PDF Tools</Link>
+        <Link to="/redact-pdf-image" onClick={closeMenu}>Redact PDF or Image</Link>
         <Link to="/merge-pdf" onClick={closeMenu}>Merge PDF</Link>
         <Link to="/jpg-to-pdf" onClick={closeMenu}>JPG to PDF</Link>
         <Link to="/png-to-pdf" onClick={closeMenu}>PNG to PDF Converter</Link>

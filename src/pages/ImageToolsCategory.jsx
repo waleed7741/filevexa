@@ -32,6 +32,10 @@ export default function ImageToolsCategory() {
             <ToolCard key={tool.href} {...tool} />
           ))}
         </div>
+        <p className="image-tools-redaction-link">
+          Need to hide private details in an image or PDF?{' '}
+          <a href="/redact-pdf-image">Use the local redaction tool</a>.
+        </p>
       </div>
     </div>
   );

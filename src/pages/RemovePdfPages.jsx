@@ -33,6 +33,7 @@ const FAQ = [
 const RELATED = [
   { label: 'Extract PDF Pages', href: '/extract-pdf-pages', emoji: '✂️' },
   { label: 'PDF to PNG', href: '/pdf-to-png', emoji: '📄' },
+  { label: 'Redact PDF or Image', href: '/redact-pdf-image', emoji: '🖍️' },
 ]
 
 function PdfThumbnail({ pdfDoc, pageNum, isSelected, onToggle }) {
