@@ -244,6 +244,24 @@ const TARGET_SIZE_PAGES = {
 }
 
 const ADDITIONAL_TOOL_FAQS = {
+  'convert-png-to-jpg': [
+    {
+      question: 'How do I convert PNG to JPG online free?',
+      answer: 'Choose a PNG image and convert it in your browser, then download the JPG. The tool is free, requires no sign-up, and does not upload your image.',
+    },
+    {
+      question: 'Can I convert PNG to JPG without losing quality?',
+      answer: 'JPG uses lossy compression, so some image data may be lost. This tool uses a high-quality setting and keeps the image dimensions; keep the PNG if you need a lossless original.',
+    },
+    {
+      question: 'Can I convert multiple PNG files at once?',
+      answer: 'This page converts one PNG at a time. Download the JPG, then choose another image to convert.',
+    },
+    {
+      question: 'What happens to a transparent background when converting PNG to JPG?',
+      answer: 'JPG does not support transparency, so transparent pixels are filled with white in the converted image.',
+    },
+  ],
   'heic-to-jpg': [{
     question: 'Will converting an iPhone HEIC photo make it open on Windows or Android?',
     answer: 'The JPG output is supported by many Windows, Android, email, and editing apps that cannot open HEIC directly. Device and app support can vary, so check the saved JPG in the destination app.',
@@ -279,6 +297,9 @@ const ADDITIONAL_TOOL_FAQS = {
   'pdf-to-text': [{
     question: 'Why is some extracted PDF text out of order?',
     answer: 'PDFs position text for visual layout rather than storing it as a simple reading sequence. Multiple columns, tables, and positioned text can therefore produce an order that needs manual correction.',
+  }, {
+    question: 'Can I convert PDF to text free online without email?',
+    answer: 'Yes. Select a PDF with selectable text to extract it for free in your browser. No email or sign-up is needed, and the document is not uploaded to a processing server.',
   }],
   'pdf-to-markdown': [{
     question: 'Can this converter preserve tables and page layout?',
@@ -312,10 +333,6 @@ const ADDITIONAL_TOOL_FAQS = {
     question: 'Can I use the result for a tax or financial decision?',
     answer: 'The calculator performs arithmetic on the values entered. It does not determine applicable tax rules, fees, or financial assumptions; verify those separately.',
   }],
-  'convert-png-to-jpg': [{
-    question: 'Can I convert multiple PNG files at once?',
-    answer: 'This page converts one selected PNG at a time. Download the result, then choose another image to repeat the conversion.',
-  }],
   'convert-png-to-webp': [{
     question: 'Will every browser be able to create a WebP file?',
     answer: 'The browser must support WebP canvas encoding. If conversion fails, update the browser or use another browser that supports WebP output.',
@@ -324,6 +341,23 @@ const ADDITIONAL_TOOL_FAQS = {
     question: 'What is the practical way to reduce a PDF file size?',
     answer: 'Review image dimensions and quality, remove unnecessary pages, and avoid embedding content the recipient does not need. FileVexa can remove pages but does not currently compress or optimize PDFs.',
   }],
+}
+
+const PROGRAMMATIC_SEO_OVERRIDES = {
+  'convert-png-to-jpg': {
+    title: 'PNG to JPG Converter Online Free (No Upload) | FileVexa',
+    description: 'Convert PNG to JPG online free in seconds with high-quality HD results in your browser. No sign-up or upload; images stay on your device.',
+    quickAnswer: 'Convert PNG to JPG online free in your browser: choose one PNG up to 25 MB, convert it, and download the JPG. No sign-up or upload; images stay on your device. The high-quality HD conversion uses lossy JPEG, and transparent areas are filled with white. Convert one image at a time.',
+    targetKeywords: {
+      primary: 'convert png to jpg online free',
+      longTail: [
+        'png to jpg without losing quality',
+        'convert multiple png files to jpg',
+        'convert png transparent background to jpg',
+        'png to jpg converter no upload',
+      ],
+    },
+  },
 }
 
 const RELATED_BY_CATEGORY = {
@@ -486,6 +520,7 @@ const toolEntries = Object.entries(TOOL_SEO_DATA).map(([slug, source]) => [
 
 function normalizeProgrammaticTool(slug, source) {
   const isGuide = source.kind === 'guide'
+  const seo = PROGRAMMATIC_SEO_OVERRIDES[slug]
   const name = isGuide
     ? 'PDF Size Guide'
     : `PNG to ${source.outputLabel} Converter`
@@ -512,10 +547,10 @@ function normalizeProgrammaticTool(slug, source) {
     slug,
     url: `${SITE_URL}/${slug}`,
     name,
-    title: `Free Online ${name} (100% Private, No Upload) - FileVexa`,
+    title: seo?.title || `Free Online ${name} (100% Private, No Upload) - FileVexa`,
     h1: `Free Online ${name}`,
-    description: source.description || makeMetaDescription(source.intro, name),
-    targetKeywords: {
+    description: seo?.description || source.description || makeMetaDescription(source.intro, name),
+    targetKeywords: seo?.targetKeywords || {
       primary: `${action} online`,
       longTail: [`free ${action}`, `${action} no upload`, `private ${action} online`],
     },
@@ -539,7 +574,7 @@ function normalizeProgrammaticTool(slug, source) {
     relatedTools: source.related || [],
     applicationCategory: 'UtilityApplication',
     howToIntro: source.intro,
-    quickAnswer: source.quickAnswer || `FileVexa's ${name} is a free browser-based tool. It handles supported inputs on your device; file tools process files locally without uploading them for conversion. No account or payment is required. Processing time and limits depend on your input, browser, and device. Check format requirements and review results before downloading or sharing.`,
+    quickAnswer: seo?.quickAnswer || source.quickAnswer || `FileVexa's ${name} is a free browser-based tool. It handles supported inputs on your device; file tools process files locally without uploading them for conversion. No account or payment is required. Processing time and limits depend on your input, browser, and device. Check format requirements and review results before downloading or sharing.`,
     format: source.format,
     outputLabel: source.outputLabel,
     icon: source.kind === 'image' ? '🖼️' : '📄',

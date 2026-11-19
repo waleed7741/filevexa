@@ -655,9 +655,22 @@ export const TOOL_SEO_DATA = {
 
   'pdf-to-text': {
     title: 'PDF to Text Converter',
+    metaTitle: 'PDF to Text Converter Online Free (No Email) | FileVexa',
+    metaDescription: 'Convert PDF to text free online without email. Extract selectable text instantly in your browser—no sign-up or server upload. Copy or download as .txt.',
     href: '/pdf-to-text',
     icon: '📝',
     category: { name: 'PDF Tools', href: '/pdf-tools' },
+    keywords: 'convert PDF to text free online without email, PDF text extraction in browser, extract formatted text from PDF, local PDF text converter',
+    targetKeywords: {
+      primary: 'convert PDF to text free online without email',
+      longTail: [
+        'extract PDF text in browser',
+        'formatted text extraction from PDF online',
+        'PDF to text converter no upload',
+      ],
+    },
+    quickAnswer:
+      'Convert PDF to text free online without email using FileVexa. Select a PDF with selectable text to extract it instantly in your browser, then copy or download the plain-text result. No sign-up or server upload is needed; scanned PDFs require OCR.',
     howTo: {
       heading: 'How to Extract Plain Text from PDF Files Online',
       intro:
@@ -699,9 +712,9 @@ export const TOOL_SEO_DATA = {
           'The tool can extract text from documents with dozens or hundreds of pages. Large documents may take a few seconds to extract, depending on your device’s processing speed.',
       },
       {
-        question: 'Does this converter preserve formatting like bold and italics?',
+        question: 'Can I extract formatted PDF text in my browser?',
         answer:
-          'Plain text (.txt) format does not support font styling. If you need headers, bold text, and lists preserved in structured format, use our PDF to Markdown tool instead.',
+          'Yes. Selectable text is extracted locally in your browser, but the .txt output does not preserve styling such as bold or italics. For structured headings and lists, use our PDF to Markdown tool.',
       },
     ],
     related: [
